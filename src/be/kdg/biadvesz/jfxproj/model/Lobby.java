@@ -11,5 +11,4 @@ public class Lobby {
         this.title = "2048 GAME";
         this.playername = playername;
     }
-
 }
