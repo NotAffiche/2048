@@ -6,23 +6,25 @@ public class Tile {
     private int value;
     private int positionX;
     private int positionY;
-    Color color;
+    private Color color;
 
     public int getValue() {
-        return value;
+        return this.value;
     }
     public int getPositionX() {
-        return positionX;
+        return this.positionX;
     }
     public void setPositionX(int positionX) {
         this.positionX = positionX;
     }
     public int getPositionY() {
-        return positionY;
+        return this.positionY;
     }
     public void setPositionY(int positionY) {
         this.positionY = positionY;
     }
+    public Color getColor() { return this.color; }
+    public void setColor(Color color) { this.color = color; }
 
     public void valueChange(Tile other) {
         if (other.getValue() == this.value) {
