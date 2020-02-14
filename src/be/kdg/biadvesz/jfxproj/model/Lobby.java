@@ -6,5 +6,4 @@ public class Lobby {
     public Lobby() {
         this.title = "2048 GAME";
     }
-
 }
