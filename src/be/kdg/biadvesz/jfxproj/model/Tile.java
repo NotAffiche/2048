@@ -32,10 +32,11 @@ public class Tile {
         }
     }
 
-    public Tile(int value, int x, int y) {
+    public Tile(int value, int x, int y, Color color) {
         this.value = value;
         this.positionX = x;
         this.positionY = y;
+        this.color = color;
     }
 
     @Override
