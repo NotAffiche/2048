@@ -26,12 +26,6 @@ public class Tile {
     public Color getColor() { return this.color; }
     public void setColor(Color color) { this.color = color; }
 
-    public void valueChange(Tile other) {
-        if (other.getValue() == this.value) {
-            this.value += other.getValue();
-        }
-    }
-
     public Tile(int value, int x, int y, Color color) {
         this.value = value;
         this.positionX = x;
@@ -42,5 +36,11 @@ public class Tile {
     @Override
     public String toString() {
         return String.format("%d", getValue());
+    }
+
+    public void valueChange(Tile other) {
+        if (other.getValue() == this.value) {
+            this.value += other.getValue();
+        }
     }
 }
