@@ -5,6 +5,7 @@ import be.kdg.biadvesz.jfxproj.model.Tile;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -16,7 +17,8 @@ public class GameView extends BorderPane {
     private Label lblTitle;
     private Label lblScore;
     private Label lblHighscore;
-    private GridPane gpGame;
+    private Button btLeave;
+
 
 
     public GameView() {
@@ -30,10 +32,8 @@ public class GameView extends BorderPane {
         lblTitle.setStyle("-fx-font-size: 20px");
         lblScore = new Label("score: \n 0");
         lblHighscore = new Label("highscore: \n 0");
-        gpGame = new GridPane();
-        gpGame.setPadding(new Insets(10,10,10,10));
-        gpGame.setVgap(8);
-        gpGame.setHgap(8);
+        btLeave = new Button("Leave");
+
     }
 
     private void layoutnodes() {
@@ -47,6 +47,12 @@ public class GameView extends BorderPane {
         hBoxTop.getChildren().addAll(lblTitle, lblScore, lblHighscore);
 
 
+
+
+        BorderPane bpButtonSave = new BorderPane();
+        bpButtonSave.setRight(btLeave);
+        btLeave.setPrefWidth(100);
+        super.getChildren().add(bpButtonSave);
     }
 
     public Label getLblTitle() {
