@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -40,7 +41,11 @@ public class LobbyView extends BorderPane {
     //METHODS
     private void initNodes() {
         lblName = new Label("2048 Game");
-        tfName = new TextField("Playername...");
+        Tooltip madeBy = new Tooltip("Made by: Adrian Biedny & Szymon Vertenten");
+        madeBy.setStyle("-fx-font-size: 20;");
+        lblName.setTooltip(madeBy);
+        tfName = new TextField();
+        tfName.setTooltip(new Tooltip("Name"));
         bHowTo = new Button("How To Play");
         bHighscores = new Button("Highscores");
         bPlay= new Button("Play");
@@ -63,9 +68,6 @@ public class LobbyView extends BorderPane {
 
         mainBox.setPadding(new Insets(70,10,10,10));
         mainBox.setAlignment(Pos.CENTER);
-
-        //actual layout
-
 
         //set all items
         super.setTop(hboxTitle);
