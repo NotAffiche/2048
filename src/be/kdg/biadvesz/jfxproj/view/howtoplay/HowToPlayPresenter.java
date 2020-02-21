@@ -26,7 +26,7 @@ public class HowToPlayPresenter {
             public void handle(ActionEvent actionEvent) {
                 LobbyView lv = new LobbyView();
                 LobbyPresenter lp = new LobbyPresenter(model, lv);
-                view.getScene().setRoot(lv);
+                System.out.println("kak");
             }
         });
     }
