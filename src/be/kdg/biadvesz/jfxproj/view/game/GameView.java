@@ -26,8 +26,8 @@ public class GameView extends BorderPane {
     public GameView() {
         initialise();
         layoutnodes();
-
     }
+
 
     private void initialise() {
         lblTitle = new Label("2048 Game");
