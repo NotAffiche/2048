@@ -4,7 +4,7 @@ public class Lobby {
     private String title;
     private String playername;
 
-    public Lobby(String playername) {
+    public Lobby() {
         this.title = "2048 GAME";
         this.playername = playername;
     }
