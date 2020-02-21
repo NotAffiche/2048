@@ -4,6 +4,7 @@ import be.kdg.biadvesz.jfxproj.model.Game;
 import be.kdg.biadvesz.jfxproj.model.Lobby;
 import be.kdg.biadvesz.jfxproj.view.game.GamePresenter;
 import be.kdg.biadvesz.jfxproj.view.game.GameView;
+import be.kdg.biadvesz.jfxproj.view.howtoplay.HowToPlayView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
@@ -30,6 +31,14 @@ public class LobbyPresenter {
                 GamePresenter gamePresenter = new GamePresenter(gameModel, gameView);
                 view.getScene().setRoot(gameView);
                 gameView.getScene().getWindow().sizeToScene();
+            }
+        });
+        view.getbHowTo().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                HowToPlayView view = new HowToPlayView();
+                view.getScene().setRoot(view);
+                view.getScene().getWindow().sizeToScene();
             }
         });
     }
