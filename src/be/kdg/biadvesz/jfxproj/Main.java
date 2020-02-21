@@ -18,6 +18,9 @@ public class Main extends Application {
         LobbyPresenter lp = new LobbyPresenter(model, view);
         Scene lobbyScene = new Scene(view);
         stage.setScene(lobbyScene);
+        stage.setResizable(false);
+        stage.setWidth(450);
+        stage.setHeight(600);
         stage.show();
     }
 }

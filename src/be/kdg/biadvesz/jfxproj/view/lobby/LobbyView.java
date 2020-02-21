@@ -54,10 +54,14 @@ public class LobbyView extends BorderPane {
         hboxHighscores.getChildren().add(bHighscores);
         HBox hboxPlay = new HBox();
         hboxPlay.getChildren().add(bPlay);
-        super.setTop(hboxTitle);
         VBox mainBox = new VBox();
-        mainBox.getChildren().addAll(hboxName, hboxHowTo, hboxHighscores);
+
+        //actual layout
+
+
+        //set all items
+        super.setTop(hboxTitle);
+        mainBox.getChildren().addAll(hboxName, hboxHowTo, hboxHighscores, hboxPlay);
         super.setCenter(mainBox);
-        super.setBottom(hboxPlay);
     }
 }
