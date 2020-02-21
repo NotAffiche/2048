@@ -16,7 +16,6 @@ public class HowToPlayPresenter {
         this.model = model;
         this.view = view;
         addEventHandlers();
-        updateView();
     }
 
     //METHODS
@@ -24,13 +23,11 @@ public class HowToPlayPresenter {
         view.getbGoBack().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                LobbyView lv = new LobbyView();
-                LobbyPresenter lp = new LobbyPresenter(model, lv);
-                System.out.println("kak");
+                Lobby lobbyModel = new Lobby();
+                LobbyView lobbyView = new LobbyView();
+                LobbyPresenter lobbyPresenter = new LobbyPresenter(lobbyModel, lobbyView);
+                view.getScene().setRoot(lobbyView);
             }
         });
-    }
-    private void updateView() {
-        //emtpy
     }
 }

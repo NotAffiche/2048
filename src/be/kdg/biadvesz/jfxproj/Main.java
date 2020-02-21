@@ -16,11 +16,14 @@ public class Main extends Application {
         LobbyView view = new LobbyView();
         Lobby model = new Lobby();
         LobbyPresenter lp = new LobbyPresenter(model, view);
+
         Scene lobbyScene = new Scene(view);
         stage.setScene(lobbyScene);
+
         stage.setResizable(false);
         stage.setWidth(450);
         stage.setHeight(600);
+
         stage.show();
     }
 }
