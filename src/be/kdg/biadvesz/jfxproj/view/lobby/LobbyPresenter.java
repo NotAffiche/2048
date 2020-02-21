@@ -30,7 +30,6 @@ public class LobbyPresenter {
                 Game gameModel = new Game();
                 GamePresenter gamePresenter = new GamePresenter(gameModel, gameView);
                 view.getScene().setRoot(gameView);
-                gameView.getScene().getWindow().sizeToScene();
             }
         });
         view.getbHowTo().setOnAction(new EventHandler<ActionEvent>() {

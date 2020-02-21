@@ -19,7 +19,9 @@ public class GameView extends BorderPane {
     private Label lblHighscore;
     private Button btLeave;
 
-
+    public Button getBtLeave() {
+        return btLeave;
+    }
 
     public GameView() {
         initialise();
@@ -29,9 +31,9 @@ public class GameView extends BorderPane {
 
     private void initialise() {
         lblTitle = new Label("2048 Game");
-        lblTitle.setStyle("-fx-font-size: 20px");
-        lblScore = new Label("score: \n 0");
-        lblHighscore = new Label("highscore: \n 0");
+        lblTitle.setStyle("-fx-font-size: 16px");
+        lblScore = new Label("Score: \n 0");
+        lblHighscore = new Label("Highscore: \n 0");
         btLeave = new Button("Leave");
 
     }
@@ -45,45 +47,17 @@ public class GameView extends BorderPane {
         lblHighscore.setPrefWidth(100);
         lblScore.setPrefWidth(100);
         hBoxTop.getChildren().addAll(lblTitle, lblScore, lblHighscore);
-
-
-
+        super.setTop(hBoxTop);
 
         BorderPane bpButtonSave = new BorderPane();
         bpButtonSave.setRight(btLeave);
         btLeave.setPrefWidth(100);
-        super.getChildren().add(bpButtonSave);
+        super.setBottom(bpButtonSave);
     }
 
-    public Label getLblTitle() {
-        return lblTitle;
-    }
-
-    public Label getLblScore() {
-        return lblScore;
-    }
-
+    public Label getLblTitle() { return lblTitle; }
+    public Label getLblScore() { return lblScore; }
     public Label getLblHighscore() {
         return lblHighscore;
-    }
-
-    private void animateUp() {
-
-
-    }
-
-    private void animateDown() {
-
-
-    }
-
-    private void animateLeft() {
-
-
-    }
-
-    private void animateRight() {
-
-
     }
 }
