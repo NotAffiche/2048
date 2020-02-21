@@ -15,6 +15,7 @@ public class GameView extends BorderPane {
     private Label lblTitle;
     private Label lblScore;
     private Label lblHighscore;
+    private  Grid
 
 
 
@@ -39,6 +40,8 @@ public class GameView extends BorderPane {
         lblTitle.setPrefWidth(100);
         lblHighscore.setPrefWidth(100);
         lblScore.setPrefWidth(100);
+        hBoxTop.getChildren().addAll(lblTitle,lblScore,lblHighscore);
+
 
 
 
