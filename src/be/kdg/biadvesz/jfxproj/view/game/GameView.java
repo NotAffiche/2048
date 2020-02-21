@@ -1,29 +1,27 @@
 package be.kdg.biadvesz.jfxproj.view.game;
 
-import be.kdg.biadvesz.jfxproj.model.Game;
-import be.kdg.biadvesz.jfxproj.model.Tile;
-import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+
 
 public class GameView extends BorderPane {
     private Label lblTitle;
     private Label lblScore;
     private Label lblHighscore;
     private Button btLeave;
+    private int gridSize;
 
     public Button getBtLeave() {
         return btLeave;
     }
 
-    public GameView() {
+    public GameView(int gridSize) {
+        this.gridSize = gridSize;
         initialise();
         layoutnodes();
     }
@@ -35,8 +33,8 @@ public class GameView extends BorderPane {
         lblScore = new Label("Score: \n 0");
         lblHighscore = new Label("Highscore: \n 0");
         btLeave = new Button("Leave");
-
     }
+
 
     private void layoutnodes() {
         super.setPadding(new Insets(10));
@@ -50,6 +48,25 @@ public class GameView extends BorderPane {
         hBoxTop.setAlignment(Pos.CENTER);
         super.setTop(hBoxTop);
 
+        HBox hboxmidden = new HBox();
+
+        GridPane gridPane = new GridPane();
+        Button[][] btn = new Button[gridSize][gridSize];
+
+        for(int i=0; i<btn.length; i++){
+            for(int j=0; j<btn.length;j++){
+                btn[i][j] = new Button("0");
+                btn[i][j].setPrefSize(75, 75);
+                gridPane.add(btn[i][j], i, j);
+            }
+        }
+        hboxmidden.setPadding(new Insets(70,10,10,10));
+        hboxmidden.setAlignment(Pos.CENTER);
+        hboxmidden.getChildren().addAll(gridPane);
+        super.setCenter(hboxmidden);
+
+
+        super.setPadding(new Insets(10));
         BorderPane bpButtonSave = new BorderPane();
         bpButtonSave.setRight(btLeave);
         btLeave.setPrefWidth(100);
