@@ -36,9 +36,8 @@ public class LobbyPresenter {
         view.getbHowTo().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                HowToPlayView view = new HowToPlayView();
-                view.getScene().setRoot(view);
-                view.getScene().getWindow().sizeToScene();
+                HowToPlayView htpView = new HowToPlayView();
+                view.getScene().setRoot(htpView);
             }
         });
     }

@@ -11,6 +11,11 @@ public class HowToPlayView extends BorderPane {
     private Label lblRules;
     private Button bGoBack;
 
+    //GET
+    public Button getbGoBack() {
+        return bGoBack;
+    }
+
     //CTOR
     public HowToPlayView() {
         initNodes();
