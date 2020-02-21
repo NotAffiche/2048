@@ -44,9 +44,10 @@ public class GameView extends BorderPane {
 
         HBox hBoxTop = new HBox();
         lblTitle.setPrefWidth(100);
-        lblHighscore.setPrefWidth(50);
+        lblHighscore.setPrefWidth(100);
         lblScore.setPrefWidth(50);
         hBoxTop.getChildren().addAll(lblTitle, lblScore, lblHighscore);
+        hBoxTop.setAlignment(Pos.CENTER);
         super.setTop(hBoxTop);
 
         BorderPane bpButtonSave = new BorderPane();
