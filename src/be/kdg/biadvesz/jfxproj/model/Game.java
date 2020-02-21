@@ -20,6 +20,7 @@ public class Game {
 
     public Game() {
         rndm = new Random();
+        setGridSize(4);
         setGrid(new Tile[getGridSize()][getGridSize()]); // gridsize (configurable in future?)
         setScore(0);
         //TODO: highscore
