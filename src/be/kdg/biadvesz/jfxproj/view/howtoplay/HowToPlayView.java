@@ -1,5 +1,6 @@
 package be.kdg.biadvesz.jfxproj.view.howtoplay;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -30,6 +31,7 @@ public class HowToPlayView extends BorderPane {
     }
 
     private void layoutNodes() {
+        super.setPadding(new Insets(10));
         HBox hboxTitle = new HBox();
         HBox hboxRules = new HBox();
         hboxTitle.getChildren().add(lblTitle);

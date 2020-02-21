@@ -8,6 +8,7 @@ import be.kdg.biadvesz.jfxproj.view.howtoplay.HowToPlayPresenter;
 import be.kdg.biadvesz.jfxproj.view.howtoplay.HowToPlayView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 
 public class LobbyPresenter {
     //ATTRIB
@@ -39,6 +40,16 @@ public class LobbyPresenter {
                 HowToPlayView htpView = new HowToPlayView();
                 HowToPlayPresenter htpPresenter = new HowToPlayPresenter(model, htpView);
                 view.getScene().setRoot(htpView);
+            }
+        });
+        view.getbHighscores().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Alert wip = new Alert(Alert.AlertType.INFORMATION);
+                wip.setTitle("WIP");
+                wip.setHeaderText("Work In Progress");
+                wip.setContentText("Highscores are currently unavailable.");
+                wip.showAndWait();
             }
         });
     }

@@ -1,5 +1,6 @@
 package be.kdg.biadvesz.jfxproj.view.lobby;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -44,6 +45,8 @@ public class LobbyView extends BorderPane {
         bPlay= new Button("Play");
     }
     private void layoutNodes() {
+        super.setPadding(new Insets(10));
+
         HBox hboxTitle = new HBox();
         hboxTitle.getChildren().add(lblName);
         HBox hboxName = new HBox();
