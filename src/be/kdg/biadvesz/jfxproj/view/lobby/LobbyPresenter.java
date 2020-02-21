@@ -1,4 +1,4 @@
-package be.kdg.biadvesz.jfxproj.view;
+package be.kdg.biadvesz.jfxproj.view.lobby;
 
 import be.kdg.biadvesz.jfxproj.model.Lobby;
 

@@ -1,6 +1,6 @@
 package be.kdg.biadvesz.jfxproj;
 
-public class MainHack {
+public class Launcher {
     public static void main(String[] args) {
         Main.main(args);
     }

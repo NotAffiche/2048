@@ -1,4 +1,4 @@
-package be.kdg.biadvesz.jfxproj.view;
+package be.kdg.biadvesz.jfxproj.view.game;
 
 import be.kdg.biadvesz.jfxproj.model.Game;
 
