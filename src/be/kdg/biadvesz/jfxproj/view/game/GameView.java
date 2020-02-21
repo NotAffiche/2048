@@ -1,5 +1,7 @@
 package be.kdg.biadvesz.jfxproj.view.game;
 
-public class GameView {
+import javafx.scene.layout.BorderPane;
+
+public class GameView extends BorderPane {
 
 }
