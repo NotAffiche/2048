@@ -28,7 +28,7 @@ public class LobbyPresenter {
         view.getbPlay().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                GameView gameView = new GameView();
+                GameView gameView = new GameView(4);
                 Game gameModel = new Game();
                 GamePresenter gamePresenter = new GamePresenter(gameModel, gameView);
                 view.getScene().setRoot(gameView);
