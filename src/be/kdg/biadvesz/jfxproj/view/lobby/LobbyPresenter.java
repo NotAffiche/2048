@@ -17,6 +17,7 @@ public class LobbyPresenter {
         this.model = model;
         this.view = view;
         addEventHandlers();
+        updateView();
     }
 
     //METHODS
@@ -31,5 +32,9 @@ public class LobbyPresenter {
                 gameView.getScene().getWindow().sizeToScene();
             }
         });
+    }
+
+    private void updateView() {
+        view.getLblName().setText("2048 Game");
     }
 }
