@@ -129,7 +129,7 @@ public class LobbyView extends BorderPane {
         bPlay.setMinWidth(175);
         tfName.setMinWidth(175);
         //colors
-        super.setBackground(new Background(new BackgroundFill(Color.rgb(204, 192, 179), CornerRadii.EMPTY, Insets.EMPTY)));
+        super.setBackground(new Background(new BackgroundFill(Color.rgb(250, 248, 239), CornerRadii.EMPTY, Insets.EMPTY)));
 
     }
 }
