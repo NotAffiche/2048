@@ -5,6 +5,7 @@ import be.kdg.biadvesz.jfxproj.view.lobby.LobbyPresenter;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyView;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -13,6 +14,7 @@ public class Main extends Application {
     }
     @Override
     public void start(Stage stage) throws Exception {
+        stage.getIcons().add(new Image("/2048_logo.png"));
         LobbyView view = new LobbyView();
         Lobby model = new Lobby();
         LobbyPresenter lp = new LobbyPresenter(model, view);
