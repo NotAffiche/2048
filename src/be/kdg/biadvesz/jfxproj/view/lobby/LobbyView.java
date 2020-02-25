@@ -6,11 +6,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+
+import static javafx.scene.paint.Color.CHOCOLATE;
+import static javafx.scene.paint.Color.color;
 
 public class LobbyView extends BorderPane {
     //ATTRIB
@@ -118,6 +120,7 @@ public class LobbyView extends BorderPane {
 
 
 
+
         //styles
         //width
         bHowTo.setMinWidth(175);
@@ -126,6 +129,7 @@ public class LobbyView extends BorderPane {
         bPlay.setMinWidth(175);
         tfName.setMinWidth(175);
         //colors
+        super.setBackground(new Background(new BackgroundFill(Color.rgb(204, 192, 179), CornerRadii.EMPTY, Insets.EMPTY)));
 
     }
 }

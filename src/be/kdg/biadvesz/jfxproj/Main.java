@@ -6,6 +6,7 @@ import be.kdg.biadvesz.jfxproj.view.lobby.LobbyView;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -20,6 +21,7 @@ public class Main extends Application {
         LobbyPresenter lp = new LobbyPresenter(model, view);
 
         Scene lobbyScene = new Scene(view);
+        lobbyScene.setFill(Color.BLACK);
         stage.setScene(lobbyScene);
 
         stage.setResizable(false);
