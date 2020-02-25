@@ -35,9 +35,9 @@ public class HowToPlayView extends BorderPane {
     private void initNodes() {
         lblTitle = new Label("How To Play");
 
-        lblrule1 = new Label("Move all tiles on the board horizontally\nand / or vertically");
-        lblrule2 = new Label("Combine matching numbers");
-        lblrule3 = new Label("Aim for 2048 or even higher");
+        lblrule1 = new Label("1) Move all tiles on the board \n horizontally and/or vertically");
+        lblrule2 = new Label("2) Combine matching numbers");
+        lblrule3 = new Label("3) Aim for 2048 or even higher");
         bGoBack = new Button("Go back");
     }
 
@@ -48,10 +48,14 @@ public class HowToPlayView extends BorderPane {
         HBox hboxRule2 = new HBox();
         HBox hboxRule3 = new HBox();
 
+        //ADD TO HBOX
+
         hboxTitle.getChildren().add(lblTitle);
         hboxRule1.getChildren().add(lblrule1);
         hboxRule2.getChildren().add(lblrule2);
         hboxRule3.getChildren().add(lblrule3);
+
+        //FONTS
 
         lblTitle.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 62));
         lblrule1.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));
@@ -59,18 +63,20 @@ public class HowToPlayView extends BorderPane {
         lblrule3.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));
 
 
+        //PADDINGS
 
+        lblTitle.setPadding(new Insets(40, 0, 0, 0));
+        lblrule1.setPadding(new Insets(0, 0, 0, 30));
+        lblrule2.setPadding(new Insets(20, 0, 20, 30));
+        lblrule3.setPadding(new Insets(0, 0, 0, 30));
 
-        lblTitle.setPadding(new Insets(40,0,0,0));
-        lblrule1.setPadding(new Insets(0,0,0,30));
-        lblrule2.setPadding(new Insets(20,0,20,30));
-        lblrule3.setPadding(new Insets(0,0,0,30));
-
-
+        //CREATE VBOX
 
         VBox mainBox = new VBox();
         mainBox.setPadding(new Insets(10));
-        mainBox.getChildren().addAll(lblrule1,lblrule2,lblrule3);
+        mainBox.getChildren().addAll(lblrule1, lblrule2, lblrule3);
+
+        //POSITIONS
 
         hboxTitle.setAlignment(Pos.TOP_CENTER);
         hboxRule1.setAlignment(Pos.CENTER);
