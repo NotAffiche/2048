@@ -16,6 +16,8 @@ public class GameView extends BorderPane {
     private Button btLeave;
     private int gridSize;
 
+    public Button tmpbutton = new Button("Temp");
+
     public Button getBtLeave() {
         return btLeave;
     }
@@ -70,7 +72,8 @@ public class GameView extends BorderPane {
         BorderPane bpButtonSave = new BorderPane();
         bpButtonSave.setRight(btLeave);
         btLeave.setPrefWidth(100);
-        super.setBottom(bpButtonSave);
+//        super.setBottom(bpButtonSave);
+        super.setBottom(tmpbutton);
     }
 
     public Label getLblTitle() { return lblTitle; }
