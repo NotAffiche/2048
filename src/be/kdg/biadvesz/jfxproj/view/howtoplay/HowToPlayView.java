@@ -27,7 +27,7 @@ public class HowToPlayView extends BorderPane {
     //METHODS
     private void initNodes() {
         lblTitle = new Label("How To Play");
-        lblRules = new Label("- Move all tiles on the board horizontally  \n   and / or vertically.\n- Combine matching numbers\n- Aim for 2048 or even higher.");
+        lblRules = new Label("Move all tiles on the board horizontally\nand / or vertically.\nCombine matching numbers\nAim for 2048 or even higher.");
         bGoBack = new Button("Go back");
     }
 
