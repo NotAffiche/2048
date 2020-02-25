@@ -117,15 +117,15 @@ public class LobbyView extends BorderPane {
         super.setCenter(mainBox);
 
 
+
         //styles
         //width
         bHowTo.setMinWidth(175);
+        hboxHowTo.setPadding(new Insets(50, 0, 0, 0));
         bHighscores.setMinWidth(175);
         bPlay.setMinWidth(175);
         tfName.setMinWidth(175);
-
-
-
+        //colors
 
     }
 }
