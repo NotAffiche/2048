@@ -14,7 +14,7 @@ public class Main extends Application {
     }
     @Override
     public void start(Stage stage) throws Exception {
-        stage.getIcons().add(new Image("/2048_logo.png"));
+        //stage.getIcons().add(new Image("/2048_logo.png"));
         LobbyView view = new LobbyView();
         Lobby model = new Lobby();
         LobbyPresenter lp = new LobbyPresenter(model, view);

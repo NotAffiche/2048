@@ -86,7 +86,7 @@ public class LobbyView extends BorderPane {
 
     private void layoutNodes() {
         super.setPadding(new Insets(10));
-        lblName.setStyle("-fx-font-size: 75px;");
+        lblName.setStyle("-fx-font-size: 70px;");
         lblName.setPadding(new Insets(10));
 
 
@@ -106,6 +106,11 @@ public class LobbyView extends BorderPane {
 
 
         //set all items
+        hboxTitle.setAlignment(Pos.CENTER);
+        hboxHowTo.setAlignment(Pos.CENTER);
+        hboxName.setAlignment(Pos.CENTER);
+        hboxPlay.setAlignment(Pos.CENTER);
+        hboxHighscores.setAlignment(Pos.CENTER);
         super.setTop(hboxTitle);
         mainBox.getChildren().addAll(hboxName, hboxHowTo, hboxHighscores, hboxPlay);
         mainBox.setAlignment(Pos.CENTER);
@@ -118,6 +123,7 @@ public class LobbyView extends BorderPane {
         bHighscores.setMinWidth(175);
         bPlay.setMinWidth(175);
         tfName.setMinWidth(175);
+
 
 
 
