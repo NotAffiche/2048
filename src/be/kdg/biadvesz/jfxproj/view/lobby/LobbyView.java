@@ -9,6 +9,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 
 import static javafx.scene.paint.Color.CHOCOLATE;
@@ -138,9 +139,10 @@ public class LobbyView extends BorderPane {
 
 
         //fonts
-        bPlay.setFont(Font.font("Verdana", 20));
-        bHighscores.setFont(Font.font("Verdana", 20));
-        bHowTo.setFont(Font.font("Verdana", 20));
+        bPlay.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));
+        bHowTo.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));
+        bHighscores.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));
+
 
     }
 }
