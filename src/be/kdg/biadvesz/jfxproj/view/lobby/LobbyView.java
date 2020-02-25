@@ -119,8 +119,6 @@ public class LobbyView extends BorderPane {
         super.setCenter(mainBox);
 
 
-
-
         //styles
         //width
         bHowTo.setMinWidth(175);
@@ -132,16 +130,17 @@ public class LobbyView extends BorderPane {
         bPlay.setMinWidth(175);
         bPlay.setPadding(new Insets(15));
         tfName.setMinWidth(175);
+        tfName.setPadding(new Insets(7, 0, 7, 0));
 
         //colors
         //background
-        super.setBackground(new Background(new BackgroundFill(Color.rgb(250,248,239), CornerRadii.EMPTY, Insets.EMPTY)));
+        super.setBackground(new Background(new BackgroundFill(Color.rgb(250, 248, 239), CornerRadii.EMPTY, Insets.EMPTY)));
 
 
         //fonts
-        bPlay.setFont(Font.font ("Verdana", 20));
-        bHighscores.setFont(Font.font ("Verdana", 20));
-        bHowTo.setFont(Font.font ("Verdana", 20));
+        bPlay.setFont(Font.font("Verdana", 20));
+        bHighscores.setFont(Font.font("Verdana", 20));
+        bHowTo.setFont(Font.font("Verdana", 20));
 
     }
 }
