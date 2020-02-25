@@ -31,6 +31,12 @@ public class GamePresenter {
                 view.getScene().setRoot(lView);
             }
         });
+        view.tmpbutton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                model.startGame();
+            }
+        });
     }
     private void updateView() {
 
