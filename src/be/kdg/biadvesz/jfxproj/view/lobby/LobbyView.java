@@ -137,5 +137,11 @@ public class LobbyView extends BorderPane {
         //background
         super.setBackground(new Background(new BackgroundFill(Color.rgb(250,248,239), CornerRadii.EMPTY, Insets.EMPTY)));
 
+
+        //fonts
+        bPlay.setFont(Font.font ("Verdana", 20));
+        bHighscores.setFont(Font.font ("Verdana", 20));
+        bHowTo.setFont(Font.font ("Verdana", 20));
+
     }
 }
