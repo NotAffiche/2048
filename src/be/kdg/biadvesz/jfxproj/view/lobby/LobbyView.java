@@ -45,7 +45,8 @@ public class LobbyView extends BorderPane {
         madeBy.setStyle("-fx-font-size: 20;");
         lblName.setTooltip(madeBy);
         tfName = new TextField();
-        tfName.setTooltip(new Tooltip("Name"));
+        tfName.setTooltip(new Tooltip("Playername"));
+        tfName.setPromptText("Playername...");
         bHowTo = new Button("How To Play");
         bHighscores = new Button("Highscores");
         bPlay= new Button("Play");

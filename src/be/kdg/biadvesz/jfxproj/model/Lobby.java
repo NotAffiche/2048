@@ -2,6 +2,8 @@ package be.kdg.biadvesz.jfxproj.model;
 
 public class Lobby {
 
+    private String playerName;
+
     public Lobby() {
 
     }
