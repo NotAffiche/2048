@@ -34,12 +34,13 @@ public class GamePresenter {
                 view.getScene().setRoot(lView);
             }
         });
-        view.getScene().setOnKeyTyped(new EventHandler<KeyEvent>() {
+        view.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
                 switch (keyEvent.getCode()) {
                     case UP:
-                        System.out.println("up");
+                        view.getBtLeave().setStyle("-fx-background-color: red;");
+                        break;
                 }
             }
         });
