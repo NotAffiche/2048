@@ -7,9 +7,9 @@ public class FileHelper {
 
     private final static String path = System.getProperty("user.home") + File.separator + "Documents/BiadVesz";
 
-    public static boolean existsHighscores() {
+    public static boolean dataExists() {
         File highscore = new File(path);
-        return !highscore.exists();
+        return highscore.exists();
     }
 
     public static void createHighscoreFile() {

@@ -3,7 +3,6 @@ package be.kdg.biadvesz.jfxproj.model;
 import be.kdg.biadvesz.jfxproj.model.helpers.FileHelper;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Random;
 
 public class Game {
@@ -27,7 +26,7 @@ public class Game {
     public Game(String playername) {
         rndm = new Random();
         setGridSize(4);
-        if (FileHelper.existsHighscores()) {
+        if (!FileHelper.dataExists()) {
             FileHelper.createHighscoreFile();
         }
         setGrid(new Tile[getGridSize()][getGridSize()]);
