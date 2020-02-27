@@ -1,5 +1,7 @@
 package be.kdg.biadvesz.jfxproj.model;
 
+import be.kdg.biadvesz.jfxproj.model.helpers.FileHelper;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
@@ -25,8 +27,8 @@ public class Game {
     public Game(String playername) {
         rndm = new Random();
         setGridSize(4);
-        if (existsHighscores()) {
-            createHighscoreFile();
+        if (FileHelper.existsHighscores()) {
+            FileHelper.createHighscoreFile();
         }
         setGrid(new Tile[getGridSize()][getGridSize()]);
         setScore(0);
@@ -47,21 +49,8 @@ public class Game {
 
     }
 
-    private boolean existsHighscores() {
-        String path = System.getProperty("user.home") + File.separator + "Documents/BiadVesz";
-        File highscore = new File(path);
-        return !highscore.exists();
-    }
-
-    private void createHighscoreFile() {
-        String path = System.getProperty("user.home") + File.separator + "Documents/BiadVesz/2048";
-        File folder = new File(path);
-        folder.mkdirs();
-        File highscoreFile = new File(path + "/highscores.txt");
-        try {
-            highscoreFile.createNewFile();
-        } catch (IOException ioex) {
-            System.out.println(ioex.getMessage());
+    private void moveTiles() {
+        for (Tile[] t : grid) {
         }
     }
 }
