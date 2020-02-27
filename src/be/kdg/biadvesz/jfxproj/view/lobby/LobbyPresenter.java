@@ -4,6 +4,8 @@ import be.kdg.biadvesz.jfxproj.model.Game;
 import be.kdg.biadvesz.jfxproj.model.Lobby;
 import be.kdg.biadvesz.jfxproj.view.game.GamePresenter;
 import be.kdg.biadvesz.jfxproj.view.game.GameView;
+import be.kdg.biadvesz.jfxproj.view.highscore.HighscorePresenter;
+import be.kdg.biadvesz.jfxproj.view.highscore.HighscoreView;
 import be.kdg.biadvesz.jfxproj.view.howtoplay.HowToPlayPresenter;
 import be.kdg.biadvesz.jfxproj.view.howtoplay.HowToPlayView;
 import javafx.event.ActionEvent;
@@ -45,11 +47,15 @@ public class LobbyPresenter {
         view.getbHighscores().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                Alert wip = new Alert(Alert.AlertType.INFORMATION);
+                HighscoreView highscoreView = new HighscoreView();
+                HighscorePresenter highscorePresenter = new HighscorePresenter(model,highscoreView);
+                view.getScene().setRoot(highscoreView);
+
+                /*Alert wip = new Alert(Alert.AlertType.INFORMATION);
                 wip.setTitle("WIP");
                 wip.setHeaderText("Work In Progress");
                 wip.setContentText("Highscores are currently unavailable.");
-                wip.showAndWait();
+                wip.showAndWait();*/
             }
         });
     }
