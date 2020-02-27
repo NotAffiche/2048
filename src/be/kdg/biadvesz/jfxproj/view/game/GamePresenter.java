@@ -2,10 +2,13 @@ package be.kdg.biadvesz.jfxproj.view.game;
 
 import be.kdg.biadvesz.jfxproj.model.Game;
 import be.kdg.biadvesz.jfxproj.model.Lobby;
+import be.kdg.biadvesz.jfxproj.model.enums.Direction;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyPresenter;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 public class GamePresenter {
     //ATTRIB
@@ -31,10 +34,26 @@ public class GamePresenter {
                 view.getScene().setRoot(lView);
             }
         });
-        view.tmpbutton.setOnAction(new EventHandler<ActionEvent>() {
+        view.getScene().getWindow().addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
             @Override
-            public void handle(ActionEvent actionEvent) {
-                model.startGame();
+            public void handle(KeyEvent keyEvent) {
+                switch (keyEvent.getCode()) {
+                    case UP:
+                        model.moveTiles(Direction.UP);
+                        break;
+                    case RIGHT:
+                        model.moveTiles(Direction.RIGHT);
+                        break;
+                    case DOWN:
+                        model.moveTiles(Direction.DOWN);
+                        break;
+                    case LEFT:
+                        model.moveTiles(Direction.LEFT);
+                        break;
+                    default:
+                        keyEvent.consume();
+                        break;
+                }
             }
         });
     }
