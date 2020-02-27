@@ -41,6 +41,14 @@ public class GamePresenter {
                     case UP:
                         view.getBtLeave().setStyle("-fx-background-color: red;");
                         break;
+                    case RIGHT:
+                        break;
+                    case DOWN:
+                        break;
+                    case LEFT:
+                        break;
+                    default:
+                        break;
                 }
             }
         });
