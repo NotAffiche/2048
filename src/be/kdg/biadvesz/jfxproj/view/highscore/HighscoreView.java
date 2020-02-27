@@ -34,9 +34,9 @@ public class HighscoreView extends BorderPane {
     }
 
     private void initNodes() {
-        lblTitel = new Label("highscores");
-        lbscorePname = new Label(String.format("%s %40s", "score", "playername"));
-        bgoback = new Button("back");
+        lblTitel = new Label("Highscores");
+        lbscorePname = new Label(String.format("%s %40s", "Score", "Playername"));
+        bgoback = new Button("Back");
     }
 
     private void layoutNodes() {
