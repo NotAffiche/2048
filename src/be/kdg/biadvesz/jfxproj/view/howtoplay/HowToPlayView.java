@@ -4,9 +4,8 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -14,7 +13,6 @@ import javafx.scene.text.FontWeight;
 public class HowToPlayView extends BorderPane {
     //ATTRIB
     private Label lblTitle;
-
     private Label lblrule1;
     private Label lblrule2;
     private Label lblrule3;
@@ -88,5 +86,6 @@ public class HowToPlayView extends BorderPane {
         super.setTop(hboxTitle);
         super.setCenter(mainBox);
         super.setBottom(bGoBack);
+        super.setBackground(new Background(new BackgroundFill(Color.rgb(250, 248, 239), CornerRadii.EMPTY, Insets.EMPTY)));
     }
 }
