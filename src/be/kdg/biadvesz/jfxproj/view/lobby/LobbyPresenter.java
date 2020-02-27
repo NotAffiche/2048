@@ -11,6 +11,7 @@ import be.kdg.biadvesz.jfxproj.view.howtoplay.HowToPlayView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
+import javafx.scene.input.KeyEvent;
 
 public class LobbyPresenter {
     //ATTRIB
@@ -50,17 +51,16 @@ public class LobbyPresenter {
                 HighscoreView highscoreView = new HighscoreView();
                 HighscorePresenter highscorePresenter = new HighscorePresenter(model,highscoreView);
                 view.getScene().setRoot(highscoreView);
-
-                /*Alert wip = new Alert(Alert.AlertType.INFORMATION);
-                wip.setTitle("WIP");
-                wip.setHeaderText("Work In Progress");
-                wip.setContentText("Highscores are currently unavailable.");
-                wip.showAndWait();*/
+            }
+        });
+        view.getTfName().setOnKeyTyped(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                model.setPlayerName(view.getTfName().getText());
             }
         });
     }
 
     private void updateView() {
-        view.getLblName().setText("2048 Game");
     }
 }

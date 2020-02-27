@@ -4,7 +4,6 @@ import be.kdg.biadvesz.jfxproj.model.enums.Color;
 import be.kdg.biadvesz.jfxproj.model.enums.Direction;
 import be.kdg.biadvesz.jfxproj.model.helpers.FileHelper;
 
-import java.io.File;
 import java.util.Random;
 
 public class Game {
