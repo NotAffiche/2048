@@ -4,6 +4,8 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -12,10 +14,9 @@ import javafx.scene.text.FontWeight;
 
 public class HighscoreView extends BorderPane {
     //ATTRIB
-    private Label lblTitel;
-    private Label lbscorePname;
-
+    private Label lbTitle;
     private Button bgoback;
+    private TableView tvHighScores;
 
     //GETTERS
     public Button getBgoback() {
@@ -34,36 +35,57 @@ public class HighscoreView extends BorderPane {
     }
 
     private void initNodes() {
-        lblTitel = new Label("Highscores");
-        lbscorePname = new Label(String.format("%s %40s", "Score", "Playername"));
+        lbTitle = new Label("Highscores");
         bgoback = new Button("Back");
+        tvHighScores = new TableView();
+
     }
 
     private void layoutNodes() {
         super.setPadding(new Insets(10));
         HBox hboxTitle = new HBox();
         HBox hboxNaamEnScore = new HBox();
+        HBox hboxbutton = new HBox();
 
         //ADD to HBOX
-        hboxTitle.getChildren().add(lblTitel);
-        hboxNaamEnScore.getChildren().addAll(lbscorePname);
+        hboxbutton.getChildren().addAll(bgoback);
+        hboxTitle.getChildren().addAll(lbTitle);
 
         //FONTS
-        lblTitel.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 50));
-        lbscorePname.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 18));
+        lbTitle.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 50));
+        bgoback.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 16));
 
         //PADDINGS
-        lblTitel.setPadding(new Insets(15, 0, 0, 0));
-        lbscorePname.setPadding(new Insets(50, 0, 0, 0));
+
+        bgoback.setPadding(new Insets(12, 30, 12, 30));
+
+        //table
+        tvHighScores.setEditable(false);
+
+        TableColumn rank = new TableColumn("Rank");
+        TableColumn playername = new TableColumn("Playername");
+        TableColumn highscore = new TableColumn("Score");
+        tvHighScores.setMaxWidth(400);
+        rank.setMaxWidth(50);
+        rank.setMinWidth(50);
+        playername.setMaxWidth(200);
+        playername.setMinWidth(200);
+        highscore.setMaxWidth(150);
+        highscore.setMinWidth(150);
+
+        tvHighScores.getColumns().addAll(rank, playername, highscore);
 
         //CREATE VBOX
         VBox mainBox = new VBox();
         mainBox.setPadding(new Insets(10));
-        mainBox.getChildren().addAll(lbscorePname);
+        mainBox.getChildren().addAll(tvHighScores,hboxTitle);
 
         //POSITIONS
         hboxTitle.setAlignment(Pos.TOP_CENTER);
         hboxNaamEnScore.setAlignment(Pos.CENTER);
+        // hboxbutton.setAlignment(Pos.BOTTOM_RIGHT);
+
+
         super.setTop(hboxTitle);
         super.setCenter(mainBox);
         super.setBottom(bgoback);
