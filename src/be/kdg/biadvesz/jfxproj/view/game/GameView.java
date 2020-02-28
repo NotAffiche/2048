@@ -31,8 +31,8 @@ public class GameView extends BorderPane {
 
     private void initialise() {
         lblTitle = new Label("2048 Game");
-        lblScore = new Label("Score: \n 0");
-        lblHighscore = new Label("Highscore: \n 0");
+        lblScore = new Label(String.format("Score: \n %4s","0"));
+        lblHighscore = new Label(String.format("Highscore: \n %7s","0"));
         btLeave = new Button("Leave");
     }
 
@@ -47,8 +47,8 @@ public class GameView extends BorderPane {
         lblTitle.setPadding(new Insets(0, 20, 0, 0));
 
         lblTitle.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 25));
-        lblScore.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 15));
-        lblHighscore.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 15));
+        lblScore.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 15));
+        lblHighscore.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 15));
 
         hBoxTop.getChildren().addAll(lblTitle, lblScore, lblHighscore);
         hBoxTop.setAlignment(Pos.CENTER);
@@ -60,7 +60,8 @@ public class GameView extends BorderPane {
 
         BorderPane bpButtonSave = new BorderPane();
         bpButtonSave.setRight(btLeave);
-        btLeave.setPrefWidth(100);
+        btLeave.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 16));
+        btLeave.setPadding(new Insets(12, 30, 12, 30));
 
         super.setBottom(bpButtonSave);
 
