@@ -5,6 +5,7 @@ import be.kdg.biadvesz.jfxproj.model.enums.Direction;
 import be.kdg.biadvesz.jfxproj.model.helpers.FileHelper;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Game {
     private int highscore;
@@ -36,6 +37,9 @@ public class Game {
         startGame();
     }
 
+    //todo
+    private Scanner scanner = new Scanner(System.in);
+
     public void startGame() {
 //        rndm.nextInt(getGridSize());
         Tile t1 = new Tile(2, 1, 1, Color.TWO);
@@ -44,6 +48,30 @@ public class Game {
         grid[t1.getPositionX()][t1.getPositionY()] = t1;
         grid[t2.getPositionX()][t2.getPositionY()] = t2;
         grid[t3.getPositionX()][t3.getPositionY()] = t3;
+        drawRoster();
+
+        char input = scanner.next().charAt(0);
+        while (input != 'q') {
+            switch (input) {
+                case 'w':
+                    moveTiles(Direction.UP);
+                    break;
+                case 'a':
+                    moveTiles(Direction.LEFT);
+                    break;
+                case 's':
+                    moveTiles(Direction.DOWN);
+                    break;
+                case 'd':
+                    moveTiles(Direction.RIGHT);
+                    break;
+                default:
+                    System.out.println("Incorrect input :/");
+                    break;
+            }
+            input = scanner.next().charAt(0);
+            drawRoster();
+        }
     }
 
     public void endGame() {
@@ -60,26 +88,30 @@ public class Game {
                 switch (d) {
                     case UP:
                         while (canTileMove(t, d)) {
+                            grid[t.getPositionX()][t.getPositionY()] = null;
                             t.setPositionX(t.getPositionX()-1);
-                            drawRoster();
+                            grid[t.getPositionX()][t.getPositionY()] = t;
                         }
                         break;
                     case RIGHT:
                         while (canTileMove(t, d)) {
+                            grid[t.getPositionX()][t.getPositionY()] = null;
                             t.setPositionY(t.getPositionY()+1);
-                            drawRoster();
+                            grid[t.getPositionX()][t.getPositionY()] = t;
                         }
                         break;
                     case DOWN:
                         while (canTileMove(t, d)) {
+                            grid[t.getPositionX()][t.getPositionY()] = null;
                             t.setPositionX(t.getPositionX()+1);
-                            drawRoster();
+                            grid[t.getPositionX()][t.getPositionY()] = t;
                         }
                         break;
                     case LEFT:
                         while (canTileMove(t, d)) {
+                            grid[t.getPositionX()][t.getPositionY()] = null;
                             t.setPositionY(t.getPositionY()-1);
-                            drawRoster();
+                            grid[t.getPositionX()][t.getPositionY()] = t;
                         }
                         break;
                     default:
@@ -91,15 +123,19 @@ public class Game {
     }
 
     private boolean canTileMove(Tile t, Direction d) {
+        int x;
+        int y;
         switch (d) {
             case UP:
-                int x = t.getPositionX();
-                int y = t.getPositionY();
+                if (t==null) break;
+                x = t.getPositionX();
+                y = t.getPositionY();
                 if (x!=0) {
                     Tile other;
                     try {
+                        if (x==0) return false;
                         other = grid[x-1][y];
-                        if (t.getValue()==other.getValue()) {
+                        if (other==null || t.getValue()==other.getValue()) {
                             return true;
                         }
                     } catch (Exception ex) {
@@ -108,11 +144,56 @@ public class Game {
                 }
                 return false;
             case RIGHT:
-                break;
+                if (t==null) break;
+                x = t.getPositionX();
+                y = t.getPositionY();
+                if (x!=0) {
+                    Tile other;
+                    try {
+                        if (y==3) return false;
+                        other = grid[x][y+1];
+                        if (other==null || t.getValue()==other.getValue()) {
+                            return true;
+                        }
+                    } catch (Exception ex) {
+                        throw ex;
+                    }
+                }
+                return false;
             case DOWN:
-                break;
+                if (t==null) break;
+                x = t.getPositionX();
+                y = t.getPositionY();
+                if (x!=0) {
+                    Tile other;
+                    try {
+                        if (x==3) return false;
+                        other = grid[x+1][y];
+                        if (other==null || t.getValue()==other.getValue()) {
+                            return true;
+                        }
+                    } catch (Exception ex) {
+                        throw ex;
+                    }
+                }
+                return false;
             case LEFT:
-                break;
+                if (t==null) break;
+                x = t.getPositionX();
+                y = t.getPositionY();
+                if (x!=0) {
+                    Tile other;
+                    try {
+                        if (y==0) return false;
+                        other = grid[x][y-1];
+                        if (other==null || t.getValue()==other.getValue()) {
+                            return true;
+                        }
+                    } catch (Exception ex) {
+                        throw ex;
+                    }
+                }
+                return false;
             default:
                 System.out.println("Invalid input :/");
                 break;
@@ -129,7 +210,7 @@ public class Game {
         for (Tile[] rows : grid) {
             for (Tile t : rows) {
                 try {
-                    System.out.printf("%f ", t.getValue());
+                    System.out.printf("%d ", t.getValue());
                 } catch (Exception ex) {
                     System.out.print("0 ");
                 }
