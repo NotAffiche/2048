@@ -198,11 +198,6 @@ public class Game {
                 System.out.println("Invalid input :/");
                 break;
         }
-
-        //TODO
-        // check if adjacent tile has same value
-        //TODO
-        // check if adjacent spot is emtpy
         return false;
     }
 
