@@ -60,7 +60,8 @@ public class GameView extends BorderPane {
 
         BorderPane bpButtonSave = new BorderPane();
         bpButtonSave.setRight(btLeave);
-        btLeave.setPrefWidth(100);
+        btLeave.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 16));
+        btLeave.setPadding(new Insets(12, 30, 12, 30));
 
         super.setBottom(bpButtonSave);
 
