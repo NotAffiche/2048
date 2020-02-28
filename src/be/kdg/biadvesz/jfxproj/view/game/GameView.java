@@ -32,7 +32,7 @@ public class GameView extends BorderPane {
     private void initialise() {
         lblTitle = new Label("2048 Game");
         lblScore = new Label(String.format("Score: \n %4s","0"));
-        lblHighscore = new Label(String.format("Highscore: \n %8s","0"));
+        lblHighscore = new Label(String.format("Highscore: \n %7s","0"));
         btLeave = new Button("Leave");
     }
 
