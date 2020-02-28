@@ -59,6 +59,7 @@ public class HowToPlayView extends BorderPane {
         lblrule1.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));
         lblrule2.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));
         lblrule3.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));
+        bGoBack.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 16));
 
 
         //PADDINGS
@@ -67,6 +68,7 @@ public class HowToPlayView extends BorderPane {
         lblrule1.setPadding(new Insets(0, 0, 0, 30));
         lblrule2.setPadding(new Insets(20, 0, 20, 30));
         lblrule3.setPadding(new Insets(0, 0, 0, 30));
+        bGoBack.setPadding(new Insets(12, 30, 12, 30));
 
         //CREATE VBOX
 
