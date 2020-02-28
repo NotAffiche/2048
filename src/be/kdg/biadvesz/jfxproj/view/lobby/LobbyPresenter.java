@@ -31,18 +31,10 @@ public class LobbyPresenter {
         view.getbPlay().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (model.getPlayerName() == null) {
-                    //todo replace this bullshit
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setHeaderText("Name");
-                    alert.setContentText("Please fill in a playername.");
-                    alert.showAndWait();
-                } else {
-                    GameView gameView = new GameView(4);
-                    Game gameModel = new Game(model.getPlayerName());
-                    GamePresenter gamePresenter = new GamePresenter(gameModel, gameView);
-                    view.getScene().setRoot(gameView);
-                }
+                GameView gameView = new GameView(4);
+                Game gameModel = new Game(model.getPlayerName());
+                GamePresenter gamePresenter = new GamePresenter(gameModel, gameView);
+                view.getScene().setRoot(gameView);
             }
         });
         view.getbHowTo().setOnAction(new EventHandler<ActionEvent>() {
@@ -65,6 +57,11 @@ public class LobbyPresenter {
             @Override
             public void handle(KeyEvent keyEvent) {
                 model.setPlayerName(view.getTfName().getText());
+                if (model.getPlayerName() != null && !model.getPlayerName().isBlank() && !model.getPlayerName().isEmpty()) {
+                    view.getbPlay().setDisable(false);
+                } else {
+                    view.getbPlay().setDisable(true);
+                }
             }
         });
     }
