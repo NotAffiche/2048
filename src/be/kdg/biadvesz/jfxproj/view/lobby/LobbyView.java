@@ -84,7 +84,7 @@ public class LobbyView extends BorderPane {
         bHowTo = new Button("How To Play");
         bHighscores = new Button("Highscores");
         bPlay = new Button("Play");
-
+        bPlay.setDisable(true);
     }
 
     private void layoutNodes() {

@@ -7,6 +7,7 @@ import be.kdg.biadvesz.jfxproj.view.lobby.LobbyPresenter;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
@@ -39,7 +40,9 @@ public class GamePresenter {
             public void handle(KeyEvent keyEvent) {
                 switch (keyEvent.getCode()) {
                     case UP:
-                        view.getBtLeave().setStyle("-fx-background-color: red;");
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setContentText("WHJOOOP");
+                        alert.showAndWait();
                         break;
                     case RIGHT:
                         break;
