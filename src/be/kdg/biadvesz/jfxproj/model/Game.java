@@ -69,8 +69,8 @@ public class Game {
                     System.out.println("Incorrect input :/");
                     break;
             }
-            input = scanner.next().charAt(0);
             drawRoster();
+            input = scanner.next().charAt(0);
         }
     }
 
