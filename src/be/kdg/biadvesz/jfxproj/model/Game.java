@@ -46,14 +46,19 @@ public class Game {
     //METHODS
     public void startGame() {
         // temp debug tiles
-//        Tile t0 = new Tile(2, 0, 0, Color.TWO);
-//        Tile t1 = new Tile(2, 1, 1, Color.TWO);
-//        Tile t2 = new Tile(2, 2, 2, Color.TWO);
-//        Tile t3 = new Tile(2, 3, 3, Color.TWO);
-//        grid[t0.getPositionX()][t0.getPositionY()] = t0;
-//        grid[t1.getPositionX()][t1.getPositionY()] = t1;
-//        grid[t2.getPositionX()][t2.getPositionY()] = t2;
-//        grid[t3.getPositionX()][t3.getPositionY()] = t3;
+        Tile t0 = new Tile(2, 0, 0, Color.TWO);
+        Tile t1 = new Tile(2, 1, 1, Color.TWO);
+        Tile t2 = new Tile(2, 2, 2, Color.TWO);
+        Tile t3 = new Tile(2, 3, 3, Color.TWO);
+        grid[t0.getPositionX()][t0.getPositionY()] = t0;
+        grid[t1.getPositionX()][t1.getPositionY()] = t1;
+        grid[t2.getPositionX()][t2.getPositionY()] = t2;
+        grid[t3.getPositionX()][t3.getPositionY()] = t3;
+
+        Tile t6 = new Tile(2, 2, 1, Color.TWO);
+        grid[t6.getPositionX()][t6.getPositionY()] = t6;
+        Tile t7 = new Tile(2, 3, 1, Color.TWO);
+        grid[t7.getPositionX()][t7.getPositionY()] = t7;
         //init game with 1st tile
 //        generateTile();
         //draw roster
@@ -80,23 +85,26 @@ public class Game {
                     break;
             }
             drawRoster();
+            System.out.println("grid full? " + isGridFull());
             input = scanner.next().charAt(0);
         }
     }
 
     public void endGame() {
-        saveHighscore(getPlayername());
+        saveHighscore();
     }
 
-    private void saveHighscore(String playername) {
+    private void saveHighscore() {
 
     }
 
     public void moveTiles(Direction d) {
+//        for (Tile[] rows : grid) {
+//            for (Tile t : rows) { } }
         switch (d) {
             case UP:
-                for (int row=0;row<grid.length;row++) {
-                    for (int col=0;col<grid[row].length;col++) {
+                for (int row=0;row<grid.length;row++) { // top to bottom
+                    for (int col=0;col<grid[row].length;col++) { // left to right
                         Tile t = grid[row][col];
                         while (canTileMove(t, d)) {
                             try {
@@ -117,8 +125,8 @@ public class Game {
                 }
                 break;
             case RIGHT:
-                for (int row=0;row<grid.length;row++) {
-                    for (int col=3;col>0;col--) {
+                for (int row=0;row<grid.length;row++) { // top to bottom
+                    for (int col=gridSize-1;col>=0;col--) { // right to left
                         Tile t = grid[row][col];
                         while (canTileMove(t, d)) {
                             try {
@@ -139,8 +147,8 @@ public class Game {
                 }
                 break;
             case DOWN:
-                for (int row=3;row>0;row--) {
-                    for (int col=0;col<grid[row].length;col++) {
+                for (int row=gridSize-1;row>=0;row--) { // bottom to top
+                    for (int col=0;col<grid[row].length;col++) { // left to right
                         Tile t = grid[row][col];
                         while (canTileMove(t, d)) {
                             try {
@@ -161,8 +169,8 @@ public class Game {
                 }
                 break;
             case LEFT:
-                for (int row=0;row<grid.length;row++) {
-                    for (int col=0;col<grid[row].length;col++) {
+                for (int row=0;row<grid.length;row++) { // top to bottom
+                    for (int col=0;col<grid[row].length;col++) { // left to right
                         Tile t = grid[row][col];
                         while (canTileMove(t, d)) {
                             try {
@@ -200,7 +208,6 @@ public class Game {
                 if (x!=0) {
                     Tile other;
                     try {
-                        if (x==0) return false;
                         other = grid[x-1][y];
                         if (other==null || t.getValue()==other.getValue()) {
                             return true;
@@ -217,7 +224,6 @@ public class Game {
                 if (y!=3) {
                     Tile other;
                     try {
-                        if (y==3) return false;
                         other = grid[x][y+1];
                         if (other==null || t.getValue()==other.getValue()) {
                             return true;
@@ -234,7 +240,6 @@ public class Game {
                 if (x!=3) {
                     Tile other;
                     try {
-                        if (x==3) return false;
                         other = grid[x+1][y];
                         if (other==null || t.getValue()==other.getValue()) {
                             return true;
@@ -251,7 +256,6 @@ public class Game {
                 if (y!=0) {
                     Tile other;
                     try {
-                        if (y==0) return false;
                         other = grid[x][y-1];
                         if (other==null || t.getValue()==other.getValue()) {
                             return true;
@@ -277,12 +281,12 @@ public class Game {
                 }
             }
         }
-        return (count!=0);
+        return (count==Math.pow(gridSize,2));
     }
 
     private void generateTile() {
-        int x = rndm.nextInt(2) + 1;
-        int y = rndm.nextInt(2) + 1;
+        int x = rndm.nextInt(3);
+        int y = rndm.nextInt(3);
 
         while (!tileExists(x, y)) {
             int twoOrFour = rndm.nextInt(100);

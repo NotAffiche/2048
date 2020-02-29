@@ -14,9 +14,7 @@ public class Tile {
     public int getPositionX() { return this.positionX; }
     public void setPositionX(int positionX) { this.positionX = positionX; }
     public int getPositionY() { return this.positionY; }
-    public void setPositionY(int positionY) {
-        this.positionY = positionY;
-    }
+    public void setPositionY(int positionY) { this.positionY = positionY; }
     public Color getColor() { return this.color; }
     public void setColor(Color color) { this.color = color; }
 
