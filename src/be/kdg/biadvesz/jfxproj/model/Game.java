@@ -41,15 +41,13 @@ public class Game {
     private Scanner scanner = new Scanner(System.in);
 
     public void startGame() {
-//        rndm.nextInt(getGridSize());
-        Tile t1 = new Tile(2, 1, 1, Color.TWO);
-        Tile t2 = new Tile(2, 2, 2, Color.TWO);
-        Tile t3 = new Tile(2, 3, 3, Color.TWO);
-        grid[t1.getPositionX()][t1.getPositionY()] = t1;
-        grid[t2.getPositionX()][t2.getPositionY()] = t2;
-        grid[t3.getPositionX()][t3.getPositionY()] = t3;
+        //init game with 1st tile
+        generateTile();
+        //draw roster
         drawRoster();
 
+        //TODO
+        // temp -> debugging inputs
         char input = scanner.next().charAt(0);
         while (input != 'q') {
             switch (input) {
@@ -120,6 +118,7 @@ public class Game {
                 }
             }
         }
+        generateTile();
     }
 
     private boolean canTileMove(Tile t, Direction d) {
@@ -198,6 +197,25 @@ public class Game {
                 System.out.println("Invalid input :/");
                 break;
         }
+        return false;
+    }
+
+    private void generateTile() {
+        int x = rndm.nextInt(2) + 1;
+        int y = rndm.nextInt(2) + 1;
+
+        while (!tileExists(x, y)) {
+            int twoOrFour = rndm.nextInt(100);
+            if (twoOrFour<=75) {
+                grid[x][y] = new Tile(2, x, y, Color.TWO);
+            } else {
+                grid[x][y] = new Tile(4, x, y, Color.FOUR);
+            }
+        }
+    }
+
+    private boolean tileExists(int x, int y) {
+        if (grid[x][y]!=null) return true;
         return false;
     }
 

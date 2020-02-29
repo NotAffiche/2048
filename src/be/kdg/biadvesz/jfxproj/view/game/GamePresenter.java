@@ -29,6 +29,9 @@ public class GamePresenter {
         view.getBtLeave().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                //ends game
+                model.endGame();
+                //creates new screen
                 Lobby lModel = new Lobby();
                 LobbyView lView = new LobbyView();
                 LobbyPresenter lp = new LobbyPresenter(lModel, lView);
