@@ -8,6 +8,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
+    //ATTRIB
     private int highscore;
     private int score;
     private Tile[][] grid;
@@ -15,8 +16,11 @@ public class Game {
     private Random rndm;
     private String playername;
 
+    //GET & SET
     public int getScore() { return score; }
     public void setScore(int score) { this.score = score; }
+    public int getHighscore() { return this.highscore; }
+    public void setHighscore(int highscore) { this.highscore = highscore; }
     public Tile[][] getGrid() { return grid; }
     public void setGrid(Tile[][] grid) { this.grid = grid; }
     public int getGridSize() { return this.gridSize; }
@@ -24,6 +28,7 @@ public class Game {
     public String getPlayername() { return this.playername; }
     public void setPlayername(String playername) { this.playername = playername; }
 
+    //CTOR
     public Game(String playername) {
         rndm = new Random();
         setGridSize(4);
@@ -33,20 +38,27 @@ public class Game {
         setGrid(new Tile[getGridSize()][getGridSize()]);
         setScore(0);
         setPlayername(playername);
-        //TODO: highscore
         startGame();
     }
 
-    //todo
     private Scanner scanner = new Scanner(System.in);
 
+    //METHODS
     public void startGame() {
+        // temp debug tiles
+//        Tile t0 = new Tile(2, 0, 0, Color.TWO);
+//        Tile t1 = new Tile(2, 1, 1, Color.TWO);
+//        Tile t2 = new Tile(2, 2, 2, Color.TWO);
+//        Tile t3 = new Tile(2, 3, 3, Color.TWO);
+//        grid[t0.getPositionX()][t0.getPositionY()] = t0;
+//        grid[t1.getPositionX()][t1.getPositionY()] = t1;
+//        grid[t2.getPositionX()][t2.getPositionY()] = t2;
+//        grid[t3.getPositionX()][t3.getPositionY()] = t3;
         //init game with 1st tile
-        generateTile();
+//        generateTile();
         //draw roster
         drawRoster();
 
-        //TODO
         // temp -> debugging inputs
         char input = scanner.next().charAt(0);
         while (input != 'q') {
@@ -81,44 +93,100 @@ public class Game {
     }
 
     public void moveTiles(Direction d) {
-        for (Tile[] rows : grid) {
-            for (Tile t : rows) {
-                switch (d) {
-                    case UP:
+        switch (d) {
+            case UP:
+                for (int row=0;row<grid.length;row++) {
+                    for (int col=0;col<grid[row].length;col++) {
+                        Tile t = grid[row][col];
                         while (canTileMove(t, d)) {
-                            grid[t.getPositionX()][t.getPositionY()] = null;
-                            t.setPositionX(t.getPositionX()-1);
-                            grid[t.getPositionX()][t.getPositionY()] = t;
+                            try {
+                                Tile other = grid[t.getPositionX()-1][t.getPositionY()];
+                                if (other==null) {
+                                    grid[t.getPositionX()][t.getPositionY()] = null;
+                                    t.setPositionX(t.getPositionX()-1);
+                                    grid[t.getPositionX()][t.getPositionY()] = t;
+                                } else {
+                                    other.valueChange(t);
+                                    grid[t.getPositionX()][t.getPositionY()] = null;
+                                }
+                            } catch (Exception ex) {
+                                throw ex;
+                            }
                         }
-                        break;
-                    case RIGHT:
-                        while (canTileMove(t, d)) {
-                            grid[t.getPositionX()][t.getPositionY()] = null;
-                            t.setPositionY(t.getPositionY()+1);
-                            grid[t.getPositionX()][t.getPositionY()] = t;
-                        }
-                        break;
-                    case DOWN:
-                        while (canTileMove(t, d)) {
-                            grid[t.getPositionX()][t.getPositionY()] = null;
-                            t.setPositionX(t.getPositionX()+1);
-                            grid[t.getPositionX()][t.getPositionY()] = t;
-                        }
-                        break;
-                    case LEFT:
-                        while (canTileMove(t, d)) {
-                            grid[t.getPositionX()][t.getPositionY()] = null;
-                            t.setPositionY(t.getPositionY()-1);
-                            grid[t.getPositionX()][t.getPositionY()] = t;
-                        }
-                        break;
-                    default:
-                        System.out.println("Invalid input :/");
-                        break;
+                    }
                 }
-            }
+                break;
+            case RIGHT:
+                for (int row=0;row<grid.length;row++) {
+                    for (int col=3;col>0;col--) {
+                        Tile t = grid[row][col];
+                        while (canTileMove(t, d)) {
+                            try {
+                                Tile other = grid[t.getPositionX()][t.getPositionY()+1];
+                                if (other==null) {
+                                    grid[t.getPositionX()][t.getPositionY()] = null;
+                                    t.setPositionY(t.getPositionY()+1);
+                                    grid[t.getPositionX()][t.getPositionY()] = t;
+                                } else {
+                                    other.valueChange(t);
+                                    grid[t.getPositionX()][t.getPositionY()] = null;
+                                }
+                            } catch (Exception ex) {
+                                throw ex;
+                            }
+                        }
+                    }
+                }
+                break;
+            case DOWN:
+                for (int row=3;row>0;row--) {
+                    for (int col=0;col<grid[row].length;col++) {
+                        Tile t = grid[row][col];
+                        while (canTileMove(t, d)) {
+                            try {
+                                Tile other = grid[t.getPositionX()+1][t.getPositionY()];
+                                if (other==null) {
+                                    grid[t.getPositionX()][t.getPositionY()] = null;
+                                    t.setPositionX(t.getPositionX()+1);
+                                    grid[t.getPositionX()][t.getPositionY()] = t;
+                                } else {
+                                    other.valueChange(t);
+                                    grid[t.getPositionX()][t.getPositionY()] = null;
+                                }
+                            } catch (Exception ex) {
+                                throw ex;
+                            }
+                        }
+                    }
+                }
+                break;
+            case LEFT:
+                for (int row=0;row<grid.length;row++) {
+                    for (int col=0;col<grid[row].length;col++) {
+                        Tile t = grid[row][col];
+                        while (canTileMove(t, d)) {
+                            try {
+                                Tile other = grid[t.getPositionX()][t.getPositionY()-1];
+                                if (other==null) {
+                                    grid[t.getPositionX()][t.getPositionY()] = null;
+                                    t.setPositionY(t.getPositionY()-1);
+                                    grid[t.getPositionX()][t.getPositionY()] = t;
+                                } else {
+                                    other.valueChange(t);
+                                    grid[t.getPositionX()][t.getPositionY()] = null;
+                                }
+                            } catch (Exception ex) {
+                                throw ex;
+                            }
+                        }
+                    }
+                }
+                break;
+            default:
+                System.out.println("Invalid input :/");
+                break;
         }
-        generateTile();
+//        generateTile();
     }
 
     private boolean canTileMove(Tile t, Direction d) {
@@ -146,7 +214,7 @@ public class Game {
                 if (t==null) break;
                 x = t.getPositionX();
                 y = t.getPositionY();
-                if (x!=0) {
+                if (y!=3) {
                     Tile other;
                     try {
                         if (y==3) return false;
@@ -163,7 +231,7 @@ public class Game {
                 if (t==null) break;
                 x = t.getPositionX();
                 y = t.getPositionY();
-                if (x!=0) {
+                if (x!=3) {
                     Tile other;
                     try {
                         if (x==3) return false;
@@ -180,7 +248,7 @@ public class Game {
                 if (t==null) break;
                 x = t.getPositionX();
                 y = t.getPositionY();
-                if (x!=0) {
+                if (y!=0) {
                     Tile other;
                     try {
                         if (y==0) return false;
@@ -198,6 +266,18 @@ public class Game {
                 break;
         }
         return false;
+    }
+
+    private boolean isGridFull() {
+        int count = 0;
+        for (Tile[] rows : grid) {
+            for (Tile t : rows) {
+                if (t!=null) {
+                    count++;
+                }
+            }
+        }
+        return (count!=0);
     }
 
     private void generateTile() {
@@ -219,6 +299,7 @@ public class Game {
         return false;
     }
 
+    // temp debug roster
     public void drawRoster() {
         for (Tile[] rows : grid) {
             for (Tile t : rows) {
@@ -230,5 +311,9 @@ public class Game {
             }
             System.out.println(" ");
         }
+    }
+
+    public void attemptGameEnd() {
+        if (isGridFull()) endGame();
     }
 }

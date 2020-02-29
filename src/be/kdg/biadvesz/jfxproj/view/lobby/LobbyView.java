@@ -27,40 +27,28 @@ public class LobbyView extends BorderPane {
     public Label getLblName() {
         return lblName;
     }
-
     public TextField getTfName() {
         return tfName;
     }
-
-    public Button getbHowTo() {
-        return bHowTo;
-    }
-
+    public Button getbHowTo() { return bHowTo; }
     public Button getbHighscores() {
         return bHighscores;
     }
-
     public Button getbPlay() {
         return bPlay;
     }
 
     //SET
-    public void setLblName(Label lblName) {
-        this.lblName = lblName;
-    }
-
+    public void setLblName(Label lblName) { this.lblName = lblName; }
     public void setTfName(TextField tfName) {
         this.tfName = tfName;
     }
-
     public void setbHowTo(Button bHowTo) {
         this.bHowTo = bHowTo;
     }
-
     public void setbHighscores(Button bHighscores) {
         this.bHighscores = bHighscores;
     }
-
     public void setbPlay(Button bPlay) {
         this.bPlay = bPlay;
     }
@@ -104,9 +92,7 @@ public class LobbyView extends BorderPane {
         HBox hboxPlay = new HBox();
         hboxPlay.getChildren().add(bPlay);
         VBox mainBox = new VBox();
-
         mainBox.setPadding(new Insets(10));
-
 
         //set all items
         hboxTitle.setAlignment(Pos.CENTER);
@@ -121,7 +107,6 @@ public class LobbyView extends BorderPane {
 
 
         //styles
-        //width
         bHowTo.setMinWidth(175);
         bHowTo.setPadding(new Insets(15));
         hboxHowTo.setPadding(new Insets(50, 0, 0, 0));
@@ -134,15 +119,11 @@ public class LobbyView extends BorderPane {
         tfName.setPadding(new Insets(7, 0, 7, 0));
 
         //colors
-        //background
         super.setBackground(new Background(new BackgroundFill(Color.rgb(250, 248, 239), CornerRadii.EMPTY, Insets.EMPTY)));
-
 
         //fonts
         bPlay.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));
         bHowTo.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));
         bHighscores.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));
-
-
     }
 }

@@ -56,6 +56,7 @@ public class GamePresenter {
 //                    default:
 //                        break;
 //                }
+//                model.attemptGameEnd();
 //            }
 //        });
     }
