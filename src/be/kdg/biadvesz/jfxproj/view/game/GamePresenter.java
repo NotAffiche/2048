@@ -35,26 +35,26 @@ public class GamePresenter {
                 view.getScene().setRoot(lView);
             }
         });
-        view.setOnKeyTyped(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                switch (keyEvent.getCode()) {
-                    case UP:
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setContentText("WHJOOOP");
-                        alert.showAndWait();
-                        break;
-                    case RIGHT:
-                        break;
-                    case DOWN:
-                        break;
-                    case LEFT:
-                        break;
-                    default:
-                        break;
-                }
-            }
-        });
+//        view.setOnKeyTyped(new EventHandler<KeyEvent>() {
+//            @Override
+//            public void handle(KeyEvent keyEvent) {
+//                switch (keyEvent.getCode()) {
+//                    case UP:
+//                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//                        alert.setContentText("WHJOOOP");
+//                        alert.showAndWait();
+//                        break;
+//                    case RIGHT:
+//                        break;
+//                    case DOWN:
+//                        break;
+//                    case LEFT:
+//                        break;
+//                    default:
+//                        break;
+//                }
+//            }
+//        });
     }
     private void updateView() {
 
