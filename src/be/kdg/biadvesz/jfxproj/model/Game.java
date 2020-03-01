@@ -138,8 +138,8 @@ public class Game {
                             } catch (Exception ex) {
                                 throw ex;
                             }
-                            mergedOnceAlready=false;
                         }
+                        mergedOnceAlready=false;
                     }
                 }
                 break;
