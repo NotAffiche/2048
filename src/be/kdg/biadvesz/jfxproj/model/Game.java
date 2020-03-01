@@ -298,6 +298,10 @@ public class Game {
         return (count==Math.pow(gridSize,2));
     }
 
+    private boolean areMovesPossible() {
+
+        return false;
+    }
     private void generateTile() {
         int x = rndm.nextInt(4);
         int y = rndm.nextInt(4);
@@ -334,6 +338,7 @@ public class Game {
     }
 
     public void attemptGameEnd() {
+//        if (isGridFull() && !areMovesPossible()) endGame();
         if (isGridFull()) endGame();
     }
 }
