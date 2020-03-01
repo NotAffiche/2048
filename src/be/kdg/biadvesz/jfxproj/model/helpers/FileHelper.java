@@ -1,7 +1,9 @@
 package be.kdg.biadvesz.jfxproj.model.helpers;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.text.ParseException;
+import java.util.List;
 
 public class FileHelper {
 
@@ -22,5 +24,9 @@ public class FileHelper {
         } catch (IOException ioex) {
             System.out.println(ioex.getMessage());
         }
+    }
+
+    public static void saveScore(String playername, int score) {
+        //handle saving scores of players
     }
 }

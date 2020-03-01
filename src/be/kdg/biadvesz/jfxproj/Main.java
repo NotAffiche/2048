@@ -35,6 +35,9 @@ public class Main extends Application {
         stage.setWidth(450);
         stage.setHeight(600);
 
+        //temp debug
+        FileHelper.saveScore("NotAffiche", 900);
+
         //display app
         stage.show();
     }

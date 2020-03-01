@@ -104,7 +104,7 @@ public class Game {
     }
 
     private void saveHighscore() {
-
+        FileHelper.saveScore(getPlayername(), getScore());
     }
 
     public void moveTiles(Direction d) {
