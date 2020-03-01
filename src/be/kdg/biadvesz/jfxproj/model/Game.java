@@ -52,9 +52,9 @@ public class Game {
         setState(Gamestate.ONGOING);
         // temp debug tiles
 //        Tile t0 = new Tile(2, 0, 0, Color.TWO);
-//        Tile t1 = new Tile(2, 1, 1, Color.TWO);
-//        Tile t2 = new Tile(2, 2, 2, Color.TWO);
-//        Tile t3 = new Tile(2, 3, 3, Color.TWO);
+//        Tile t1 = new Tile(2, 1, 0, Color.TWO);
+//        Tile t2 = new Tile(2, 2, 0, Color.TWO);
+//        Tile t3 = new Tile(2, 3, 0, Color.TWO);
 //        grid[t0.getPositionX()][t0.getPositionY()] = t0;
 //        grid[t1.getPositionX()][t1.getPositionY()] = t1;
 //        grid[t2.getPositionX()][t2.getPositionY()] = t2;
@@ -110,6 +110,7 @@ public class Game {
     public void moveTiles(Direction d) {
 //        for (Tile[] rows : grid) {
 //            for (Tile t : rows) { } }
+        boolean mergedOnceAlready = false;
         switch (d) {
             case UP:
                 for (int row=0;row<grid.length;row++) { // top to bottom
@@ -123,13 +124,21 @@ public class Game {
                                     t.setPositionX(t.getPositionX()-1);
                                     grid[t.getPositionX()][t.getPositionY()] = t;
                                 } else {
-                                    other.valueChange(t);
-                                    grid[t.getPositionX()][t.getPositionY()] = null;
+                                    if (!mergedOnceAlready) {
+                                        other.valueChange(t);
+                                        grid[t.getPositionX()][t.getPositionY()] = null;
+                                        mergedOnceAlready = true;
+                                    } else {
+                                        grid[t.getPositionX()][t.getPositionY()] = null;
+                                        t.setPositionX(t.getPositionX()-1);
+                                        grid[t.getPositionX()][t.getPositionY()] = t;
+                                    }
                                     break;
                                 }
                             } catch (Exception ex) {
                                 throw ex;
                             }
+                            mergedOnceAlready=false;
                         }
                     }
                 }
@@ -146,14 +155,22 @@ public class Game {
                                     t.setPositionY(t.getPositionY()+1);
                                     grid[t.getPositionX()][t.getPositionY()] = t;
                                 } else {
-                                    other.valueChange(t);
-                                    grid[t.getPositionX()][t.getPositionY()] = null;
+                                    if(!mergedOnceAlready) {
+                                        other.valueChange(t);
+                                        grid[t.getPositionX()][t.getPositionY()] = null;
+                                        mergedOnceAlready=true;
+                                    } else {
+                                        grid[t.getPositionX()][t.getPositionY()] = null;
+                                        t.setPositionY(t.getPositionY()+1);
+                                        grid[t.getPositionX()][t.getPositionY()] = t;
+                                    }
                                     break;
                                 }
                             } catch (Exception ex) {
                                 throw ex;
                             }
                         }
+                        mergedOnceAlready=false;
                     }
                 }
                 break;
@@ -169,14 +186,22 @@ public class Game {
                                     t.setPositionX(t.getPositionX()+1);
                                     grid[t.getPositionX()][t.getPositionY()] = t;
                                 } else {
-                                    other.valueChange(t);
-                                    grid[t.getPositionX()][t.getPositionY()] = null;
+                                    if(!mergedOnceAlready) {
+                                        other.valueChange(t);
+                                        grid[t.getPositionX()][t.getPositionY()] = null;
+                                        mergedOnceAlready=true;
+                                    } else {
+                                        grid[t.getPositionX()][t.getPositionY()] = null;
+                                        t.setPositionX(t.getPositionX()+1);
+                                        grid[t.getPositionX()][t.getPositionY()] = t;
+                                    }
                                     break;
                                 }
                             } catch (Exception ex) {
                                 throw ex;
                             }
                         }
+                        mergedOnceAlready=false;
                     }
                 }
                 break;
@@ -192,14 +217,22 @@ public class Game {
                                     t.setPositionY(t.getPositionY()-1);
                                     grid[t.getPositionX()][t.getPositionY()] = t;
                                 } else {
-                                    other.valueChange(t);
-                                    grid[t.getPositionX()][t.getPositionY()] = null;
+                                    if(!mergedOnceAlready) {
+                                        other.valueChange(t);
+                                        grid[t.getPositionX()][t.getPositionY()] = null;
+                                        mergedOnceAlready=true;
+                                    } else {
+                                        grid[t.getPositionX()][t.getPositionY()] = null;
+                                        t.setPositionY(t.getPositionY()-1);
+                                        grid[t.getPositionX()][t.getPositionY()] = t;
+                                    }
                                     break;
                                 }
                             } catch (Exception ex) {
                                 throw ex;
                             }
                         }
+                        mergedOnceAlready=false;
                     }
                 }
                 break;
