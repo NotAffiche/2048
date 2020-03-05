@@ -6,9 +6,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+
+import static javafx.scene.paint.Color.CHOCOLATE;
+import static javafx.scene.paint.Color.color;
 
 public class LobbyView extends BorderPane {
     //ATTRIB
@@ -19,18 +24,34 @@ public class LobbyView extends BorderPane {
     private Button bPlay;
 
     //GET
-    public Label getLblName() { return lblName; }
-    public TextField getTfName() { return tfName; }
+    public Label getLblName() {
+        return lblName;
+    }
+    public TextField getTfName() {
+        return tfName;
+    }
     public Button getbHowTo() { return bHowTo; }
-    public Button getbHighscores() { return bHighscores; }
-    public Button getbPlay() { return bPlay; }
+    public Button getbHighscores() {
+        return bHighscores;
+    }
+    public Button getbPlay() {
+        return bPlay;
+    }
 
     //SET
     public void setLblName(Label lblName) { this.lblName = lblName; }
-    public void setTfName(TextField tfName) { this.tfName = tfName; }
-    public void setbHowTo(Button bHowTo) { this.bHowTo = bHowTo; }
-    public void setbHighscores(Button bHighscores) { this.bHighscores = bHighscores; }
-    public void setbPlay(Button bPlay) { this.bPlay = bPlay; }
+    public void setTfName(TextField tfName) {
+        this.tfName = tfName;
+    }
+    public void setbHowTo(Button bHowTo) {
+        this.bHowTo = bHowTo;
+    }
+    public void setbHighscores(Button bHighscores) {
+        this.bHighscores = bHighscores;
+    }
+    public void setbPlay(Button bPlay) {
+        this.bPlay = bPlay;
+    }
 
     //CTOR
     public LobbyView() {
@@ -45,14 +66,20 @@ public class LobbyView extends BorderPane {
         madeBy.setStyle("-fx-font-size: 20;");
         lblName.setTooltip(madeBy);
         tfName = new TextField();
-        tfName.setTooltip(new Tooltip("Name"));
+        tfName.setTooltip(new Tooltip("Playername"));
+        tfName.setPromptText("Playername...");
+
         bHowTo = new Button("How To Play");
         bHighscores = new Button("Highscores");
-        bPlay= new Button("Play");
+        bPlay = new Button("Play");
+        bPlay.setDisable(true);
     }
+
     private void layoutNodes() {
         super.setPadding(new Insets(10));
-        lblName.setStyle("-fx-font-size: 82px;");
+        lblName.setStyle("-fx-font-size: 70px;");
+        lblName.setPadding(new Insets(10));
+
 
         HBox hboxTitle = new HBox();
         hboxTitle.getChildren().add(lblName);
@@ -65,13 +92,38 @@ public class LobbyView extends BorderPane {
         HBox hboxPlay = new HBox();
         hboxPlay.getChildren().add(bPlay);
         VBox mainBox = new VBox();
-
-        mainBox.setPadding(new Insets(70,10,10,10));
-        mainBox.setAlignment(Pos.CENTER);
+        mainBox.setPadding(new Insets(10));
 
         //set all items
+        hboxTitle.setAlignment(Pos.CENTER);
+        hboxHowTo.setAlignment(Pos.CENTER);
+        hboxName.setAlignment(Pos.CENTER);
+        hboxPlay.setAlignment(Pos.CENTER);
+        hboxHighscores.setAlignment(Pos.CENTER);
         super.setTop(hboxTitle);
         mainBox.getChildren().addAll(hboxName, hboxHowTo, hboxHighscores, hboxPlay);
+        mainBox.setAlignment(Pos.CENTER);
         super.setCenter(mainBox);
+
+
+        //styles
+        bHowTo.setMinWidth(175);
+        bHowTo.setPadding(new Insets(15));
+        hboxHowTo.setPadding(new Insets(50, 0, 0, 0));
+        bHighscores.setMinWidth(175);
+        bHighscores.setPadding(new Insets(15));
+        hboxHighscores.setPadding(new Insets(3));
+        bPlay.setMinWidth(175);
+        bPlay.setPadding(new Insets(15));
+        tfName.setMinWidth(175);
+        tfName.setPadding(new Insets(7, 0, 7, 0));
+
+        //colors
+        super.setBackground(new Background(new BackgroundFill(Color.rgb(250, 248, 239), CornerRadii.EMPTY, Insets.EMPTY)));
+
+        //fonts
+        bPlay.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));
+        bHowTo.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));
+        bHighscores.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));
     }
 }

@@ -4,11 +4,14 @@ import be.kdg.biadvesz.jfxproj.model.Game;
 import be.kdg.biadvesz.jfxproj.model.Lobby;
 import be.kdg.biadvesz.jfxproj.view.game.GamePresenter;
 import be.kdg.biadvesz.jfxproj.view.game.GameView;
+import be.kdg.biadvesz.jfxproj.view.highscore.HighscorePresenter;
+import be.kdg.biadvesz.jfxproj.view.highscore.HighscoreView;
 import be.kdg.biadvesz.jfxproj.view.howtoplay.HowToPlayPresenter;
 import be.kdg.biadvesz.jfxproj.view.howtoplay.HowToPlayView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
+import javafx.scene.input.KeyEvent;
 
 public class LobbyPresenter {
     //ATTRIB
@@ -29,7 +32,7 @@ public class LobbyPresenter {
             @Override
             public void handle(ActionEvent actionEvent) {
                 GameView gameView = new GameView(4);
-                Game gameModel = new Game();
+                Game gameModel = new Game(model.getPlayerName());
                 GamePresenter gamePresenter = new GamePresenter(gameModel, gameView);
                 view.getScene().setRoot(gameView);
             }
@@ -45,16 +48,24 @@ public class LobbyPresenter {
         view.getbHighscores().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                Alert wip = new Alert(Alert.AlertType.INFORMATION);
-                wip.setTitle("WIP");
-                wip.setHeaderText("Work In Progress");
-                wip.setContentText("Highscores are currently unavailable.");
-                wip.showAndWait();
+                HighscoreView highscoreView = new HighscoreView();
+                HighscorePresenter highscorePresenter = new HighscorePresenter(model,highscoreView);
+                view.getScene().setRoot(highscoreView);
+            }
+        });
+        view.getTfName().setOnKeyTyped(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                model.setPlayerName(view.getTfName().getText());
+                if (model.getPlayerName() != null && !model.getPlayerName().isBlank() && !model.getPlayerName().isEmpty()) {
+                    view.getbPlay().setDisable(false);
+                } else {
+                    view.getbPlay().setDisable(true);
+                }
             }
         });
     }
 
     private void updateView() {
-        view.getLblName().setText("2048 Game");
     }
 }

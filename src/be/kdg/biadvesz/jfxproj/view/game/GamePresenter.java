@@ -2,10 +2,14 @@ package be.kdg.biadvesz.jfxproj.view.game;
 
 import be.kdg.biadvesz.jfxproj.model.Game;
 import be.kdg.biadvesz.jfxproj.model.Lobby;
+import be.kdg.biadvesz.jfxproj.model.enums.Direction;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyPresenter;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 public class GamePresenter {
     //ATTRIB
@@ -25,12 +29,36 @@ public class GamePresenter {
         view.getBtLeave().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                //ends game
+                model.endGame();
+                //creates new screen
                 Lobby lModel = new Lobby();
                 LobbyView lView = new LobbyView();
                 LobbyPresenter lp = new LobbyPresenter(lModel, lView);
                 view.getScene().setRoot(lView);
             }
         });
+//        view.setOnKeyTyped(new EventHandler<KeyEvent>() {
+//            @Override
+//            public void handle(KeyEvent keyEvent) {
+//                switch (keyEvent.getCode()) {
+//                    case UP:
+//                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//                        alert.setContentText("WHJOOOP");
+//                        alert.showAndWait();
+//                        break;
+//                    case RIGHT:
+//                        break;
+//                    case DOWN:
+//                        break;
+//                    case LEFT:
+//                        break;
+//                    default:
+//                        break;
+//                }
+//                model.attemptGameEnd();
+//            }
+//        });
     }
     private void updateView() {
 

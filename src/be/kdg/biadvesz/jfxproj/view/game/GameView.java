@@ -4,78 +4,83 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 
 
 public class GameView extends BorderPane {
+    //ATTRIB
     private Label lblTitle;
     private Label lblScore;
     private Label lblHighscore;
     private Button btLeave;
     private int gridSize;
 
+    //GET
     public Button getBtLeave() {
         return btLeave;
     }
 
+    //CTOR
     public GameView(int gridSize) {
         this.gridSize = gridSize;
         initialise();
         layoutnodes();
     }
 
-
+    //METHODS
     private void initialise() {
         lblTitle = new Label("2048 Game");
-        lblTitle.setStyle("-fx-font-size: 16px");
-        lblScore = new Label("Score: \n 0");
-        lblHighscore = new Label("Highscore: \n 0");
+        lblScore = new Label(String.format("Score: \n %4s","0"));
+        lblHighscore = new Label(String.format("Highscore: \n %7s","0"));
         btLeave = new Button("Leave");
     }
 
-
     private void layoutnodes() {
-        super.setPadding(new Insets(10));
-        super.getChildren().add(lblTitle);
-
+        super.setPadding(new Insets(12));
         HBox hBoxTop = new HBox();
-        lblTitle.setPrefWidth(100);
-        lblHighscore.setPrefWidth(100);
-        lblScore.setPrefWidth(50);
+
+        lblScore.setPadding(new Insets(0, 50, 0, 15));
+        lblTitle.setPadding(new Insets(0, 20, 0, 0));
+
+        lblTitle.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 25));
+        lblScore.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 15));
+        lblHighscore.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 15));
+
         hBoxTop.getChildren().addAll(lblTitle, lblScore, lblHighscore);
         hBoxTop.setAlignment(Pos.CENTER);
-        super.setTop(hBoxTop);
 
+        super.setTop(hBoxTop);
         HBox hboxmidden = new HBox();
+        super.setCenter(hboxmidden);
+
+        BorderPane bpButtonSave = new BorderPane();
+        bpButtonSave.setRight(btLeave);
+        btLeave.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 16));
+        btLeave.setPadding(new Insets(12, 30, 12, 30));
+        super.setBottom(bpButtonSave);
+
 
         GridPane gridPane = new GridPane();
         Button[][] btn = new Button[gridSize][gridSize];
-
-        for(int i=0; i<btn.length; i++){
-            for(int j=0; j<btn.length;j++){
+        for (int i = 0; i < btn.length; i++) {
+            for (int j = 0; j < btn.length; j++) {
                 btn[i][j] = new Button("0");
                 btn[i][j].setPrefSize(75, 75);
                 gridPane.add(btn[i][j], i, j);
             }
         }
-        hboxmidden.setPadding(new Insets(70,10,10,10));
+        hboxmidden.setPadding(new Insets(70, 10, 10, 10));
         hboxmidden.setAlignment(Pos.CENTER);
         hboxmidden.getChildren().addAll(gridPane);
-        super.setCenter(hboxmidden);
 
-
-        super.setPadding(new Insets(10));
-        BorderPane bpButtonSave = new BorderPane();
-        bpButtonSave.setRight(btLeave);
-        btLeave.setPrefWidth(100);
-        super.setBottom(bpButtonSave);
+        //background color
+        super.setBackground(new Background(new BackgroundFill(Color.rgb(250, 248, 239), CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
-    public Label getLblTitle() { return lblTitle; }
-    public Label getLblScore() { return lblScore; }
-    public Label getLblHighscore() {
-        return lblHighscore;
-    }
+
+
 }
