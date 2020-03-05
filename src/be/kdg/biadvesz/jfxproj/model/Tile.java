@@ -49,48 +49,6 @@ public class Tile extends Label {
         this.positionX = x;
         this.positionY = y;
         this.color = color;
-
-        drawImage();
-    }
-
-    private void drawImage() {
-        switch (value) {
-            case 2:
-                setColor(Color.TWO);
-                break;
-            case 4:
-                setColor(Color.FOUR);
-                break;
-            case 8:
-                setColor(Color.EIGHT);
-                break;
-            case 16:
-                setColor(Color.SIXTEEN);
-                break;
-            case 32:
-                setColor(Color.THIRTYTWO);
-                break;
-            case 64:
-                setColor(Color.SIXTYFOUR);
-                break;
-            case 128:
-                setColor(Color.ONETWENTYEIGHT);
-                break;
-            case 256:
-                setColor(Color.TWOFIFTYSIX);
-                break;
-            case 512:
-                setColor(Color.MOST);
-                break;
-            case 1014:
-                setColor(Color.TENTWENTYFOUR);
-                break;
-            case 2048:
-                setColor(Color.TWENTYFORTYEIGHT);
-                break;
-
-
-        }
     }
 
     //OVERRIDE

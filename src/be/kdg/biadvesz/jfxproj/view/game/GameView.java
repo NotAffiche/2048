@@ -18,11 +18,13 @@ public class GameView extends BorderPane {
     private Label lblHighscore;
     private Button btLeave;
     private int gridSize;
+    private Label[][] grid;
 
     //GET
     public Button getBtLeave() {
         return btLeave;
     }
+    public Label[][] getGrid() { return grid; }
 
     //CTOR
     public GameView(int gridSize) {
@@ -37,6 +39,7 @@ public class GameView extends BorderPane {
         lblScore = new Label(String.format("Score: \n %4s","0"));
         lblHighscore = new Label(String.format("Highscore: \n %7s","0"));
         btLeave = new Button("Leave");
+        grid = new Label[gridSize][gridSize];
     }
 
     private void layoutnodes() {
@@ -52,10 +55,7 @@ public class GameView extends BorderPane {
 
         hBoxTop.getChildren().addAll(lblTitle, lblScore, lblHighscore);
         hBoxTop.setAlignment(Pos.CENTER);
-
         super.setTop(hBoxTop);
-        HBox hboxmidden = new HBox();
-        super.setCenter(hboxmidden);
 
         BorderPane bpButtonSave = new BorderPane();
         bpButtonSave.setRight(btLeave);
@@ -63,19 +63,22 @@ public class GameView extends BorderPane {
         btLeave.setPadding(new Insets(12, 30, 12, 30));
         super.setBottom(bpButtonSave);
 
-
-
-
-
-
+        HBox hboxmidden = new HBox();
 
         GridPane gridPane = new GridPane();
-        Button[][] btn = new Button[gridSize][gridSize];
-        for (int i = 0; i < btn.length; i++) {
-            for (int j = 0; j < btn.length; j++) {
-                btn[i][j] = new Button("0");
-                btn[i][j].setPrefSize(75, 75);
-                gridPane.add(btn[i][j], i, j);
+        gridPane.setHgap(8);
+        gridPane.setVgap(8);
+        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setStyle("-fx-background-color: yellow;");
+        gridPane.setMinSize(300, 300);
+
+        for (int row=0;row<grid.length;row++) {
+            for (int col=0;col<grid[row].length;col++) {
+                Label lblTile = new Label();
+                grid[row][col] = lblTile;
+                lblTile.setStyle("-fx-background-color: red");
+                lblTile.setMinSize(60, 60);
+                gridPane.add(lblTile, row, col);
             }
         }
 
@@ -83,10 +86,9 @@ public class GameView extends BorderPane {
         hboxmidden.setAlignment(Pos.CENTER);
         hboxmidden.getChildren().addAll(gridPane);
 
+        super.setCenter(hboxmidden);
+
         //background color
         super.setBackground(new Background(new BackgroundFill(Color.rgb(250, 248, 239), CornerRadii.EMPTY, Insets.EMPTY)));
     }
-
-
-
 }
