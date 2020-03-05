@@ -72,30 +72,30 @@ public class Game {
         drawRoster();
 
         // temp -> debugging inputs
-        char input = scanner.next().charAt(0);
-        while (input != 'q' && state==Gamestate.ONGOING) {
-            switch (input) {
-                case 'w':
-                    moveTiles(Direction.UP);
-                    break;
-                case 'a':
-                    moveTiles(Direction.LEFT);
-                    break;
-                case 's':
-                    moveTiles(Direction.DOWN);
-                    break;
-                case 'd':
-                    moveTiles(Direction.RIGHT);
-                    break;
-                default:
-                    System.out.println("Incorrect input :/");
-                    break;
-            }
-            drawRoster();
-            System.out.println("grid full? " + isGridFull());
-            if (state==Gamestate.FINISHED) System.out.println("Game over");
-            input = scanner.next().charAt(0);
-        }
+//        char input = scanner.next().charAt(0);
+//        while (input != 'q' && state==Gamestate.ONGOING) {
+//            switch (input) {
+//                case 'w':
+//                    moveTiles(Direction.UP);
+//                    break;
+//                case 'a':
+//                    moveTiles(Direction.LEFT);
+//                    break;
+//                case 's':
+//                    moveTiles(Direction.DOWN);
+//                    break;
+//                case 'd':
+//                    moveTiles(Direction.RIGHT);
+//                    break;
+//                default:
+//                    System.out.println("Incorrect input :/");
+//                    break;
+//            }
+//            drawRoster();
+//            System.out.println("grid full? " + isGridFull());
+//            if (state==Gamestate.FINISHED) System.out.println("Game over");
+//            input = scanner.next().charAt(0);
+//        }
     }
 
     public void endGame() {
@@ -108,8 +108,6 @@ public class Game {
     }
 
     public void moveTiles(Direction d) {
-//        for (Tile[] rows : grid) {
-//            for (Tile t : rows) { } }
         boolean mergedOnceAlready = false;
         switch (d) {
             case UP:
