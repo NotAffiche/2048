@@ -33,6 +33,7 @@ public class GamePresenter {
                 model.endGame();
                 //creates new screen
                 Lobby lModel = new Lobby();
+                lModel.setPlayerName(model.getPlayername());
                 LobbyView lView = new LobbyView();
                 LobbyPresenter lp = new LobbyPresenter(lModel, lView);
                 view.getScene().setRoot(lView);

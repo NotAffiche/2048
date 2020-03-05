@@ -1,6 +1,8 @@
 package be.kdg.biadvesz.jfxproj.view.lobby;
 
 import be.kdg.biadvesz.jfxproj.model.Game;
+import be.kdg.biadvesz.jfxproj.model.Highscore;
+import be.kdg.biadvesz.jfxproj.model.HowToPlay;
 import be.kdg.biadvesz.jfxproj.model.Lobby;
 import be.kdg.biadvesz.jfxproj.view.game.GamePresenter;
 import be.kdg.biadvesz.jfxproj.view.game.GameView;
@@ -22,6 +24,10 @@ public class LobbyPresenter {
     public LobbyPresenter(Lobby model, LobbyView view) {
         this.model = model;
         this.view = view;
+        if (model.getPlayerName() != null) {
+            view.getTfName().setText(model.getPlayerName());
+            view.getbPlay().setDisable(false);
+        }
         addEventHandlers();
         updateView();
     }
@@ -41,7 +47,8 @@ public class LobbyPresenter {
             @Override
             public void handle(ActionEvent actionEvent) {
                 HowToPlayView htpView = new HowToPlayView();
-                HowToPlayPresenter htpPresenter = new HowToPlayPresenter(model, htpView);
+                HowToPlay htpModel = new HowToPlay(model.getPlayerName());
+                HowToPlayPresenter htpPresenter = new HowToPlayPresenter(htpModel, htpView);
                 view.getScene().setRoot(htpView);
             }
         });
@@ -49,7 +56,8 @@ public class LobbyPresenter {
             @Override
             public void handle(ActionEvent actionEvent) {
                 HighscoreView highscoreView = new HighscoreView();
-                HighscorePresenter highscorePresenter = new HighscorePresenter(model,highscoreView);
+                Highscore hsModel = new Highscore(model.getPlayerName());
+                HighscorePresenter highscorePresenter = new HighscorePresenter(hsModel,highscoreView);
                 view.getScene().setRoot(highscoreView);
             }
         });
