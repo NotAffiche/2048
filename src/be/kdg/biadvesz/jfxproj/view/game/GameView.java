@@ -64,6 +64,11 @@ public class GameView extends BorderPane {
         super.setBottom(bpButtonSave);
 
 
+
+
+
+
+
         GridPane gridPane = new GridPane();
         Button[][] btn = new Button[gridSize][gridSize];
         for (int i = 0; i < btn.length; i++) {
@@ -73,6 +78,7 @@ public class GameView extends BorderPane {
                 gridPane.add(btn[i][j], i, j);
             }
         }
+
         hboxmidden.setPadding(new Insets(70, 10, 10, 10));
         hboxmidden.setAlignment(Pos.CENTER);
         hboxmidden.getChildren().addAll(gridPane);

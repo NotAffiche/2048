@@ -1,22 +1,47 @@
 package be.kdg.biadvesz.jfxproj.model;
 
 import be.kdg.biadvesz.jfxproj.model.enums.Color;
+import javafx.scene.control.Label;
 
-public class Tile {
+public class Tile extends Label {
     //ATTRIB
     private int value;
     private int positionX;
     private int positionY;
     private Color color;
+    private static int WIDTH = 80;
+    private static int HEIGHT = 80;
+    private static int SLIDE_SPEED = 20;
+
 
     //GET & SET
-    public int getValue() { return this.value; }
-    public int getPositionX() { return this.positionX; }
-    public void setPositionX(int positionX) { this.positionX = positionX; }
-    public int getPositionY() { return this.positionY; }
-    public void setPositionY(int positionY) { this.positionY = positionY; }
-    public Color getColor() { return this.color; }
-    public void setColor(Color color) { this.color = color; }
+    public int getValue() {
+        return this.value;
+    }
+
+    public int getPositionX() {
+        return this.positionX;
+    }
+
+    public void setPositionX(int positionX) {
+        this.positionX = positionX;
+    }
+
+    public int getPositionY() {
+        return this.positionY;
+    }
+
+    public void setPositionY(int positionY) {
+        this.positionY = positionY;
+    }
+
+    public Color getColor() {
+        return this.color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
 
     //CTOR
     public Tile(int value, int x, int y, Color color) {
@@ -24,6 +49,48 @@ public class Tile {
         this.positionX = x;
         this.positionY = y;
         this.color = color;
+
+        drawImage();
+    }
+
+    private void drawImage() {
+        switch (value) {
+            case 2:
+                setColor(Color.TWO);
+                break;
+            case 4:
+                setColor(Color.FOUR);
+                break;
+            case 8:
+                setColor(Color.EIGHT);
+                break;
+            case 16:
+                setColor(Color.SIXTEEN);
+                break;
+            case 32:
+                setColor(Color.THIRTYTWO);
+                break;
+            case 64:
+                setColor(Color.SIXTYFOUR);
+                break;
+            case 128:
+                setColor(Color.ONETWENTYEIGHT);
+                break;
+            case 256:
+                setColor(Color.TWOFIFTYSIX);
+                break;
+            case 512:
+                setColor(Color.MOST);
+                break;
+            case 1014:
+                setColor(Color.TENTWENTYFOUR);
+                break;
+            case 2048:
+                setColor(Color.TWENTYFORTYEIGHT);
+                break;
+
+
+        }
     }
 
     //OVERRIDE
@@ -38,4 +105,6 @@ public class Tile {
             this.value += other.getValue();
         }
     }
+
+
 }
