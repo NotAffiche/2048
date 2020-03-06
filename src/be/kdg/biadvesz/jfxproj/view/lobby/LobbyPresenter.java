@@ -41,6 +41,7 @@ public class LobbyPresenter {
                 Game gameModel = new Game(model.getPlayerName(), 4);
                 GamePresenter gamePresenter = new GamePresenter(gameModel, gameView);
                 view.getScene().setRoot(gameView);
+                gamePresenter.addKeyEventHandlers();
             }
         });
         view.getbHowTo().setOnAction(new EventHandler<ActionEvent>() {

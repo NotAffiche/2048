@@ -44,25 +44,44 @@ public class GamePresenter {
             }
         });
     }
-    private void updateView() {
-        for (int row=0;row<model.getGrid().length;row++) {
-            for (int col=0;col<model.getGrid()[row].length;col++) {
-                Tile t = model.getGrid()[row][col];
-                if (t==null) {
-                    view.getGrid()[col][row].setText("");
-                    view.getGrid()[col][row].setStyle("-fx-background-color: rgb(204,192,178);");
-                } else {
-                    view.getGrid()[col][row].setText(Integer.toString(t.getValue()));
-                    String hexCol = "#"+Integer.toHexString(t.getColor().getVal());
-                    System.out.println(hexCol);
-                    if (t.getValue()==2 || t.getValue()==4) {
-                        view.getGrid()[col][row].setStyle("-fx-text-fill: #766C62; -fx-alignment: center; -fx-font-size: 24px; -fx-font-weight: bold; -fx-background-color: " + hexCol + ";");
+
+    public void addKeyEventHandlers() {
+        view.requestFocus();
+        view.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                if (keyEvent.getCode().equals(KeyCode.UP)) {
+                    model.moveTiles(Direction.UP);
+                } else if (keyEvent.getCode().equals(KeyCode.DOWN)) {
+                    model.moveTiles(Direction.DOWN);
+                } else if (keyEvent.getCode().equals(KeyCode.LEFT)) {
+                    model.moveTiles(Direction.LEFT);
+                } else if (keyEvent.getCode().equals(KeyCode.RIGHT)){
+                    model.moveTiles(Direction.RIGHT);
+                }
+                updateView();
+            }
+        });
+    }
+        private void updateView () {
+            for (int row = 0; row < model.getGrid().length; row++) {
+                for (int col = 0; col < model.getGrid()[row].length; col++) {
+                    Tile t = model.getGrid()[row][col];
+                    if (t == null) {
+                        view.getGrid()[col][row].setText("");
+                        view.getGrid()[col][row].setStyle("-fx-background-color: rgb(204,192,178);");
                     } else {
-                        view.getGrid()[row][col].setStyle("-fx-text-fill: #FFFFFF; -fx-alignment: center; -fx-font-size: 24px; -fx-font-weight: bold; -fx-background-color: " + hexCol + ";");
+                        view.getGrid()[col][row].setText(Integer.toString(t.getValue()));
+                        String hexCol = "#" + Integer.toHexString(t.getColor().getVal());
+                        System.out.println(hexCol);
+                        if (t.getValue() == 2 || t.getValue() == 4) {
+                            view.getGrid()[col][row].setStyle("-fx-text-fill: #766C62; -fx-alignment: center; -fx-font-size: 24px; -fx-font-weight: bold; -fx-background-color: " + hexCol + ";");
+                        } else {
+                            view.getGrid()[row][col].setStyle("-fx-text-fill: #FFFFFF; -fx-alignment: center; -fx-font-size: 24px; -fx-font-weight: bold; -fx-background-color: " + hexCol + ";");
+                        }
                     }
                 }
             }
         }
-    }
 
-}
+    }

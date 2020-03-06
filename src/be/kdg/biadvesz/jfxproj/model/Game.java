@@ -68,6 +68,7 @@ public class Game {
 //        grid[t7.getPositionX()][t7.getPositionY()] = t7;
         //init game with 1st tile
         generateTile();
+        generateTile();
         //draw roster
         drawRoster();
 
