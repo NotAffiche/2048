@@ -9,6 +9,7 @@ public enum Color {
     SIXTYFOUR(0xf65e3b),
     ONETWENTYEIGHT(0xedcf72),
     TWOFIFTYSIX(0xedcc61),
+    FIVETWELVE(0xF0C948),
     TENTWENTYFOUR(0xedc850),
     TWENTYFORTYEIGHT(0xedc53f),
     MOST(0xedc22e);

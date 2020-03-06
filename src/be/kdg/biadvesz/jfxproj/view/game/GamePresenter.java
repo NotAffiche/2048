@@ -49,34 +49,12 @@ public class GamePresenter {
                 Tile t = model.getGrid()[row][col];
                 if (t==null) {
                     view.getGrid()[col][row].setText("");
+                    view.getGrid()[col][row].setStyle("-fx-background-color: rgb(204,192,178);");
                 } else {
                     view.getGrid()[col][row].setText(Integer.toString(t.getValue()));
-                    switch (t.getValue()) {
-                        case 2:
-                            break;
-                        case 4:
-                            break;
-                        case 8:
-                            break;
-                        case 16:
-                            break;
-                        case 32:
-                            break;
-                        case 64:
-                            break;
-                        case 128:
-                            break;
-                        case 256:
-                            break;
-                        case 512:
-                            break;
-                        case 1024:
-                            break;
-                        case 2048:
-                            break;
-                        default:
-                            break;
-                    }
+                    String hexCol = Integer.toString(t.getColor().getVal());
+                    System.out.println(hexCol);
+//                    view.getGrid()[col][row].setStyle(String.format("-fx-background-color: %f", t.getColor().getVal()));
                 }
             }
         }

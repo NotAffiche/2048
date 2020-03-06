@@ -61,6 +61,44 @@ public class Tile extends Label {
     public void valueChange(Tile other) {
         if (other.getValue() == this.value) {
             this.value += other.getValue();
+            switch (this.getValue()) {
+                case 2:
+                    this.setColor(Color.TWO);
+                    break;
+                case 4:
+                    this.setColor(Color.FOUR);
+                    break;
+                case 8:
+                    this.setColor(Color.EIGHT);
+                    break;
+                case 16:
+                    this.setColor(Color.SIXTEEN);
+                    break;
+                case 32:
+                    this.setColor(Color.THIRTYTWO);
+                    break;
+                case 64:
+                    this.setColor(Color.SIXTYFOUR);
+                    break;
+                case 128:
+                    this.setColor(Color.ONETWENTYEIGHT);
+                    break;
+                case 256:
+                    this.setColor(Color.TWOFIFTYSIX);
+                    break;
+                case 512:
+                    this.setColor(Color.FIVETWELVE);
+                    break;
+                case 1024:
+                    this.setColor(Color.TENTWENTYFOUR);
+                    break;
+                case 2048:
+                    this.setColor(Color.TWENTYFORTYEIGHT);
+                    break;
+                default:
+                    this.setColor(Color.MOST);
+                    break;
+            }
         }
     }
 
