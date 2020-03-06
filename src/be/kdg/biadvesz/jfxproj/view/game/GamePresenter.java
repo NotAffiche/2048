@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseDragEvent;
+import javafx.scene.layout.Background;
 
 public class GamePresenter {
     //ATTRIB
@@ -52,13 +53,12 @@ public class GamePresenter {
                     view.getGrid()[col][row].setStyle("-fx-background-color: rgb(204,192,178);");
                 } else {
                     view.getGrid()[col][row].setText(Integer.toString(t.getValue()));
-                    String hexCol = Integer.toString(t.getColor().getVal());
+                    String hexCol = "#"+Integer.toHexString(t.getColor().getVal());
                     System.out.println(hexCol);
-//                    view.getGrid()[col][row].setStyle(String.format("-fx-background-color: %f", t.getColor().getVal()));
                     if (t.getValue()==2 || t.getValue()==4) {
-                        view.getGrid()[col][row].setStyle("-fx-text-fill: #766C62; -fx-alignment: center; -fx-font-size: 15px;");
+                        view.getGrid()[col][row].setStyle("-fx-text-fill: #766C62; -fx-alignment: center; -fx-font-size: 24px; -fx-font-weight: bold; -fx-background-color: " + hexCol + ";");
                     } else {
-                        view.getGrid()[row][col].setStyle("-fx-text-fill: #FFFFFF; -fx-alignment: center; -fx-font-size: 15px;");
+                        view.getGrid()[row][col].setStyle("-fx-text-fill: #FFFFFF; -fx-alignment: center; -fx-font-size: 24px; -fx-font-weight: bold; -fx-background-color: " + hexCol + ";");
                     }
                 }
             }

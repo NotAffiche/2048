@@ -15,6 +15,8 @@ public enum Color {
     MOST(0xedc22e);
 
     private int val;
-    private Color(int val) { this.val = val; }
+    Color(int val) {
+        this.val = val;
+    }
     public int getVal() { return this.val; }
 }
