@@ -66,6 +66,7 @@ public class Game {
 
     public void moveTiles(Direction d) {
         boolean mergedOnceAlready = false;
+        boolean canGenTile = true;
         switch (d) {
             case UP:
                 for (int row=0;row<grid.length;row++) { // top to bottom

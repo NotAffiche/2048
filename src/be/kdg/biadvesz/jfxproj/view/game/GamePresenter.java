@@ -81,7 +81,7 @@ public class GamePresenter {
                     }
                 }
             }
-            view.getLblScore().setText(Integer.toString(model.getScore()));
+            view.getLblScore().setText("Score:\n" + Integer.toString(model.getScore()));
             System.out.println(" ");
             drawRoster();
         }
