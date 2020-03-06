@@ -34,8 +34,8 @@ public class GameView extends BorderPane {
     //METHODS
     private void initialise() {
         lblTitle = new Label("2048 Game");
-        lblScore = new Label(String.format("Score: \n %4s","0"));
-        lblHighscore = new Label(String.format("Highscore: \n %7s","0"));
+        lblScore = new Label(String.format("Score: \n %4s", "0"));
+        lblHighscore = new Label(String.format("Highscore: \n %7s", "0"));
         btLeave = new Button("Leave");
     }
 
@@ -64,11 +64,6 @@ public class GameView extends BorderPane {
         super.setBottom(bpButtonSave);
 
 
-
-
-
-
-
         GridPane gridPane = new GridPane();
         Button[][] btn = new Button[gridSize][gridSize];
         for (int i = 0; i < btn.length; i++) {
@@ -86,7 +81,6 @@ public class GameView extends BorderPane {
         //background color
         super.setBackground(new Background(new BackgroundFill(Color.rgb(250, 248, 239), CornerRadii.EMPTY, Insets.EMPTY)));
     }
-
 
 
 }
