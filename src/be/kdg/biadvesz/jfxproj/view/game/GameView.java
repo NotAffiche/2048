@@ -66,23 +66,26 @@ public class GameView extends BorderPane {
         HBox hboxmidden = new HBox();
 
         GridPane gridPane = new GridPane();
-        gridPane.setHgap(5);
-        gridPane.setVgap(5);
+        gridPane.setHgap(7);
+        gridPane.setVgap(7);
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setStyle("-fx-background-color: #BCAEA1;");
-        gridPane.setMinSize(300, 300);
+        gridPane.setMinSize(350, 350);
+        gridPane.setMaxSize(350, 350);
+
 
         for (int row=0;row<grid.length;row++) {
             for (int col=0;col<grid[row].length;col++) {
                 Label lblTile = new Label();
                 grid[row][col] = lblTile;
-                lblTile.setStyle("-fx-background-color: red");
-                lblTile.setMinSize(60, 60);
+                lblTile.setStyle("-fx-background-color: red;-fx-alignment: center;-fx-font-size: 15px;");
+
+                lblTile.setMinSize(77, 77);
                 gridPane.add(lblTile, row, col);
             }
         }
 
-        hboxmidden.setPadding(new Insets(70, 10, 10, 10));
+        hboxmidden.setPadding(new Insets(70, 10,10,10));
         hboxmidden.setAlignment(Pos.CENTER);
         hboxmidden.getChildren().addAll(gridPane);
 
