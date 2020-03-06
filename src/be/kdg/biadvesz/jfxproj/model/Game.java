@@ -223,7 +223,7 @@ public class Game {
                 if (t==null) break;
                 x = t.getPositionX();
                 y = t.getPositionY();
-                if (y!=3) {
+                if (y!=(gridSize-1)) {
                     Tile other;
                     try {
                         other = grid[x][y+1];
@@ -239,7 +239,7 @@ public class Game {
                 if (t==null) break;
                 x = t.getPositionX();
                 y = t.getPositionY();
-                if (x!=3) {
+                if (x!=(gridSize-1)) {
                     Tile other;
                     try {
                         other = grid[x+1][y];
@@ -291,15 +291,15 @@ public class Game {
         return false;
     }
     private void generateTile() {
-        int x = rndm.nextInt(4);
-        int y = rndm.nextInt(4);
+        int x = rndm.nextInt(gridSize);
+        int y = rndm.nextInt(gridSize);
 
         while (tileExists(x, y)) {
-            x = rndm.nextInt(4);
-            y = rndm.nextInt(4);
+            x = rndm.nextInt(gridSize);
+            y = rndm.nextInt(gridSize);
         }
         int twoOrFour = rndm.nextInt(100);
-        if (twoOrFour<=75) {
+        if (twoOrFour<=90) {
             grid[x][y] = new Tile(2, x, y, Color.TWO);
         } else {
             grid[x][y] = new Tile(4, x, y, Color.FOUR);
