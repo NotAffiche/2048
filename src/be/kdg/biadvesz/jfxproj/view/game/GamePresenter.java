@@ -55,6 +55,11 @@ public class GamePresenter {
                     String hexCol = Integer.toString(t.getColor().getVal());
                     System.out.println(hexCol);
 //                    view.getGrid()[col][row].setStyle(String.format("-fx-background-color: %f", t.getColor().getVal()));
+                    if (t.getValue()==2 || t.getValue()==4) {
+                        view.getGrid()[col][row].setStyle("-fx-text-fill: #766C62");
+                    } else {
+                        view.getGrid()[row][col].setStyle("-fx-text-fill: #FFFFFF");
+                    }
                 }
             }
         }
