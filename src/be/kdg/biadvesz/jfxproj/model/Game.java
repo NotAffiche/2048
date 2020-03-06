@@ -97,6 +97,7 @@ public class Game {
                         mergedOnceAlready=false;
                     }
                 }
+                generateTile();
                 break;
             case RIGHT:
                 for (int row=0;row<grid.length;row++) { // top to bottom
@@ -128,6 +129,7 @@ public class Game {
                         mergedOnceAlready=false;
                     }
                 }
+                generateTile();
                 break;
             case DOWN:
                 for (int row=gridSize-1;row>=0;row--) { // bottom to top
@@ -159,6 +161,7 @@ public class Game {
                         mergedOnceAlready=false;
                     }
                 }
+                generateTile();
                 break;
             case LEFT:
                 for (int row=0;row<grid.length;row++) { // top to bottom
@@ -190,12 +193,12 @@ public class Game {
                         mergedOnceAlready=false;
                     }
                 }
+                generateTile();
                 break;
             default:
                 System.out.println("Invalid input :/");
                 break;
         }
-        generateTile();
         attemptGameEnd();
     }
 

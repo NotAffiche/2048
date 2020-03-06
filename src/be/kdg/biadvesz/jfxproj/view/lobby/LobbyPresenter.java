@@ -37,7 +37,7 @@ public class LobbyPresenter {
         view.getbPlay().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                int gridSize = 3;
+                int gridSize = 4;
                 GameView gameView = new GameView(gridSize);
                 Game gameModel = new Game(model.getPlayerName(), gridSize);
                 GamePresenter gamePresenter = new GamePresenter(gameModel, gameView);
