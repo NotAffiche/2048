@@ -19,23 +19,23 @@ public class Game {
     private Gamestate state;
 
     //GET & SET
-    public int getScore() { return score; }
-    public void setScore(int score) { this.score = score; }
+    private int getScore() { return score; }
+    private void setScore(int score) { this.score = score; }
     public int getHighscore() { return this.highscore; }
     public void setHighscore(int highscore) { this.highscore = highscore; }
     public Tile[][] getGrid() { return grid; }
-    public void setGrid(Tile[][] grid) { this.grid = grid; }
-    public int getGridSize() { return this.gridSize; }
-    public void setGridSize(int gridSize) { this.gridSize = gridSize; }
+    private void setGrid(Tile[][] grid) { this.grid = grid; }
+    private int getGridSize() { return this.gridSize; }
+    private void setGridSize(int gridSize) { this.gridSize = gridSize; }
     public String getPlayername() { return this.playername; }
-    public void setPlayername(String playername) { this.playername = playername; }
+    private void setPlayername(String playername) { this.playername = playername; }
     public Gamestate getState() { return state; }
-    public void setState(Gamestate state) { this.state = state; }
+    private void setState(Gamestate state) { this.state = state; }
 
     //CTOR
-    public Game(String playername) {
+    public Game(String playername, int gridSize) {
         rndm = new Random();
-        setGridSize(4);
+        setGridSize(gridSize);
         if (!FileHelper.dataExists()) {
             FileHelper.createHighscoreFile();
         }
@@ -48,7 +48,7 @@ public class Game {
     private Scanner scanner = new Scanner(System.in);
 
     //METHODS
-    public void startGame() {
+    void startGame() {
         setState(Gamestate.ONGOING);
         // temp debug tiles
 //        Tile t0 = new Tile(2, 0, 0, Color.TWO);
@@ -350,12 +350,11 @@ public class Game {
     }
 
     private boolean tileExists(int x, int y) {
-        if (grid[x][y]!=null) return true;
-        return false;
+        return grid[x][y] != null;
     }
 
     // temp debug roster
-    public void drawRoster() {
+    private void drawRoster() {
         for (Tile[] rows : grid) {
             for (Tile t : rows) {
                 try {
@@ -368,7 +367,7 @@ public class Game {
         }
     }
 
-    public void attemptGameEnd() {
+    private void attemptGameEnd() {
 //        if (isGridFull() && !areMovesPossible()) endGame();
         if (isGridFull()) endGame();
     }

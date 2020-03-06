@@ -38,7 +38,7 @@ public class LobbyPresenter {
             @Override
             public void handle(ActionEvent actionEvent) {
                 GameView gameView = new GameView(4);
-                Game gameModel = new Game(model.getPlayerName());
+                Game gameModel = new Game(model.getPlayerName(), 4);
                 GamePresenter gamePresenter = new GamePresenter(gameModel, gameView);
                 view.getScene().setRoot(gameView);
             }
