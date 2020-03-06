@@ -50,53 +50,9 @@ public class Game {
     //METHODS
     void startGame() {
         setState(Gamestate.ONGOING);
-        // temp debug tiles
-//        Tile t0 = new Tile(2, 0, 0, Color.TWO);
-//        Tile t1 = new Tile(2, 1, 0, Color.TWO);
-//        Tile t2 = new Tile(2, 2, 0, Color.TWO);
-//        Tile t3 = new Tile(2, 3, 0, Color.TWO);
-//        grid[t0.getPositionX()][t0.getPositionY()] = t0;
-//        grid[t1.getPositionX()][t1.getPositionY()] = t1;
-//        grid[t2.getPositionX()][t2.getPositionY()] = t2;
-//        grid[t3.getPositionX()][t3.getPositionY()] = t3;
-
-//        Tile t5 = new Tile(2, 0, 1, Color.TWO);
-//        grid[t5.getPositionX()][t5.getPositionY()] = t5;
-//        Tile t6 = new Tile(2, 2, 1, Color.TWO);
-//        grid[t6.getPositionX()][t6.getPositionY()] = t6;
-//        Tile t7 = new Tile(2, 3, 1, Color.TWO);
-//        grid[t7.getPositionX()][t7.getPositionY()] = t7;
         //init game with 1st tile
         generateTile();
         generateTile();
-        //draw roster
-        drawRoster();
-
-        // temp -> debugging inputs
-//        char input = scanner.next().charAt(0);
-//        while (input != 'q' && state==Gamestate.ONGOING) {
-//            switch (input) {
-//                case 'w':
-//                    moveTiles(Direction.UP);
-//                    break;
-//                case 'a':
-//                    moveTiles(Direction.LEFT);
-//                    break;
-//                case 's':
-//                    moveTiles(Direction.DOWN);
-//                    break;
-//                case 'd':
-//                    moveTiles(Direction.RIGHT);
-//                    break;
-//                default:
-//                    System.out.println("Incorrect input :/");
-//                    break;
-//            }
-//            drawRoster();
-//            System.out.println("grid full? " + isGridFull());
-//            if (state==Gamestate.FINISHED) System.out.println("Game over");
-//            input = scanner.next().charAt(0);
-//        }
     }
 
     public void endGame() {
@@ -352,20 +308,6 @@ public class Game {
 
     private boolean tileExists(int x, int y) {
         return grid[x][y] != null;
-    }
-
-    // temp debug roster
-    private void drawRoster() {
-        for (Tile[] rows : grid) {
-            for (Tile t : rows) {
-                try {
-                    System.out.printf("%d ", t.getValue());
-                } catch (Exception ex) {
-                    System.out.print("0 ");
-                }
-            }
-            System.out.println(" ");
-        }
     }
 
     private void attemptGameEnd() {
