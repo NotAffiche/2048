@@ -66,10 +66,10 @@ public class GameView extends BorderPane {
         HBox hboxmidden = new HBox();
 
         GridPane gridPane = new GridPane();
-        gridPane.setHgap(8);
-        gridPane.setVgap(8);
+        gridPane.setHgap(5);
+        gridPane.setVgap(5);
         gridPane.setAlignment(Pos.CENTER);
-        gridPane.setStyle("-fx-background-color: yellow;");
+        gridPane.setStyle("-fx-background-color: #BCAEA1;");
         gridPane.setMinSize(300, 300);
 
         for (int row=0;row<grid.length;row++) {
