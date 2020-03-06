@@ -56,9 +56,9 @@ public class GamePresenter {
                     System.out.println(hexCol);
 //                    view.getGrid()[col][row].setStyle(String.format("-fx-background-color: %f", t.getColor().getVal()));
                     if (t.getValue()==2 || t.getValue()==4) {
-                        view.getGrid()[col][row].setStyle("-fx-text-fill: #766C62");
+                        view.getGrid()[col][row].setStyle("-fx-text-fill: #766C62; -fx-alignment: center; -fx-font-size: 15px;");
                     } else {
-                        view.getGrid()[row][col].setStyle("-fx-text-fill: #FFFFFF");
+                        view.getGrid()[row][col].setStyle("-fx-text-fill: #FFFFFF; -fx-alignment: center; -fx-font-size: 15px;");
                     }
                 }
             }
