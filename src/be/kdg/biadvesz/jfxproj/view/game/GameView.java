@@ -78,8 +78,6 @@ public class GameView extends BorderPane {
             for (int col=0;col<grid[row].length;col++) {
                 Label lblTile = new Label();
                 grid[row][col] = lblTile;
-                lblTile.setStyle("-fx-background-color: red;-fx-alignment: center;-fx-font-size: 15px;");
-
                 lblTile.setMinSize(77, 77);
                 gridPane.add(lblTile, row, col);
             }
