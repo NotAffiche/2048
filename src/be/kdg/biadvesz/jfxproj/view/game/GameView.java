@@ -25,6 +25,7 @@ public class GameView extends BorderPane {
         return btLeave;
     }
     public Label[][] getGrid() { return grid; }
+    public Label getLblScore() { return lblScore; }
 
     //CTOR
     public GameView(int gridSize) {

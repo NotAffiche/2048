@@ -19,8 +19,8 @@ public class Game {
     private Gamestate state;
 
     //GET & SET
-    private int getScore() { return score; }
-    private void setScore(int score) { this.score = score; }
+    public int getScore() { return score; }
+    public void setScore(int score) { this.score = score; }
     public int getHighscore() { return this.highscore; }
     public void setHighscore(int highscore) { this.highscore = highscore; }
     public Tile[][] getGrid() { return grid; }
@@ -83,6 +83,7 @@ public class Game {
                                         other.valueChange(t);
                                         grid[t.getPositionX()][t.getPositionY()] = null;
                                         mergedOnceAlready = true;
+                                        score += other.getValue();
                                     } else {
                                         grid[t.getPositionX()][t.getPositionY()] = null;
                                         t.setPositionX(t.getPositionX()-1);
@@ -115,6 +116,7 @@ public class Game {
                                         other.valueChange(t);
                                         grid[t.getPositionX()][t.getPositionY()] = null;
                                         mergedOnceAlready=true;
+                                        score += other.getValue();
                                     } else {
                                         grid[t.getPositionX()][t.getPositionY()] = null;
                                         t.setPositionY(t.getPositionY()+1);
@@ -147,6 +149,7 @@ public class Game {
                                         other.valueChange(t);
                                         grid[t.getPositionX()][t.getPositionY()] = null;
                                         mergedOnceAlready=true;
+                                        score += other.getValue();
                                     } else {
                                         grid[t.getPositionX()][t.getPositionY()] = null;
                                         t.setPositionX(t.getPositionX()+1);
@@ -179,6 +182,7 @@ public class Game {
                                         other.valueChange(t);
                                         grid[t.getPositionX()][t.getPositionY()] = null;
                                         mergedOnceAlready=true;
+                                        score += other.getValue();
                                     } else {
                                         grid[t.getPositionX()][t.getPositionY()] = null;
                                         t.setPositionY(t.getPositionY()-1);
