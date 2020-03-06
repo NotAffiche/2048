@@ -73,7 +73,6 @@ public class GamePresenter {
                     } else {
                         view.getGrid()[col][row].setText(Integer.toString(t.getValue()));
                         String hexCol = "#" + Integer.toHexString(t.getColor().getVal());
-                        System.out.println(hexCol);
                         if (t.getValue() == 2 || t.getValue() == 4) {
                             view.getGrid()[col][row].setStyle("-fx-text-fill: #766C62; -fx-alignment: center; -fx-font-size: 24px; -fx-font-weight: bold; -fx-background-color: " + hexCol + ";");
                         } else {
@@ -82,6 +81,21 @@ public class GamePresenter {
                     }
                 }
             }
+            System.out.println(" ");
+            drawRoster();
         }
 
+    // temp debug roster
+    private void drawRoster() {
+        for (Tile[] rows : model.getGrid()) {
+            for (Tile t : rows) {
+                try {
+                    System.out.printf("%d ", t.getValue());
+                } catch (Exception ex) {
+                    System.out.print("0 ");
+                }
+            }
+            System.out.println(" ");
+        }
+    }
     }
