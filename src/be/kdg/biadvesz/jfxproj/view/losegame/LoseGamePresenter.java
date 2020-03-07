@@ -2,7 +2,6 @@ package be.kdg.biadvesz.jfxproj.view.losegame;
 
 import be.kdg.biadvesz.jfxproj.model.Lobby;
 import be.kdg.biadvesz.jfxproj.model.LoseGame;
-import be.kdg.biadvesz.jfxproj.model.WinGame;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyPresenter;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyView;
 import be.kdg.biadvesz.jfxproj.view.wingame.WinGameView;
