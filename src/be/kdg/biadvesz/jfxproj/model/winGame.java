@@ -1,4 +1,4 @@
-package be.kdg.biadvesz.jfxproj.model.helpers;
+package be.kdg.biadvesz.jfxproj.model;
 
 public class winGame {
     //ATTRIB
