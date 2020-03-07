@@ -319,7 +319,32 @@ public class Game {
     }
 
     private void attemptGameEnd() {
-//        if (isGridFull() && !areMovesPossible()) endGame();
-        if (isGridFull()) endGame();
+        if (found2048()) {
+            setState(Gamestate.FINISHED);
+        }
+    }
+
+    public boolean found2048() {
+        for (Tile[] row : grid) {
+            for (Tile t : row) {
+                if (t!=null) {
+                    if (t.getValue()==2048) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    //debug create tile
+    public void createTile(int value) {
+        int x = rndm.nextInt(gridSize);
+        int y = rndm.nextInt(gridSize);
+
+        while (tileExists(x, y)) {
+            x = rndm.nextInt(gridSize);
+            y = rndm.nextInt(gridSize);
+        }
+        grid[x][y] = new Tile(value, x, y, Color.MOST);
     }
 }

@@ -48,13 +48,16 @@ public class WinGameView extends BorderPane {
         lblWon = new Label("Congratulations");
         lblText = new Label("Congratulations, you have won 2048!");
         //IMAGES
-        imContinue = new Image(getClass().getResourceAsStream("continue.png"));
-        imExit = new Image(getClass().getResourceAsStream("exit.png"));
-        imRestart = new Image(getClass().getResourceAsStream("restart.jpg"));
-        //BUTTONS
-        btContinue = new Button("", new ImageView(imContinue));
-        btExitGame = new Button("", new ImageView(imExit));
-        btRestart = new Button("", new ImageView(imRestart));
+//        imContinue = new Image(getClass().getResourceAsStream("continue.png"));
+//        imExit = new Image(getClass().getResourceAsStream("exit.png"));
+//        imRestart = new Image(getClass().getResourceAsStream("restart.jpg"));
+//        //BUTTONS
+//        btContinue = new Button("", new ImageView(imContinue));
+//        btExitGame = new Button("", new ImageView(imExit));
+//        btRestart = new Button("", new ImageView(imRestart));
+        btContinue = new Button("continue");
+        btExitGame = new Button("exit");
+        btRestart = new Button("restart");
     }
 
     private void layoutNodes() {
