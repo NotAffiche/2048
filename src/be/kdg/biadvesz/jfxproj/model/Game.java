@@ -4,10 +4,7 @@ import be.kdg.biadvesz.jfxproj.model.enums.Color;
 import be.kdg.biadvesz.jfxproj.model.enums.Direction;
 import be.kdg.biadvesz.jfxproj.model.enums.Gamestate;
 import be.kdg.biadvesz.jfxproj.model.helpers.FileHelper;
-import javafx.animation.TranslateTransition;
-import javafx.util.Duration;
 
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -63,16 +60,10 @@ public class Game {
 
     public void endGame() {
         setState(Gamestate.FINISHED);
-        saveHighscore();
-    }
-
-    private void saveHighscore() {
         FileHelper.saveScore(getPlayername(), getScore());
     }
 
     public void moveTiles(Direction d) {
-
-
         boolean mergedOnceAlready = false;
         switch (d) {
             case UP:
