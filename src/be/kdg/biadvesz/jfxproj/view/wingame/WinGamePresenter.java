@@ -1,21 +1,18 @@
 package be.kdg.biadvesz.jfxproj.view.wingame;
 
-import be.kdg.biadvesz.jfxproj.model.Game;
 import be.kdg.biadvesz.jfxproj.model.Lobby;
-import be.kdg.biadvesz.jfxproj.model.winGame;
-import be.kdg.biadvesz.jfxproj.view.game.GamePresenter;
-import be.kdg.biadvesz.jfxproj.view.game.GameView;
+import be.kdg.biadvesz.jfxproj.model.WinGame;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyPresenter;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-public class winGamePresenter {
+public class WinGamePresenter {
     //ATTRIB
-    private winGame model;
-    private winGameView view;
+    private WinGame model;
+    private WinGameView view;
 
-    public winGamePresenter(winGame model, winGameView view) {
+    public WinGamePresenter(WinGame model, WinGameView vieAw) {
         this.model = model;
         this.view = view;
         addEventHandlers();
@@ -25,13 +22,16 @@ public class winGamePresenter {
         view.getBtContinue().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
+                //"POP-UP" SLUITEN
 
             }
         });
         view.getBtExitGame().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                //TODO
+                //GAME AFSLUTEN
+
                 Lobby lobbymodel = new Lobby();
                 LobbyView lobbyView = new LobbyView();
                 lobbymodel.setPlayerName(model.getPlayerName());
@@ -43,7 +43,8 @@ public class winGamePresenter {
         view.getBtRestart().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
+                //TODO
+                //NIEUW GAME STARTEN
 
             }
         });

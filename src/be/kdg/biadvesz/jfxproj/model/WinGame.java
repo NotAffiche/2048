@@ -1,6 +1,6 @@
 package be.kdg.biadvesz.jfxproj.model;
 
-public class winGame {
+public class WinGame {
     //ATTRIB
     private String playerName;
 
@@ -9,7 +9,7 @@ public class winGame {
     public void setPlayerName(String playerName) { this.playerName = playerName; }
 
     //CTOR
-    public winGame(String playerName) {
+    public WinGame(String playerName) {
         setPlayerName(playerName);
     }
 }

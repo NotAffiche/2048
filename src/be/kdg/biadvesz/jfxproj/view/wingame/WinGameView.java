@@ -12,7 +12,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 
-public class winGameView extends BorderPane {
+public class WinGameView extends BorderPane {
     private Label lblWon;
     private Label lblText;
     private Button btContinue;
@@ -37,7 +37,7 @@ public class winGameView extends BorderPane {
 
     //CTOR
 
-    public winGameView() {
+    public WinGameView() {
 
         initNodes();
         layoutNodes();
