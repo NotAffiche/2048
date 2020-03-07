@@ -4,6 +4,8 @@ import be.kdg.biadvesz.jfxproj.model.enums.Color;
 import be.kdg.biadvesz.jfxproj.model.enums.Direction;
 import be.kdg.biadvesz.jfxproj.model.enums.Gamestate;
 import be.kdg.biadvesz.jfxproj.model.helpers.FileHelper;
+import javafx.animation.TranslateTransition;
+import javafx.util.Duration;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -17,6 +19,9 @@ public class Game {
     private Random rndm;
     private String playername;
     private Gamestate state;
+
+
+
 
     //GET & SET
     private int getScore() { return score; }
@@ -65,12 +70,15 @@ public class Game {
     }
 
     public void moveTiles(Direction d) {
+
+
         boolean mergedOnceAlready = false;
         switch (d) {
             case UP:
                 for (int row=0;row<grid.length;row++) { // top to bottom
                     for (int col=0;col<grid[row].length;col++) { // left to right
                         Tile t = grid[row][col];
+
                         while (canTileMove(t, d)) {
                             try {
                                 Tile other = grid[t.getPositionX()-1][t.getPositionY()];
@@ -78,6 +86,7 @@ public class Game {
                                     grid[t.getPositionX()][t.getPositionY()] = null;
                                     t.setPositionX(t.getPositionX()-1);
                                     grid[t.getPositionX()][t.getPositionY()] = t;
+
                                 } else {
                                     if (!mergedOnceAlready) {
                                         other.valueChange(t);
