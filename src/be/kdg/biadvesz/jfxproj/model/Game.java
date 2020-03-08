@@ -4,8 +4,6 @@ import be.kdg.biadvesz.jfxproj.model.enums.Color;
 import be.kdg.biadvesz.jfxproj.model.enums.Direction;
 import be.kdg.biadvesz.jfxproj.model.enums.Gamestate;
 import be.kdg.biadvesz.jfxproj.model.helpers.FileHelper;
-import javafx.animation.TranslateTransition;
-import javafx.util.Duration;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -62,18 +60,11 @@ public class Game {
 
     public void endGame() {
         setState(Gamestate.FINISHED);
-        saveHighscore();
-    }
-
-    private void saveHighscore() {
         FileHelper.saveScore(getPlayername(), getScore());
     }
 
     public void moveTiles(Direction d) {
-
-
         boolean mergedOnceAlready = false;
-        boolean canGenTile = true;
         switch (d) {
             case UP:
                 for (int row=0;row<grid.length;row++) { // top to bottom
@@ -328,7 +319,32 @@ public class Game {
     }
 
     private void attemptGameEnd() {
-//        if (isGridFull() && !areMovesPossible()) endGame();
-        if (isGridFull()) endGame();
+        if (found2048()) {
+            setState(Gamestate.FINISHED);
+        }
+    }
+
+    public boolean found2048() {
+        for (Tile[] row : grid) {
+            for (Tile t : row) {
+                if (t!=null) {
+                    if (t.getValue()==2048) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    //debug create tile
+    public void createTile(int value) {
+        int x = rndm.nextInt(gridSize);
+        int y = rndm.nextInt(gridSize);
+
+        while (tileExists(x, y)) {
+            x = rndm.nextInt(gridSize);
+            y = rndm.nextInt(gridSize);
+        }
+        grid[x][y] = new Tile(value, x, y, Color.MOST);
     }
 }

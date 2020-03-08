@@ -3,9 +3,12 @@ package be.kdg.biadvesz.jfxproj.view.game;
 import be.kdg.biadvesz.jfxproj.model.Game;
 import be.kdg.biadvesz.jfxproj.model.Lobby;
 import be.kdg.biadvesz.jfxproj.model.Tile;
+import be.kdg.biadvesz.jfxproj.model.WinGame;
 import be.kdg.biadvesz.jfxproj.model.enums.Direction;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyPresenter;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyView;
+import be.kdg.biadvesz.jfxproj.view.wingame.WinGamePresenter;
+import be.kdg.biadvesz.jfxproj.view.wingame.WinGameView;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -59,6 +62,10 @@ public class GamePresenter {
                 } else if (keyEvent.getCode().equals(KeyCode.RIGHT)){
                     model.moveTiles(Direction.RIGHT);
                 }
+                //debug
+                else if (keyEvent.getCode().equals(KeyCode.N)){
+                    model.createTile(2048);
+                }
                 updateView();
             }
         });
@@ -82,6 +89,13 @@ public class GamePresenter {
                 }
             }
             view.getLblScore().setText("Score:\n" + Integer.toString(model.getScore()));
+            if (model.found2048()) {
+                WinGame winGame = new WinGame(model.getPlayername());
+                WinGameView winGameView = new WinGameView();
+                WinGamePresenter winGamePresenter = new WinGamePresenter(winGame, winGameView);
+                view.getScene().setRoot(winGameView);
+            }
+            //draw debug roster
             System.out.println(" ");
             drawRoster();
         }
