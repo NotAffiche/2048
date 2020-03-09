@@ -53,14 +53,28 @@ public class GamePresenter {
         view.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
+                Alert lostAlert = new Alert(Alert.AlertType.WARNING);
+                lostAlert.setHeaderText("LOST");
                 if (keyEvent.getCode().equals(KeyCode.UP)) {
-                    model.moveTiles(Direction.UP);
+                    if (!model.tryMove(Direction.UP)) {
+                        keyEvent.consume();
+                        lostAlert.showAndWait();
+                    }
                 } else if (keyEvent.getCode().equals(KeyCode.DOWN)) {
-                    model.moveTiles(Direction.DOWN);
+                    if (!model.tryMove(Direction.DOWN)) {
+                        keyEvent.consume();
+                        lostAlert.showAndWait();
+                    }
                 } else if (keyEvent.getCode().equals(KeyCode.LEFT)) {
-                    model.moveTiles(Direction.LEFT);
+                    if (!model.tryMove(Direction.LEFT)) {
+                        keyEvent.consume();
+                        lostAlert.showAndWait();
+                    }
                 } else if (keyEvent.getCode().equals(KeyCode.RIGHT)){
-                    model.moveTiles(Direction.RIGHT);
+                    if (!model.tryMove(Direction.RIGHT)) {
+                        keyEvent.consume();
+                        lostAlert.showAndWait();
+                    }
                 }
                 //debug
                 else if (keyEvent.getCode().equals(KeyCode.N)){
