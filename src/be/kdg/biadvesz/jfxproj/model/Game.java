@@ -319,7 +319,17 @@ public class Game {
     }
 
     private void attemptGameEnd() {
-//        if (isGridFull() && !areMovesPossible()) endGame();
-        if (isGridFull()) endGame();
+        boolean arePossibleMoves = false;
+        for (Tile[] rows : grid) {
+            for (Tile t : rows) {
+                if (canTileMove(t, Direction.UP)) arePossibleMoves=true;
+                if (canTileMove(t, Direction.UP)) arePossibleMoves=true;
+                if (canTileMove(t, Direction.UP)) arePossibleMoves=true;
+                if (canTileMove(t, Direction.UP)) arePossibleMoves=true;
+            }
+        }
+        if (!arePossibleMoves &&isGridFull()){//check if no moves possible + board full
+            System.out.println("game end");
+        }
     }
 }
