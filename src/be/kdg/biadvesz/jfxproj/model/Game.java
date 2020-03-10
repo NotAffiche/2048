@@ -308,6 +308,8 @@ public class Game {
         if (isGridFull() && !anyMovesLeft()) {
             setState(Gamestate.FINISHED);
             System.out.println("game over");
+            //TODO
+            // fire event that will notify presenter AT CORRECT TIME that game is over
         }
     }
     private boolean anyMovesLeft() {

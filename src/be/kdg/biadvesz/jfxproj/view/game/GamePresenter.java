@@ -60,30 +60,24 @@ public class GamePresenter {
                     if (keyEvent.getCode().equals(KeyCode.UP)) {
                         if (!model.tryMove(Direction.UP)) {
                             keyEvent.consume();
-//                        lostAlert.showAndWait();
                         }
                     } else if (keyEvent.getCode().equals(KeyCode.DOWN)) {
                         if (!model.tryMove(Direction.DOWN)) {
                             keyEvent.consume();
-//                        lostAlert.showAndWait();
                         }
                     } else if (keyEvent.getCode().equals(KeyCode.LEFT)) {
                         if (!model.tryMove(Direction.LEFT)) {
                             keyEvent.consume();
-//                        lostAlert.showAndWait();
                         }
                     } else if (keyEvent.getCode().equals(KeyCode.RIGHT)){
                         if (!model.tryMove(Direction.RIGHT)) {
                             keyEvent.consume();
-//                        lostAlert.showAndWait();
                         }
                     }
                     //debug
                     else if (keyEvent.getCode().equals(KeyCode.N)){
                         model.createTile(2048);
                     }
-                } else {
-                    lostAlert.showAndWait();
                 }
                 //update the actual view
                 updateView();
@@ -134,4 +128,6 @@ public class GamePresenter {
             System.out.println(" ");
         }
     }
-    }
+
+
+}
