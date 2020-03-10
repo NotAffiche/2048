@@ -53,7 +53,7 @@ public class Game {
     //METHODS
     void startGame() {
         setState(Gamestate.ONGOING);
-        //init game with 1st tile
+        //init game with 1st&2nd tile
         generateTile();
         generateTile();
     }
@@ -305,7 +305,7 @@ public class Game {
     private boolean tileExists(int x, int y) {
         return grid[x][y] != null;
     }
-    private void attemptGameEnd() {
+    public void attemptGameEnd() {
         //won game
         if (found2048()) {
             setState(Gamestate.FINISHED);
@@ -367,9 +367,7 @@ public class Game {
             moveTiles(d);
             return true;
         }
-        if (!anyMovesLeft()) {
-            return false;
-        }
-        return true;
+        attemptGameEnd();
+        return anyMovesLeft();
     }
 }
