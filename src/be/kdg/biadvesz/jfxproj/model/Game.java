@@ -367,6 +367,9 @@ public class Game {
             moveTiles(d);
             return true;
         }
-        return false;
+        if (!anyMovesLeft()) {
+            return false;
+        }
+        return true;
     }
 }
