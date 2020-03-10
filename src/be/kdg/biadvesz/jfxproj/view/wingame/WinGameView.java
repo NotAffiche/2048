@@ -18,9 +18,7 @@ public class WinGameView extends BorderPane {
     private Button btContinue;
     private Button btExitGame;
     private Button btRestart;
-    private Image imContinue;
-    private Image imRestart;
-    private Image imExit;
+
 
     //GET
     public Button getBtContinue() {
@@ -60,11 +58,8 @@ public class WinGameView extends BorderPane {
         //HBOXES
         HBox hboxTitle = new HBox();
         HBox hboxText = new HBox();
-        HBox hbbuttons = new HBox();
+        HBox hbbuttons = new HBox(12);
 
-
-
-        hbbuttons.setAlignment(Pos.BOTTOM_CENTER);
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -96,9 +91,16 @@ public class WinGameView extends BorderPane {
         btContinue.setPadding(new Insets(12, 30, 12, 30));
         btExitGame.setPadding(new Insets(12, 30, 12, 30));
 
-        btExitGame.setMinWidth(100);
-        btContinue.setMinWidth(100);
-        btRestart.setMinWidth(100);
+        btExitGame.setMinWidth(125);
+        btContinue.setMinWidth(125);
+        btRestart.setMinWidth(125);
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //COLORS
+        btExitGame.setStyle("-fx-background-color: bisque");
+        btContinue.setStyle("-fx-background-color: bisque");
+        btRestart.setStyle("-fx-background-color: bisque");
+
+
 
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -111,6 +113,7 @@ public class WinGameView extends BorderPane {
 
         //POSITIONS
         hboxTitle.setAlignment(Pos.TOP_CENTER);
+        hbbuttons.setAlignment(Pos.BOTTOM_CENTER);
         mainBox.setAlignment(Pos.CENTER);
 
 
