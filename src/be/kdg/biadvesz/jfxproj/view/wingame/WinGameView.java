@@ -60,23 +60,20 @@ public class WinGameView extends BorderPane {
         //HBOXES
         HBox hboxTitle = new HBox();
         HBox hboxText = new HBox();
-        HBox hbbutton1 = new HBox();
-        HBox hbbutton2 = new HBox();
-        HBox hbbutton3 = new HBox();
+        HBox hbbuttons = new HBox();
 
 
-        hbbutton1.setAlignment(Pos.CENTER);
-        hbbutton2.setAlignment(Pos.CENTER);
-        hbbutton3.setAlignment(Pos.CENTER);
+
+        hbbuttons.setAlignment(Pos.BOTTOM_CENTER);
+
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
         //ADD TO HBOX
         hboxTitle.getChildren().add(lblWon);
         hboxText.getChildren().add(lblText);
-        hbbutton1.getChildren().add(btExitGame);
-        hbbutton2.getChildren().add(btContinue);
-        hbbutton3.getChildren().add(btRestart);
+        hbbuttons.getChildren().addAll(btExitGame,btContinue,btRestart);
+
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         //FONTS
@@ -92,25 +89,25 @@ public class WinGameView extends BorderPane {
         lblWon.setPadding(new Insets(40, 0, 0, 0));
         lblText.setPadding(new Insets(0, 0, 0, 0));
 
-        hbbutton1.setPadding(new Insets(0, 0, 10, 0));
-        hbbutton2.setPadding(new Insets(0, 0, 10, 0));
-        hbbutton3.setPadding(new Insets(0, 0, 10, 0));
+        hbbuttons.setPadding(new Insets(0, 0, 10, 0));
+
 
         btRestart.setPadding(new Insets(12, 30, 12, 30));
         btContinue.setPadding(new Insets(12, 30, 12, 30));
         btExitGame.setPadding(new Insets(12, 30, 12, 30));
 
-        btExitGame.setMinWidth(175);
-        btContinue.setMinWidth(175);
-        btRestart.setMinWidth(175);
+        btExitGame.setMinWidth(100);
+        btContinue.setMinWidth(100);
+        btRestart.setMinWidth(100);
+
+
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         //VBOX
         VBox mainBox = new VBox();
         mainBox.setPadding(new Insets(10));
-        mainBox.getChildren().addAll(lblText);
-        VBox buttons = new VBox();
-        buttons.getChildren().addAll(hbbutton1, hbbutton2, hbbutton3);
+        mainBox.getChildren().addAll(lblText,hbbuttons);
+
 
         //POSITIONS
         hboxTitle.setAlignment(Pos.TOP_CENTER);
@@ -120,7 +117,7 @@ public class WinGameView extends BorderPane {
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         super.setTop(hboxTitle);
         super.setCenter(mainBox);
-        super.setBottom(buttons);
+        super.setBottom(hbbuttons);
         super.setBackground(new Background(new BackgroundFill(Color.rgb(250, 248, 239), CornerRadii.EMPTY, Insets.EMPTY)));
 
 
