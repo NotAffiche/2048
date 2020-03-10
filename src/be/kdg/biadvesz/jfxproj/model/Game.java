@@ -6,7 +6,6 @@ import be.kdg.biadvesz.jfxproj.model.enums.Gamestate;
 import be.kdg.biadvesz.jfxproj.model.helpers.FileHelper;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class Game {
     //ATTRIB
@@ -17,9 +16,6 @@ public class Game {
     private Random rndm;
     private String playername;
     private Gamestate state;
-
-
-
 
     //GET & SET
     public int getScore() { return score; }
@@ -47,8 +43,6 @@ public class Game {
         setPlayername(playername);
         startGame();
     }
-
-    private Scanner scanner = new Scanner(System.in);
 
     //METHODS
     void startGame() {
