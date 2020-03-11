@@ -6,7 +6,6 @@ import be.kdg.biadvesz.jfxproj.model.enums.Gamestate;
 import be.kdg.biadvesz.jfxproj.model.helpers.FileHelper;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class Game {
     //ATTRIB
@@ -45,28 +44,22 @@ public class Game {
         startGame();
     }
 
-    private Scanner scanner = new Scanner(System.in);
-
     //METHODS
     void startGame() {
         setState(Gamestate.ONGOING);
-        //init game with 1st tile
+        //init game with 1st&2nd tile
         generateTile();
         generateTile();
     }
 
     public void endGame() {
         setState(Gamestate.FINISHED);
-        saveHighscore();
-    }
-
-    private void saveHighscore() {
         FileHelper.saveScore(getPlayername(), getScore());
     }
 
     public void moveTiles(Direction d) {
+        attemptGameEnd();
         boolean mergedOnceAlready = false;
-        boolean canGenTile = true;
         switch (d) {
             case UP:
                 for (int row=0;row<grid.length;row++) { // top to bottom
@@ -79,6 +72,7 @@ public class Game {
                                     grid[t.getPositionX()][t.getPositionY()] = null;
                                     t.setPositionX(t.getPositionX()-1);
                                     grid[t.getPositionX()][t.getPositionY()] = t;
+
                                 } else {
                                     if (!mergedOnceAlready) {
                                         other.valueChange(t);
@@ -90,7 +84,6 @@ public class Game {
                                         t.setPositionX(t.getPositionX()-1);
                                         grid[t.getPositionX()][t.getPositionY()] = t;
                                     }
-                                    break;
                                 }
                             } catch (Exception ex) {
                                 throw ex;
@@ -99,7 +92,6 @@ public class Game {
                         mergedOnceAlready=false;
                     }
                 }
-                generateTile();
                 break;
             case RIGHT:
                 for (int row=0;row<grid.length;row++) { // top to bottom
@@ -123,7 +115,6 @@ public class Game {
                                         t.setPositionY(t.getPositionY()+1);
                                         grid[t.getPositionX()][t.getPositionY()] = t;
                                     }
-                                    break;
                                 }
                             } catch (Exception ex) {
                                 throw ex;
@@ -132,7 +123,6 @@ public class Game {
                         mergedOnceAlready=false;
                     }
                 }
-                generateTile();
                 break;
             case DOWN:
                 for (int row=gridSize-1;row>=0;row--) { // bottom to top
@@ -156,7 +146,6 @@ public class Game {
                                         t.setPositionX(t.getPositionX()+1);
                                         grid[t.getPositionX()][t.getPositionY()] = t;
                                     }
-                                    break;
                                 }
                             } catch (Exception ex) {
                                 throw ex;
@@ -165,7 +154,6 @@ public class Game {
                         mergedOnceAlready=false;
                     }
                 }
-                generateTile();
                 break;
             case LEFT:
                 for (int row=0;row<grid.length;row++) { // top to bottom
@@ -189,7 +177,6 @@ public class Game {
                                         t.setPositionY(t.getPositionY()-1);
                                         grid[t.getPositionX()][t.getPositionY()] = t;
                                     }
-                                    break;
                                 }
                             } catch (Exception ex) {
                                 throw ex;
@@ -198,13 +185,14 @@ public class Game {
                         mergedOnceAlready=false;
                     }
                 }
-                generateTile();
                 break;
             default:
                 System.out.println("Invalid input :/");
                 break;
         }
-        attemptGameEnd();
+        if (anyMovesLeft()) {
+            generateTile();
+        }
     }
 
     private boolean canTileMove(Tile t, Direction d) {
@@ -293,11 +281,6 @@ public class Game {
         }
         return (count==Math.pow(gridSize,2));
     }
-
-    private boolean areMovesPossible() {
-
-        return false;
-    }
     private void generateTile() {
         int x = rndm.nextInt(gridSize);
         int y = rndm.nextInt(gridSize);
@@ -313,23 +296,72 @@ public class Game {
             grid[x][y] = new Tile(4, x, y, Color.FOUR);
         }
     }
-
     private boolean tileExists(int x, int y) {
         return grid[x][y] != null;
     }
-
-    private void attemptGameEnd() {
-        boolean arePossibleMoves = false;
+    public void attemptGameEnd() {
+        //won game
+        if (found2048()) {
+            setState(Gamestate.FINISHED);
+        }
+        //lost game
+        if (isGridFull() && !anyMovesLeft()) {
+            setState(Gamestate.FINISHED);
+            System.out.println("game over");
+        }
+    }
+    private boolean anyMovesLeft() {
+        boolean movesLeft = false;
         for (Tile[] rows : grid) {
             for (Tile t : rows) {
-                if (canTileMove(t, Direction.UP)) arePossibleMoves=true;
-                if (canTileMove(t, Direction.UP)) arePossibleMoves=true;
-                if (canTileMove(t, Direction.UP)) arePossibleMoves=true;
-                if (canTileMove(t, Direction.UP)) arePossibleMoves=true;
+                if (canTileMove(t, Direction.UP) || canTileMove(t, Direction.RIGHT) || canTileMove(t, Direction.DOWN) || canTileMove(t, Direction.LEFT)) {
+                    movesLeft=true;
+                }
             }
         }
-        if (!arePossibleMoves &&isGridFull()){//check if no moves possible + board full
-            System.out.println("game end");
+        return movesLeft;
+    }
+    private boolean anyMovesLeft(Direction d) {
+        boolean movesLeft = false;
+        for (Tile[] rows : grid) {
+            for (Tile t : rows) {
+                if (canTileMove(t, d)) {
+                    movesLeft=true;
+                }
+            }
         }
+        return movesLeft;
+    }
+    public boolean found2048() {
+        for (Tile[] row : grid) {
+            for (Tile t : row) {
+                if (t!=null) {
+                    if (t.getValue()==2048) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    //debug create tile
+    public void createTile(int value) {
+        int x = rndm.nextInt(gridSize);
+        int y = rndm.nextInt(gridSize);
+
+        while (tileExists(x, y)) {
+            x = rndm.nextInt(gridSize);
+            y = rndm.nextInt(gridSize);
+        }
+        grid[x][y] = new Tile(value, x, y, Color.MOST);
+    }
+
+    public boolean tryMove(Direction d) {
+        if (anyMovesLeft(d)) {
+            moveTiles(d);
+            return true;
+        }
+        attemptGameEnd();
+        return anyMovesLeft();
     }
 }

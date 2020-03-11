@@ -5,6 +5,7 @@ import be.kdg.biadvesz.jfxproj.model.Lobby;
 import be.kdg.biadvesz.jfxproj.model.Tile;
 import be.kdg.biadvesz.jfxproj.model.WinGame;
 import be.kdg.biadvesz.jfxproj.model.enums.Direction;
+import be.kdg.biadvesz.jfxproj.model.enums.Gamestate;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyPresenter;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyView;
 import be.kdg.biadvesz.jfxproj.view.wingame.WinGamePresenter;
@@ -53,20 +54,40 @@ public class GamePresenter {
         view.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
-                if (keyEvent.getCode().equals(KeyCode.UP)) {
-                    model.moveTiles(Direction.UP);
-                } else if (keyEvent.getCode().equals(KeyCode.DOWN)) {
-                    model.moveTiles(Direction.DOWN);
-                } else if (keyEvent.getCode().equals(KeyCode.LEFT)) {
-                    model.moveTiles(Direction.LEFT);
-                } else if (keyEvent.getCode().equals(KeyCode.RIGHT)){
-                    model.moveTiles(Direction.RIGHT);
+                Alert lostAlert = new Alert(Alert.AlertType.WARNING);
+                lostAlert.setHeaderText("LOST");
+                if (model.getState().equals(Gamestate.ONGOING)) {
+                    if (keyEvent.getCode().equals(KeyCode.UP)) {
+                        if (!model.tryMove(Direction.UP)) {
+                            keyEvent.consume();
+//                        lostAlert.showAndWait();
+                        }
+                    } else if (keyEvent.getCode().equals(KeyCode.DOWN)) {
+                        if (!model.tryMove(Direction.DOWN)) {
+                            keyEvent.consume();
+//                        lostAlert.showAndWait();
+                        }
+                    } else if (keyEvent.getCode().equals(KeyCode.LEFT)) {
+                        if (!model.tryMove(Direction.LEFT)) {
+                            keyEvent.consume();
+//                        lostAlert.showAndWait();
+                        }
+                    } else if (keyEvent.getCode().equals(KeyCode.RIGHT)){
+                        if (!model.tryMove(Direction.RIGHT)) {
+                            keyEvent.consume();
+//                        lostAlert.showAndWait();
+                        }
+                    }
+                    //debug
+                    else if (keyEvent.getCode().equals(KeyCode.N)){
+                        model.createTile(2048);
+                    }
+                } else {
+                    lostAlert.showAndWait();
                 }
-                //debug
-                else if (keyEvent.getCode().equals(KeyCode.N)){
-                    model.createTile(2048);
-                }
+                //update the actual view
                 updateView();
+                model.attemptGameEnd();
             }
         });
     }
