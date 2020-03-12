@@ -77,8 +77,8 @@ public class LobbyView extends BorderPane {
 
     private void layoutNodes() {
         super.setPadding(new Insets(10));
-        lblName.setStyle("-fx-font-size: 70px;");
-        lblName.setPadding(new Insets(10));
+        lblName.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 55));
+        lblName.setPadding(new Insets(40,10,10,10));
 
 
         HBox hboxTitle = new HBox();
