@@ -38,20 +38,7 @@ public class LobbyView extends BorderPane {
         return bPlay;
     }
 
-    //SET
-    public void setLblName(Label lblName) { this.lblName = lblName; }
-    public void setTfName(TextField tfName) {
-        this.tfName = tfName;
-    }
-    public void setbHowTo(Button bHowTo) {
-        this.bHowTo = bHowTo;
-    }
-    public void setbHighscores(Button bHighscores) {
-        this.bHighscores = bHighscores;
-    }
-    public void setbPlay(Button bPlay) {
-        this.bPlay = bPlay;
-    }
+
 
     //CTOR
     public LobbyView() {
@@ -68,7 +55,6 @@ public class LobbyView extends BorderPane {
         tfName = new TextField();
         tfName.setTooltip(new Tooltip("Playername"));
         tfName.setPromptText("Playername...");
-
         bHowTo = new Button("How To Play");
         bHighscores = new Button("Highscores");
         bPlay = new Button("Play");
