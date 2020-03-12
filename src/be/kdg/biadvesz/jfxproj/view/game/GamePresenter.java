@@ -10,6 +10,7 @@ import be.kdg.biadvesz.jfxproj.view.lobby.LobbyPresenter;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyView;
 import be.kdg.biadvesz.jfxproj.view.wingame.WinGamePresenter;
 import be.kdg.biadvesz.jfxproj.view.wingame.WinGameView;
+import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -19,6 +20,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.layout.Background;
+import javafx.util.Duration;
 
 public class GamePresenter {
     //ATTRIB
@@ -61,22 +63,18 @@ public class GamePresenter {
                     if (keyEvent.getCode().equals(KeyCode.UP)) {
                         if (!model.tryMove(Direction.UP)) {
                             keyEvent.consume();
-//                        lostAlert.showAndWait();
                         }
                     } else if (keyEvent.getCode().equals(KeyCode.DOWN)) {
                         if (!model.tryMove(Direction.DOWN)) {
                             keyEvent.consume();
-//                        lostAlert.showAndWait();
                         }
                     } else if (keyEvent.getCode().equals(KeyCode.LEFT)) {
                         if (!model.tryMove(Direction.LEFT)) {
                             keyEvent.consume();
-//                        lostAlert.showAndWait();
                         }
                     } else if (keyEvent.getCode().equals(KeyCode.RIGHT)){
                         if (!model.tryMove(Direction.RIGHT)) {
                             keyEvent.consume();
-//                        lostAlert.showAndWait();
                         }
                     }
                     //debug
