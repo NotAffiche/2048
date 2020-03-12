@@ -90,8 +90,8 @@ public class LoseGameView extends BorderPane {
         btRestart.setMinWidth(150);
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //COLORS
-        btExitGame.setStyle("-fx-background-color: bisque");
-        btRestart.setStyle("-fx-background-color: bisque");
+        btExitGame.setStyle("-fx-background-color: rgb(250, 211, 102)");
+        btRestart.setStyle("-fx-background-color: rgb(250, 211, 102)");
 
 
 

@@ -120,6 +120,9 @@ public class LobbyView extends BorderPane {
 
         //colors
         super.setBackground(new Background(new BackgroundFill(Color.rgb(250, 248, 239), CornerRadii.EMPTY, Insets.EMPTY)));
+        bHighscores.setStyle("-fx-background-color: rgb(250, 211, 102)");
+        bHowTo.setStyle("-fx-background-color: rgb(250, 211, 102)");
+        bPlay.setStyle("-fx-background-color: rgb(250, 211, 102)");
 
         //fonts
         bPlay.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));

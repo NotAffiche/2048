@@ -1,11 +1,6 @@
 package be.kdg.biadvesz.jfxproj.view.wingame;
 
-import be.kdg.biadvesz.jfxproj.model.Lobby;
 import be.kdg.biadvesz.jfxproj.model.WinGame;
-import be.kdg.biadvesz.jfxproj.view.lobby.LobbyPresenter;
-import be.kdg.biadvesz.jfxproj.view.lobby.LobbyView;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 
 public class WinGamePresenter {
     //ATTRIB
