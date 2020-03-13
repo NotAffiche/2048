@@ -20,7 +20,6 @@ public class HighscorePresenter {
         addEventHandlers();
     }
 
-
     private void addEventHandlers() {
         view.getBgoback().setOnAction(new EventHandler<ActionEvent>() {
             @Override

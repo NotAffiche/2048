@@ -39,8 +39,8 @@ public class LoseGameView extends BorderPane {
 
     private void initNodes() {
         //LABELS
-        lblWon = new Label("Game over.");
-        lblText = new Label("Unfortunately, you are a loser! You lost 2048.");
+        lblWon = new Label("Game over");
+        lblText = new Label("Unfortunately, you are a loser!\nYou lost 2048.");
 
         btExitGame = new Button("exit");
         btRestart = new Button("restart");
