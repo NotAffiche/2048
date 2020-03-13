@@ -13,34 +13,34 @@ public class LoseGamePresenter {
     private LoseGame model;
     private LoseGameView view;
 
-    public LoseGamePresenter(LoseGame model, WinGameView vieAw) {
+    public LoseGamePresenter(LoseGame model, LoseGameView vieAw) {
         this.model = model;
         this.view = view;
         addEventHandlers();
     }
 
     private void addEventHandlers() {
-        view.getBtExitGame().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                //TODO
-                //GAME AFSLUTEN
-
-                Lobby lobbymodel = new Lobby();
-                LobbyView lobbyView = new LobbyView();
-                lobbymodel.setPlayerName(model.getPlayerName());
-                LobbyPresenter lobbyPresenter = new LobbyPresenter(lobbymodel, lobbyView);
-                view.getScene().setRoot(lobbyView);
-
-            }
-        });
-        view.getBtRestart().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                //TODO
-                //NIEUW GAME STARTEN
-
-            }
-        });
+//        view.getBtExitGame().setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent actionEvent) {
+//                //TODO
+//                //GAME AFSLUTEN
+//
+//                Lobby lobbymodel = new Lobby();
+//                LobbyView lobbyView = new LobbyView();
+//                lobbymodel.setPlayerName(model.getPlayerName());
+//                LobbyPresenter lobbyPresenter = new LobbyPresenter(lobbymodel, lobbyView);
+//                view.getScene().setRoot(lobbyView);
+//
+//            }
+//        });
+//        view.getBtRestart().setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent actionEvent) {
+//                //TODO
+//                //NIEUW GAME STARTEN
+//
+//            }
+//        });
     }
 }

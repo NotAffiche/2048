@@ -1,13 +1,12 @@
 package be.kdg.biadvesz.jfxproj.view.game;
 
-import be.kdg.biadvesz.jfxproj.model.Game;
-import be.kdg.biadvesz.jfxproj.model.Lobby;
-import be.kdg.biadvesz.jfxproj.model.Tile;
-import be.kdg.biadvesz.jfxproj.model.WinGame;
+import be.kdg.biadvesz.jfxproj.model.*;
 import be.kdg.biadvesz.jfxproj.model.enums.Direction;
 import be.kdg.biadvesz.jfxproj.model.enums.Gamestate;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyPresenter;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyView;
+import be.kdg.biadvesz.jfxproj.view.losegame.LoseGamePresenter;
+import be.kdg.biadvesz.jfxproj.view.losegame.LoseGameView;
 import be.kdg.biadvesz.jfxproj.view.wingame.WinGamePresenter;
 import be.kdg.biadvesz.jfxproj.view.wingame.WinGameView;
 import javafx.animation.Animation;
@@ -57,8 +56,6 @@ public class GamePresenter {
         view.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
-                Alert lostAlert = new Alert(Alert.AlertType.WARNING);
-                lostAlert.setHeaderText("LOST");
                 if (model.getState().equals(Gamestate.ONGOING)) {
                     if (keyEvent.getCode().equals(KeyCode.UP)) {
                         if (!model.tryMove(Direction.UP)) {
@@ -86,7 +83,10 @@ public class GamePresenter {
                 updateView();
                 model.attemptGameEnd();
                 if (model.getState().equals(Gamestate.FINISHED)) {
-                    lostAlert.showAndWait();
+                    LoseGame loseGame = new LoseGame(model.getPlayername());
+                    LoseGameView loseGameView = new LoseGameView();
+                    LoseGamePresenter loseGamePresenter = new LoseGamePresenter(loseGame, loseGameView);
+                    view.getScene().setRoot(loseGameView);
                 }
             }
         });
