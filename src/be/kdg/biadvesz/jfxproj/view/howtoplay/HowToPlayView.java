@@ -89,5 +89,7 @@ public class HowToPlayView extends BorderPane {
         super.setCenter(mainBox);
         super.setBottom(bGoBack);
         super.setBackground(new Background(new BackgroundFill(Color.rgb(250, 248, 239), CornerRadii.EMPTY, Insets.EMPTY)));
+        bGoBack.setStyle("-fx-background-color: rgb(250, 211, 102)");
+
     }
 }

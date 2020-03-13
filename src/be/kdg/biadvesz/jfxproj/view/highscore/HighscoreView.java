@@ -92,5 +92,7 @@ public class HighscoreView extends BorderPane {
 
         //BACKGROUND
         super.setBackground(new Background(new BackgroundFill(Color.rgb(250, 248, 239), CornerRadii.EMPTY, Insets.EMPTY)));
+        bgoback.setStyle("-fx-background-color: rgb(250, 211, 102)");
+
     }
 }

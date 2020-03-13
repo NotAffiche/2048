@@ -10,6 +10,8 @@ import be.kdg.biadvesz.jfxproj.view.lobby.LobbyPresenter;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyView;
 import be.kdg.biadvesz.jfxproj.view.wingame.WinGamePresenter;
 import be.kdg.biadvesz.jfxproj.view.wingame.WinGameView;
+import javafx.animation.Animation;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -18,6 +20,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.layout.Background;
+import javafx.util.Duration;
 
 public class GamePresenter {
     //ATTRIB
@@ -82,6 +85,9 @@ public class GamePresenter {
                 //update the actual view
                 updateView();
                 model.attemptGameEnd();
+                if (model.getState().equals(Gamestate.FINISHED)) {
+                    lostAlert.showAndWait();
+                }
             }
         });
     }

@@ -17,10 +17,10 @@ public class LoseGameView extends BorderPane {
     private Label lblText;
     private Button btExitGame;
     private Button btRestart;
-    private Image imRestart;
-    private Image imExit;
+
 
     //GET
+
     public Button getBtExitGame() {
         return btExitGame;
     }
@@ -39,16 +39,11 @@ public class LoseGameView extends BorderPane {
 
     private void initNodes() {
         //LABELS
-        lblWon = new Label("You lose");
-        lblText = new Label("sorry, you've lost the game");
-        //IMAGES
+        lblWon = new Label("Congratulations");
+        lblText = new Label("Congratulations, you have won 2048!");
 
-        imExit = new Image(getClass().getResourceAsStream("exit.png"));
-        imRestart = new Image(getClass().getResourceAsStream("restart.jpg"));
-        //BUTTONS
-
-        btExitGame = new Button("", new ImageView(imExit));
-        btRestart = new Button("", new ImageView(imRestart));
+        btExitGame = new Button("exit");
+        btRestart = new Button("restart");
     }
 
     private void layoutNodes() {
@@ -58,41 +53,69 @@ public class LoseGameView extends BorderPane {
         //HBOXES
         HBox hboxTitle = new HBox();
         HBox hboxText = new HBox();
-        HBox hboxRestart = new HBox();
-        HBox hboxContinue = new HBox();
-        HBox hboxExit = new HBox();
+        HBox hbbuttons = new HBox(12);
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
         //ADD TO HBOX
         hboxTitle.getChildren().add(lblWon);
         hboxText.getChildren().add(lblText);
-        hboxRestart.getChildren().add(btRestart);
-        hboxExit.getChildren().add(btExitGame);
+        hbbuttons.getChildren().addAll(btExitGame,btRestart);
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         //FONTS
-        lblWon.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 62));
-        lblText.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));
+        lblWon.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 50));
+        lblText.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 17));
+
+        btRestart.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 15));
+        btExitGame.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 15));
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         //PADDINGS
-        lblText.setPadding(new Insets(40, 0, 0, 0));
-        lblWon.setPadding(new Insets(10, 0, 0, 0));
+
+        lblWon.setPadding(new Insets(40, 0, 0, 0));
+        lblText.setPadding(new Insets(0, 0, 0, 0));
+
+        hbbuttons.setPadding(new Insets(0, 0, 10, 0));
 
 
-        //CEATE VBOX
-        VBox mainbox = new VBox();
-        mainbox.setPadding(new Insets(10));
-        mainbox.getChildren().addAll(lblWon, lblText, btRestart, btExitGame);
+        btRestart.setPadding(new Insets(12, 30, 12, 30));
+
+        btExitGame.setPadding(new Insets(12, 30, 12, 30));
+
+        btExitGame.setMinWidth(150);
+        btRestart.setMinWidth(150);
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //COLORS
+        btExitGame.setStyle("-fx-background-color: rgb(250, 211, 102)");
+        btRestart.setStyle("-fx-background-color: rgb(250, 211, 102)");
+
+
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        //VBOX
+        VBox mainBox = new VBox();
+        mainBox.setPadding(new Insets(10));
+        mainBox.getChildren().addAll(lblText,hbbuttons);
+
 
         //POSITIONS
         hboxTitle.setAlignment(Pos.TOP_CENTER);
-        hboxText.setAlignment(Pos.CENTER);
-        hboxRestart.setAlignment(Pos.BOTTOM_LEFT);
-        hboxContinue.setAlignment(Pos.BOTTOM_CENTER);
-        hboxExit.setAlignment(Pos.BOTTOM_RIGHT);
+        hbbuttons.setAlignment(Pos.BOTTOM_CENTER);
+        mainBox.setAlignment(Pos.CENTER);
 
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         super.setTop(hboxTitle);
-        super.setCenter(mainbox);
-
-
+        super.setCenter(mainBox);
+        super.setBottom(hbbuttons);
         super.setBackground(new Background(new BackgroundFill(Color.rgb(250, 248, 239), CornerRadii.EMPTY, Insets.EMPTY)));
+
+
     }
 }

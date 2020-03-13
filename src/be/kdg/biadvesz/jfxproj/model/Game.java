@@ -47,6 +47,12 @@ public class Game {
     //METHODS
     void startGame() {
         setState(Gamestate.ONGOING);
+//        Tile t1 = new Tile(2, 1, 1, Color.TWO);
+//        Tile t2 = new Tile(2, 2, 2, Color.TWO);
+//        Tile t3 = new Tile(4, 3, 3, Color.FOUR);
+//        this.grid[t1.getPositionX()][t1.getPositionY()]=t1;
+//        this.grid[t2.getPositionX()][t2.getPositionY()]=t2;
+//        this.grid[t3.getPositionX()][t3.getPositionY()]=t3;
         //init game with 1st&2nd tile
         generateTile();
         generateTile();
@@ -303,13 +309,12 @@ public class Game {
         //won game
         if (found2048()) {
             setState(Gamestate.FINISHED);
+            System.out.println("game over -> won");
         }
         //lost game
         if (isGridFull() && !anyMovesLeft()) {
             setState(Gamestate.FINISHED);
-            System.out.println("game over");
-            //TODO
-            // fire event that will notify presenter AT CORRECT TIME that game is over
+            System.out.println("game over -> lost");
         }
     }
     private boolean anyMovesLeft() {

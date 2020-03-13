@@ -38,20 +38,7 @@ public class LobbyView extends BorderPane {
         return bPlay;
     }
 
-    //SET
-    public void setLblName(Label lblName) { this.lblName = lblName; }
-    public void setTfName(TextField tfName) {
-        this.tfName = tfName;
-    }
-    public void setbHowTo(Button bHowTo) {
-        this.bHowTo = bHowTo;
-    }
-    public void setbHighscores(Button bHighscores) {
-        this.bHighscores = bHighscores;
-    }
-    public void setbPlay(Button bPlay) {
-        this.bPlay = bPlay;
-    }
+
 
     //CTOR
     public LobbyView() {
@@ -68,7 +55,6 @@ public class LobbyView extends BorderPane {
         tfName = new TextField();
         tfName.setTooltip(new Tooltip("Playername"));
         tfName.setPromptText("Playername...");
-
         bHowTo = new Button("How To Play");
         bHighscores = new Button("Highscores");
         bPlay = new Button("Play");
@@ -77,8 +63,8 @@ public class LobbyView extends BorderPane {
 
     private void layoutNodes() {
         super.setPadding(new Insets(10));
-        lblName.setStyle("-fx-font-size: 70px;");
-        lblName.setPadding(new Insets(10));
+        lblName.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 55));
+        lblName.setPadding(new Insets(40,10,10,10));
 
 
         HBox hboxTitle = new HBox();
@@ -120,6 +106,9 @@ public class LobbyView extends BorderPane {
 
         //colors
         super.setBackground(new Background(new BackgroundFill(Color.rgb(250, 248, 239), CornerRadii.EMPTY, Insets.EMPTY)));
+        bHighscores.setStyle("-fx-background-color: rgb(250, 211, 102)");
+        bHowTo.setStyle("-fx-background-color: rgb(250, 211, 102)");
+        bPlay.setStyle("-fx-background-color: rgb(250, 211, 102)");
 
         //fonts
         bPlay.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));

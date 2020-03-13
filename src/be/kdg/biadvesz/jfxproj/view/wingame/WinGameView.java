@@ -96,9 +96,9 @@ public class WinGameView extends BorderPane {
         btRestart.setMinWidth(125);
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //COLORS
-        btExitGame.setStyle("-fx-background-color: bisque");
-        btContinue.setStyle("-fx-background-color: bisque");
-        btRestart.setStyle("-fx-background-color: bisque");
+        btExitGame.setStyle("-fx-background-color: rgb(250, 211, 102)");
+        btContinue.setStyle("-fx-background-color: rgb(250, 211, 102)");
+        btRestart.setStyle("-fx-background-color: rgb(250, 211, 102)");
 
 
 
