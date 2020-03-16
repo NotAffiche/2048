@@ -36,54 +36,48 @@ public class GamePresenter {
 
     //METHODS
     private void addEventListeners() {
-        view.getBtLeave().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                //ends game
-                model.endGame();
-                //creates new screen
-                Lobby lModel = new Lobby();
-                lModel.setPlayerName(model.getPlayername());
-                LobbyView lView = new LobbyView();
-                LobbyPresenter lp = new LobbyPresenter(lModel, lView);
-                view.getScene().setRoot(lView);
-            }
+        view.getBtLeave().setOnAction(actionEvent ->  {
+            //ends game
+            model.endGame();
+            //creates new screen
+            Lobby lModel = new Lobby();
+            lModel.setPlayerName(model.getPlayername());
+            LobbyView lView = new LobbyView();
+            LobbyPresenter lp = new LobbyPresenter(lModel, lView);
+            view.getScene().setRoot(lView);
         });
     }
 
     public void addKeyEventHandlers() {
         view.requestFocus();
-        view.getScene().setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                if (model.getState().equals(Gamestate.ONGOING)) {
-                    if (keyEvent.getCode().equals(KeyCode.UP)) {
-                        if (!model.tryMove(Direction.UP)) {
-                            keyEvent.consume();
-                        }
-                    } else if (keyEvent.getCode().equals(KeyCode.DOWN)) {
-                        if (!model.tryMove(Direction.DOWN)) {
-                            keyEvent.consume();
-                        }
-                    } else if (keyEvent.getCode().equals(KeyCode.LEFT)) {
-                        if (!model.tryMove(Direction.LEFT)) {
-                            keyEvent.consume();
-                        }
-                    } else if (keyEvent.getCode().equals(KeyCode.RIGHT)){
-                        if (!model.tryMove(Direction.RIGHT)) {
-                            keyEvent.consume();
-                        }
+        view.getScene().setOnKeyPressed(keyEvent -> {
+            if (model.getState().equals(Gamestate.ONGOING)) {
+                if (keyEvent.getCode().equals(KeyCode.UP)) {
+                    if (!model.tryMove(Direction.UP)) {
+                        keyEvent.consume();
                     }
-                    //debug
-                    else if (keyEvent.getCode().equals(KeyCode.N)){
-                        model.createTile(2048);
+                } else if (keyEvent.getCode().equals(KeyCode.DOWN)) {
+                    if (!model.tryMove(Direction.DOWN)) {
+                        keyEvent.consume();
+                    }
+                } else if (keyEvent.getCode().equals(KeyCode.LEFT)) {
+                    if (!model.tryMove(Direction.LEFT)) {
+                        keyEvent.consume();
+                    }
+                } else if (keyEvent.getCode().equals(KeyCode.RIGHT)) {
+                    if (!model.tryMove(Direction.RIGHT)) {
+                        keyEvent.consume();
                     }
                 }
-                //try to end game
-                model.attemptGameEnd();
-                //update the actual view
-                updateView();
+                //debug
+                else if (keyEvent.getCode().equals(KeyCode.N)) {
+                    model.createTile(2048);
+                }
             }
+            //try to end game
+            model.attemptGameEnd();
+            //update the actual view
+            updateView();
         });
     }
         private void updateView () {
@@ -104,7 +98,7 @@ public class GamePresenter {
                     }
                 }
             }
-            view.getLblScore().setText("Score:\n" + Integer.toString(model.getScore()));
+            view.getLblScore().setText("Score:\n" + model.getScore());
             if (model.getState().equals(Gamestate.FINISHED)) {
                 if (model.found2048()) {//win
                     WinGame winGame = new WinGame(model.getPlayername());
