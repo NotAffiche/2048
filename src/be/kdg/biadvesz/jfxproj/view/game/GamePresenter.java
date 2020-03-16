@@ -127,15 +127,15 @@ public class GamePresenter {
 
     // temp debug roster
     private void drawRoster() {
-        for (Tile[] rows : model.getGrid()) {
-            for (Tile t : rows) {
-                try {
-                    System.out.printf("%d ", t.getValue());
-                } catch (Exception ex) {
-                    System.out.print("0 ");
-                }
-            }
-            System.out.println(" ");
-        }
+//        for (Tile[] rows : model.getGrid()) {
+//            for (Tile t : rows) {
+//                try {
+//                    System.out.printf("%d ", t.getValue());
+//                } catch (Exception ex) {
+//                    System.out.print("0 ");
+//                }
+//            }
+//            System.out.println(" ");
+//        }
     }
 }

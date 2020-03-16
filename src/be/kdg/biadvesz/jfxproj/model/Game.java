@@ -5,6 +5,7 @@ import be.kdg.biadvesz.jfxproj.model.enums.Direction;
 import be.kdg.biadvesz.jfxproj.model.enums.Gamestate;
 import be.kdg.biadvesz.jfxproj.model.helpers.FileHelper;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -17,7 +18,6 @@ public class Game {
     private Random rndm;
     private String playername;
     private Gamestate state;
-    private Tile[][] oldGrid;
 
     //GET & SET
     public int getScore() { return score; }
@@ -35,7 +35,6 @@ public class Game {
         this.playername = playername;
         this.gridSize = gridSize;
         this.grid = new Tile[getGridSize()][getGridSize()];
-        this.oldGrid = new Tile[getGridSize()][getGridSize()];
         rndm = new Random();
         setScore(0);
         startGame();
@@ -180,15 +179,6 @@ public class Game {
         if (anyMovesLeft()) {
             generateTile();
         }
-        //undo
-        System.out.println("---");
-        for (int row=0;row<grid.length;row++) {
-            for (int col=0;col<grid[row].length;col++) {
-                oldGrid[row][col]=grid[row][col];
-                System.out.print(oldGrid[row][col]);
-            }
-        }
-        System.out.println("---");
     }
 
     private boolean canTileMove(Tile t, Direction d) {
@@ -346,13 +336,6 @@ public class Game {
     }
 
     public void undo() {
-        System.out.println("---");
-        for (int row=0;row<oldGrid.length;row++) {
-            for (int col=0;col<oldGrid[row].length;col++) {
-                grid[row][col]=oldGrid[row][col];
-                System.out.println(grid[row][col]);
-            }
-        }
-        System.out.println("---");
+        //TODO
     }
 }
