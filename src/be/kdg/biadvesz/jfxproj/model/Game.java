@@ -181,11 +181,14 @@ public class Game {
             generateTile();
         }
         //undo
+        System.out.println("---");
         for (int row=0;row<grid.length;row++) {
             for (int col=0;col<grid[row].length;col++) {
                 oldGrid[row][col]=grid[row][col];
+                System.out.print(oldGrid[row][col]);
             }
         }
+        System.out.println("---");
     }
 
     private boolean canTileMove(Tile t, Direction d) {
@@ -343,10 +346,13 @@ public class Game {
     }
 
     public void undo() {
+        System.out.println("---");
         for (int row=0;row<oldGrid.length;row++) {
             for (int col=0;col<oldGrid[row].length;col++) {
                 grid[row][col]=oldGrid[row][col];
+                System.out.println(grid[row][col]);
             }
         }
+        System.out.println("---");
     }
 }
