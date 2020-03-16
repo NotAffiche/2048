@@ -24,12 +24,12 @@ public class Game {
     public void setHighscore(int highscore) { this.highscore = highscore; }
     public Tile[][] getGrid() { return grid; }
     private void setGrid(Tile[][] grid) { this.grid = grid; }
-    private int getGridSize() { return this.gridSize; }
+    public int getGridSize() { return this.gridSize; }
     private void setGridSize(int gridSize) { this.gridSize = gridSize; }
     public String getPlayername() { return this.playername; }
     private void setPlayername(String playername) { this.playername = playername; }
     public Gamestate getState() { return state; }
-    private void setState(Gamestate state) { this.state = state; }
+    public void setState(Gamestate state) { this.state = state; }
 
     //CTOR
     public Game(String playername, int gridSize) {
@@ -47,15 +47,15 @@ public class Game {
     //METHODS
     void startGame() {
         setState(Gamestate.ONGOING);
-//        Tile t1 = new Tile(2, 1, 1, Color.TWO);
-//        Tile t2 = new Tile(2, 2, 2, Color.TWO);
-//        Tile t3 = new Tile(4, 3, 3, Color.FOUR);
-//        this.grid[t1.getPositionX()][t1.getPositionY()]=t1;
-//        this.grid[t2.getPositionX()][t2.getPositionY()]=t2;
-//        this.grid[t3.getPositionX()][t3.getPositionY()]=t3;
+        Tile t1 = new Tile(2, 1, 1, Color.TWO);
+        Tile t2 = new Tile(2, 2, 2, Color.TWO);
+        Tile t3 = new Tile(4, 3, 3, Color.FOUR);
+        this.grid[t1.getPositionX()][t1.getPositionY()]=t1;
+        this.grid[t2.getPositionX()][t2.getPositionY()]=t2;
+        this.grid[t3.getPositionX()][t3.getPositionY()]=t3;
         //init game with 1st&2nd tile
-        generateTile();
-        generateTile();
+//        generateTile();
+//        generateTile();
     }
 
     public void endGame() {
@@ -72,7 +72,7 @@ public class Game {
                     for (int col=0;col<grid[row].length;col++) { // left to right
                         Tile t = grid[row][col];
                         while (canTileMove(t, d)) {
-                            try {
+//                            try {
                                 Tile other = grid[t.getPositionX()-1][t.getPositionY()];
                                 if (other==null) {
                                     grid[t.getPositionX()][t.getPositionY()] = null;
@@ -91,9 +91,9 @@ public class Game {
                                         grid[t.getPositionX()][t.getPositionY()] = t;
                                     }
                                 }
-                            } catch (Exception ex) {
-                                throw ex;
-                            }
+//                            } catch (Exception ex) {
+//                                throw ex;
+//                            }
                         }
                         mergedOnceAlready=false;
                     }
@@ -104,7 +104,7 @@ public class Game {
                     for (int col=gridSize-1;col>=0;col--) { // right to left
                         Tile t = grid[row][col];
                         while (canTileMove(t, d)) {
-                            try {
+//                            try {
                                 Tile other = grid[t.getPositionX()][t.getPositionY()+1];
                                 if (other==null) {
                                     grid[t.getPositionX()][t.getPositionY()] = null;
@@ -122,9 +122,9 @@ public class Game {
                                         grid[t.getPositionX()][t.getPositionY()] = t;
                                     }
                                 }
-                            } catch (Exception ex) {
-                                throw ex;
-                            }
+//                            } catch (Exception ex) {
+//                                throw ex;
+//                            }
                         }
                         mergedOnceAlready=false;
                     }
@@ -135,7 +135,7 @@ public class Game {
                     for (int col=0;col<grid[row].length;col++) { // left to right
                         Tile t = grid[row][col];
                         while (canTileMove(t, d)) {
-                            try {
+//                            try {
                                 Tile other = grid[t.getPositionX()+1][t.getPositionY()];
                                 if (other==null) {
                                     grid[t.getPositionX()][t.getPositionY()] = null;
@@ -153,9 +153,9 @@ public class Game {
                                         grid[t.getPositionX()][t.getPositionY()] = t;
                                     }
                                 }
-                            } catch (Exception ex) {
-                                throw ex;
-                            }
+//                            } catch (Exception ex) {
+//                                throw ex;
+//                            }
                         }
                         mergedOnceAlready=false;
                     }
@@ -166,7 +166,7 @@ public class Game {
                     for (int col=0;col<grid[row].length;col++) { // left to right
                         Tile t = grid[row][col];
                         while (canTileMove(t, d)) {
-                            try {
+//                            try {
                                 Tile other = grid[t.getPositionX()][t.getPositionY()-1];
                                 if (other==null) {
                                     grid[t.getPositionX()][t.getPositionY()] = null;
@@ -184,9 +184,9 @@ public class Game {
                                         grid[t.getPositionX()][t.getPositionY()] = t;
                                     }
                                 }
-                            } catch (Exception ex) {
-                                throw ex;
-                            }
+//                            } catch (Exception ex) {
+//                                throw ex;
+//                            }
                         }
                         mergedOnceAlready=false;
                     }
@@ -211,14 +211,14 @@ public class Game {
                 y = t.getPositionY();
                 if (x!=0) {
                     Tile other;
-                    try {
+//                    try {
                         other = grid[x-1][y];
                         if (other==null || t.getValue()==other.getValue()) {
                             return true;
                         }
-                    } catch (Exception ex) {
-                        throw ex;
-                    }
+//                    } catch (Exception ex) {
+//                        throw ex;
+//                    }
                 }
                 return false;
             case RIGHT:
@@ -227,14 +227,14 @@ public class Game {
                 y = t.getPositionY();
                 if (y!=(gridSize-1)) {
                     Tile other;
-                    try {
+//                    try {
                         other = grid[x][y+1];
                         if (other==null || t.getValue()==other.getValue()) {
                             return true;
                         }
-                    } catch (Exception ex) {
-                        throw ex;
-                    }
+//                    } catch (Exception ex) {
+//                        throw ex;
+//                    }
                 }
                 return false;
             case DOWN:
@@ -243,14 +243,14 @@ public class Game {
                 y = t.getPositionY();
                 if (x!=(gridSize-1)) {
                     Tile other;
-                    try {
+//                    try {
                         other = grid[x+1][y];
                         if (other==null || t.getValue()==other.getValue()) {
                             return true;
                         }
-                    } catch (Exception ex) {
-                        throw ex;
-                    }
+//                    } catch (Exception ex) {
+//                        throw ex;
+//                    }
                 }
                 return false;
             case LEFT:
@@ -259,14 +259,14 @@ public class Game {
                 y = t.getPositionY();
                 if (y!=0) {
                     Tile other;
-                    try {
+//                    try {
                         other = grid[x][y-1];
                         if (other==null || t.getValue()==other.getValue()) {
                             return true;
                         }
-                    } catch (Exception ex) {
-                        throw ex;
-                    }
+//                    } catch (Exception ex) {
+//                        throw ex;
+//                    }
                 }
                 return false;
             default:

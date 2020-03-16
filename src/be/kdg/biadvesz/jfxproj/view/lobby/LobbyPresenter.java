@@ -19,11 +19,13 @@ public class LobbyPresenter {
     //ATTRIB
     private Lobby model;
     private LobbyView view;
+    private int gridSize;
 
     //CTOR
     public LobbyPresenter(Lobby model, LobbyView view) {
         this.model = model;
         this.view = view;
+        gridSize=4;
         if (model.getPlayerName() != null) {
             view.getTfName().setText(model.getPlayerName());
             view.getbPlay().setDisable(false);
@@ -37,7 +39,6 @@ public class LobbyPresenter {
         view.getbPlay().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                int gridSize = 4;
                 GameView gameView = new GameView(gridSize);
                 Game gameModel = new Game(model.getPlayerName(), gridSize);
                 GamePresenter gamePresenter = new GamePresenter(gameModel, gameView);

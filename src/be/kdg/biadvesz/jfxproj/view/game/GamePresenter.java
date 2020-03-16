@@ -79,15 +79,10 @@ public class GamePresenter {
                         model.createTile(2048);
                     }
                 }
+                //try to end game
+                model.attemptGameEnd();
                 //update the actual view
                 updateView();
-                model.attemptGameEnd();
-                if (model.getState().equals(Gamestate.FINISHED)) {
-                    LoseGame loseGame = new LoseGame(model.getPlayername());
-                    LoseGameView loseGameView = new LoseGameView();
-                    LoseGamePresenter loseGamePresenter = new LoseGamePresenter(loseGame, loseGameView);
-                    view.getScene().setRoot(loseGameView);
-                }
             }
         });
     }
@@ -110,11 +105,19 @@ public class GamePresenter {
                 }
             }
             view.getLblScore().setText("Score:\n" + Integer.toString(model.getScore()));
-            if (model.found2048()) {
-                WinGame winGame = new WinGame(model.getPlayername());
-                WinGameView winGameView = new WinGameView();
-                WinGamePresenter winGamePresenter = new WinGamePresenter(winGame, winGameView);
-                view.getScene().setRoot(winGameView);
+            if (model.getState().equals(Gamestate.FINISHED)) {
+                if (model.found2048()) {//win
+                    WinGame winGame = new WinGame(model.getPlayername());
+                    WinGameView winGameView = new WinGameView();
+                    WinGamePresenter winGamePresenter = new WinGamePresenter(winGame, winGameView, model, view, this);
+                    view.getScene().setRoot(winGameView);
+                } else {//lose
+                    LoseGame loseGame = new LoseGame(model.getPlayername());
+                    LoseGameView loseGameView = new LoseGameView();
+                    LoseGamePresenter loseGamePresenter = new LoseGamePresenter(loseGame, loseGameView, model, view, this);
+                    view.getScene().setRoot(loseGameView);
+                    loseGamePresenter.addKeyEventHandlers();
+                }
             }
             //draw debug roster
             System.out.println(" ");
