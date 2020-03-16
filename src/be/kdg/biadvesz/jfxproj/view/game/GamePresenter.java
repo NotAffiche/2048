@@ -48,7 +48,9 @@ public class GamePresenter {
         });
         view.getBtUndo().setOnAction(actionEvent -> {
             model.undo();
-            System.out.println("undo executed");
+            view.getBtUndo().setDisable(true);
+            view.requestFocus();
+            updateView();
         });
     }
 
@@ -77,6 +79,7 @@ public class GamePresenter {
                 else if (keyEvent.getCode().equals(KeyCode.N)) {
                     model.createTile(2048);
                 }
+                view.getBtUndo().setDisable(false);
             }
             //try to end game
             model.attemptGameEnd();

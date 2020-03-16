@@ -43,6 +43,7 @@ public class GameView extends BorderPane {
         lblHighscore = new Label(String.format("Highscore: \n %7s","0"));
         btLeave = new Button("Leave");
         btUndo = new Button("Undo");
+        btUndo.setDisable(true);
         grid = new Label[gridSize][gridSize];
     }
 

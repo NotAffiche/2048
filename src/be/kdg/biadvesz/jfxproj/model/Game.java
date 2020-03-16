@@ -5,6 +5,7 @@ import be.kdg.biadvesz.jfxproj.model.enums.Direction;
 import be.kdg.biadvesz.jfxproj.model.enums.Gamestate;
 import be.kdg.biadvesz.jfxproj.model.helpers.FileHelper;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Game {
@@ -179,7 +180,12 @@ public class Game {
         if (anyMovesLeft()) {
             generateTile();
         }
-        this.oldGrid = this.grid.clone();
+        //undo
+        for (int row=0;row<grid.length;row++) {
+            for (int col=0;col<grid[row].length;col++) {
+                oldGrid[row][col]=grid[row][col];
+            }
+        }
     }
 
     private boolean canTileMove(Tile t, Direction d) {
@@ -337,6 +343,10 @@ public class Game {
     }
 
     public void undo() {
-        this.grid = this.oldGrid.clone();
+        for (int row=0;row<oldGrid.length;row++) {
+            for (int col=0;col<oldGrid[row].length;col++) {
+                grid[row][col]=oldGrid[row][col];
+            }
+        }
     }
 }
