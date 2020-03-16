@@ -46,6 +46,10 @@ public class GamePresenter {
             LobbyPresenter lp = new LobbyPresenter(lModel, lView);
             view.getScene().setRoot(lView);
         });
+        view.getBtUndo().setOnAction(actionEvent -> {
+            model.undo();
+            System.out.println("undo executed");
+        });
     }
 
     public void addKeyEventHandlers() {

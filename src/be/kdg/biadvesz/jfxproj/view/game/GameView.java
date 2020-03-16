@@ -17,6 +17,7 @@ public class GameView extends BorderPane {
     private Label lblScore;
     private Label lblHighscore;
     private Button btLeave;
+    private Button btUndo;
     private int gridSize;
     private Label[][] grid;
 
@@ -26,6 +27,7 @@ public class GameView extends BorderPane {
     }
     public Label[][] getGrid() { return grid; }
     public Label getLblScore() { return lblScore; }
+    public Button getBtUndo() { return btUndo; }
 
     //CTOR
     public GameView(int gridSize) {
@@ -40,6 +42,7 @@ public class GameView extends BorderPane {
         lblScore = new Label(String.format("Score: \n %4s","0"));
         lblHighscore = new Label(String.format("Highscore: \n %7s","0"));
         btLeave = new Button("Leave");
+        btUndo = new Button("Undo");
         grid = new Label[gridSize][gridSize];
     }
 
@@ -60,8 +63,11 @@ public class GameView extends BorderPane {
 
         BorderPane bpButtonSave = new BorderPane();
         bpButtonSave.setRight(btLeave);
+        bpButtonSave.setLeft(btUndo);
         btLeave.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 16));
         btLeave.setPadding(new Insets(12, 30, 12, 30));
+        btUndo.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 16));
+        btUndo.setPadding(new Insets(12, 30, 12, 30));
         super.setBottom(bpButtonSave);
 
         HBox hboxmidden = new HBox();

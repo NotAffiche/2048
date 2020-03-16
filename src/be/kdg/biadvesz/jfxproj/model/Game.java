@@ -16,49 +16,25 @@ public class Game {
     private Random rndm;
     private String playername;
     private Gamestate state;
+    private Tile[][] oldGrid;
 
     //GET & SET
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    public int getHighscore() {
-        return this.highscore;
-    }
-
-    public void setHighscore(int highscore) {
-        this.highscore = highscore;
-    }
-
-    public Tile[][] getGrid() {
-        return grid;
-    }
-
-    public int getGridSize() {
-        return this.gridSize;
-    }
-
-    public String getPlayername() {
-        return this.playername;
-    }
-
-    public Gamestate getState() {
-        return state;
-    }
-
-    public void setState(Gamestate state) {
-        this.state = state;
-    }
+    public int getScore() { return score; }
+    public void setScore(int score) { this.score = score; }
+    public int getHighscore() { return this.highscore; }
+    public void setHighscore(int highscore) { this.highscore = highscore; }
+    public Tile[][] getGrid() { return grid; }
+    public int getGridSize() { return this.gridSize; }
+    public String getPlayername() { return this.playername; }
+    public Gamestate getState() { return state; }
+    public void setState(Gamestate state) { this.state = state; }
 
     //CTOR
     public Game(String playername, int gridSize) {
         this.playername = playername;
         this.gridSize = gridSize;
         this.grid = new Tile[getGridSize()][getGridSize()];
+        this.oldGrid = new Tile[getGridSize()][getGridSize()];
         rndm = new Random();
         setScore(0);
         startGame();
@@ -203,6 +179,7 @@ public class Game {
         if (anyMovesLeft()) {
             generateTile();
         }
+        this.oldGrid = this.grid.clone();
     }
 
     private boolean canTileMove(Tile t, Direction d) {
@@ -357,5 +334,9 @@ public class Game {
         }
         attemptGameEnd();
         return anyMovesLeft();
+    }
+
+    public void undo() {
+        this.grid = this.oldGrid.clone();
     }
 }
