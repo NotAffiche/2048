@@ -17,22 +17,19 @@ public class LoseGameView extends BorderPane {
     private Label lblText;
     private Button btExitGame;
     private Button btRestart;
-
+    private int score;
 
     //GET
-
     public Button getBtExitGame() {
         return btExitGame;
     }
-
     public Button getBtRestart() {
         return btRestart;
     }
 
     //CTOR
-
-    public LoseGameView() {
-
+    public LoseGameView(int score) {
+        this.score = score;
         initNodes();
         layoutNodes();
     }
@@ -40,7 +37,7 @@ public class LoseGameView extends BorderPane {
     private void initNodes() {
         //LABELS
         lblWon = new Label("Game over");
-        lblText = new Label("Unfortunately, you are a loser!\nYou lost 2048.");
+        lblText = new Label("Unfortunately, you are a loser!\nYou lost 2048.\nFinal score: " + score);
 
         btExitGame = new Button("exit");
         btRestart = new Button("restart");
