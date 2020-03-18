@@ -87,7 +87,7 @@ public class GamePresenter {
             updateView();
         });
     }
-        private void updateView () {
+        public void updateView () {
             for (int row = 0; row < model.getGrid().length; row++) {
                 for (int col = 0; col < model.getGrid()[row].length; col++) {
                     Tile t = model.getGrid()[row][col];

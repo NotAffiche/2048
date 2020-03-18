@@ -85,7 +85,8 @@ public class GameView extends BorderPane {
             for (int col=0;col<grid[row].length;col++) {
                 Label lblTile = new Label();
                 grid[row][col] = lblTile;
-                lblTile.setMinSize(77, 77);
+                double size = 350/(gridSize+1);
+                lblTile.setMinSize(size, size);
                 gridPane.add(lblTile, row, col);
             }
         }

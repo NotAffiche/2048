@@ -21,6 +21,9 @@ public class LobbyPresenter {
     private LobbyView view;
     private int gridSize;
 
+    //GET
+    public int getGridSize() { return gridSize; }
+
     //CTOR
     public LobbyPresenter(Lobby model, LobbyView view) {
         this.model = model;
@@ -78,7 +81,6 @@ public class LobbyPresenter {
         view.getGridSizes().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println(view.getGridSizes().getValue());
                 gridSize=(Integer)view.getGridSizes().getValue();
             }
         });
