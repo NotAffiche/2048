@@ -73,20 +73,22 @@ public class GameView extends BorderPane {
 
         HBox hboxmidden = new HBox();
 
+        int gridPaneSize = 350;
+
         GridPane gridPane = new GridPane();
         gridPane.setHgap(7);
         gridPane.setVgap(7);
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setStyle("-fx-background-color: #BCAEA1;");
-        gridPane.setMinSize(350, 350);
-        gridPane.setMaxSize(350, 350);
+        gridPane.setMinSize(gridPaneSize, gridPaneSize);
+        gridPane.setMaxSize(gridPaneSize, gridPaneSize);
 
         for (int row=0;row<grid.length;row++) {
             for (int col=0;col<grid[row].length;col++) {
                 Label lblTile = new Label();
                 grid[row][col] = lblTile;
-                double size = 350/(gridSize+1);
-                lblTile.setMinSize(size, size);
+                double tileSize = gridPaneSize/(gridSize+1);
+                lblTile.setMinSize(tileSize, tileSize);
                 gridPane.add(lblTile, row, col);
             }
         }

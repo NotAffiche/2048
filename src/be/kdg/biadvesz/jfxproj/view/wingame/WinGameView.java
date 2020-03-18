@@ -18,33 +18,32 @@ public class WinGameView extends BorderPane {
     private Button btContinue;
     private Button btExitGame;
     private Button btRestart;
+    private int score;
 
 
     //GET
     public Button getBtContinue() {
         return btContinue;
     }
-
     public Button getBtExitGame() {
         return btExitGame;
     }
-
     public Button getBtRestart() {
         return btRestart;
     }
 
     //CTOR
 
-    public WinGameView() {
-
+    public WinGameView(int score) {
+        this.score = score;
         initNodes();
         layoutNodes();
     }
 
     private void initNodes() {
         //LABELS
-        lblWon = new Label("Congratulations");
-        lblText = new Label("Congratulations, you have won 2048!");
+        lblWon = new Label("Congratulations!");
+        lblText = new Label("Congratulations, you have won 2048!\nFinal score:" + score);
 
         btContinue = new Button("continue");
         btExitGame = new Button("exit");

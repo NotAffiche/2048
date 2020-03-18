@@ -109,12 +109,12 @@ public class GamePresenter {
             if (model.getState().equals(Gamestate.FINISHED)) {
                 if (model.found2048()) {//win
                     WinGame winGame = new WinGame(model.getPlayername());
-                    WinGameView winGameView = new WinGameView();
+                    WinGameView winGameView = new WinGameView(model.getScore());
                     WinGamePresenter winGamePresenter = new WinGamePresenter(winGame, winGameView, model, view, this);
                     view.getScene().setRoot(winGameView);
                 } else {//lose
                     LoseGame loseGame = new LoseGame(model.getPlayername());
-                    LoseGameView loseGameView = new LoseGameView();
+                    LoseGameView loseGameView = new LoseGameView(model.getScore());
                     LoseGamePresenter loseGamePresenter = new LoseGamePresenter(loseGame, loseGameView, model, view, this);
                     view.getScene().setRoot(loseGameView);
                     loseGamePresenter.addKeyEventHandlers();
