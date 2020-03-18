@@ -43,15 +43,15 @@ public class Game {
     //METHODS
     void startGame() {
         setState(Gamestate.ONGOING);
-        Tile t1 = new Tile(2, 1, 1, Color.TWO);
-        Tile t2 = new Tile(2, 2, 2, Color.TWO);
-        Tile t3 = new Tile(4, 3, 3, Color.FOUR);
-        this.grid[t1.getPositionX()][t1.getPositionY()] = t1;
-        this.grid[t2.getPositionX()][t2.getPositionY()] = t2;
-        this.grid[t3.getPositionX()][t3.getPositionY()] = t3;
+//        Tile t1 = new Tile(2, 1, 1, Color.TWO);
+//        Tile t2 = new Tile(2, 2, 2, Color.TWO);
+//        Tile t3 = new Tile(4, 3, 3, Color.FOUR);
+//        this.grid[t1.getPositionX()][t1.getPositionY()] = t1;
+//        this.grid[t2.getPositionX()][t2.getPositionY()] = t2;
+//        this.grid[t3.getPositionX()][t3.getPositionY()] = t3;
         //init game with 1st&2nd tile
-//        generateTile();
-//        generateTile();
+        generateTile();
+        generateTile();
     }
 
     public void endGame() {

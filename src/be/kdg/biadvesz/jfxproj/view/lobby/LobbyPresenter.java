@@ -25,7 +25,7 @@ public class LobbyPresenter {
     public LobbyPresenter(Lobby model, LobbyView view) {
         this.model = model;
         this.view = view;
-        gridSize=4;
+        gridSize = (Integer)view.getGridSizes().getValue();
         if (model.getPlayerName() != null) {
             view.getTfName().setText(model.getPlayerName());
             view.getbPlay().setDisable(false);
@@ -73,6 +73,13 @@ public class LobbyPresenter {
                 } else {
                     view.getbPlay().setDisable(true);
                 }
+            }
+        });
+        view.getGridSizes().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println(view.getGridSizes().getValue());
+                gridSize=(Integer)view.getGridSizes().getValue();
             }
         });
     }

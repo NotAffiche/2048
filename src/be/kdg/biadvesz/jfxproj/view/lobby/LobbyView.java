@@ -1,19 +1,15 @@
 package be.kdg.biadvesz.jfxproj.view.lobby;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
-
-import static javafx.scene.paint.Color.CHOCOLATE;
-import static javafx.scene.paint.Color.color;
 
 public class LobbyView extends BorderPane {
     //ATTRIB
@@ -22,6 +18,7 @@ public class LobbyView extends BorderPane {
     private Button bHowTo;
     private Button bHighscores;
     private Button bPlay;
+    private ComboBox gridSizes;
 
     //GET
     public Label getLblName() {
@@ -37,8 +34,7 @@ public class LobbyView extends BorderPane {
     public Button getbPlay() {
         return bPlay;
     }
-
-
+    public ComboBox getGridSizes() { return gridSizes; }
 
     //CTOR
     public LobbyView() {
@@ -48,6 +44,8 @@ public class LobbyView extends BorderPane {
 
     //METHODS
     private void initNodes() {
+        gridSizes = new ComboBox(FXCollections.observableArrayList(3, 4, 5, 6));
+        gridSizes.getSelectionModel().select(1);
         lblName = new Label("2048 Game");
         Tooltip madeBy = new Tooltip("Made by: Adrian Biedny & Szymon Vertenten");
         madeBy.setStyle("-fx-font-size: 20;");
@@ -71,6 +69,8 @@ public class LobbyView extends BorderPane {
         hboxTitle.getChildren().add(lblName);
         HBox hboxName = new HBox();
         hboxName.getChildren().add(tfName);
+        HBox hboxGridSize = new HBox();
+        hboxName.getChildren().add(gridSizes);
         HBox hboxHowTo = new HBox();
         hboxHowTo.getChildren().add(bHowTo);
         HBox hboxHighscores = new HBox();
@@ -87,7 +87,7 @@ public class LobbyView extends BorderPane {
         hboxPlay.setAlignment(Pos.CENTER);
         hboxHighscores.setAlignment(Pos.CENTER);
         super.setTop(hboxTitle);
-        mainBox.getChildren().addAll(hboxName, hboxHowTo, hboxHighscores, hboxPlay);
+        mainBox.getChildren().addAll(hboxName, hboxGridSize, hboxHowTo, hboxHighscores, hboxPlay);
         mainBox.setAlignment(Pos.CENTER);
         super.setCenter(mainBox);
 
