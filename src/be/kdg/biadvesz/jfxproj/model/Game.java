@@ -18,6 +18,7 @@ public class Game {
     private Random rndm;
     private String playername;
     private Gamestate state;
+    private boolean hasWon;
 
     //GET & SET
     public int getScore() { return score; }
@@ -35,6 +36,7 @@ public class Game {
         this.playername = playername;
         this.gridSize = gridSize;
         this.grid = new Tile[getGridSize()][getGridSize()];
+        hasWon=false;
         rndm = new Random();
         setScore(0);
         startGame();
@@ -43,12 +45,6 @@ public class Game {
     //METHODS
     void startGame() {
         setState(Gamestate.ONGOING);
-//        Tile t1 = new Tile(2, 1, 1, Color.TWO);
-//        Tile t2 = new Tile(2, 2, 2, Color.TWO);
-//        Tile t3 = new Tile(4, 3, 3, Color.FOUR);
-//        this.grid[t1.getPositionX()][t1.getPositionY()] = t1;
-//        this.grid[t2.getPositionX()][t2.getPositionY()] = t2;
-//        this.grid[t3.getPositionX()][t3.getPositionY()] = t3;
         //init game with 1st&2nd tile
         generateTile();
         generateTile();
@@ -266,8 +262,9 @@ public class Game {
 
     public void attemptGameEnd() {
         //won game
-        if (found2048()) {
+        if (found2048()&&!hasWon) {
             setState(Gamestate.FINISHED);
+            hasWon=true;
             System.out.println("game over -> won");
         }
         //lost game
