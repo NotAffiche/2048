@@ -18,12 +18,11 @@ public class LobbyView extends BorderPane {
     private Button bHowTo;
     private Button bHighscores;
     private Button bPlay;
+    private Label lbgridSize;
     private ComboBox gridSizes;
 
     //GET
-    public Label getLblName() {
-        return lblName;
-    }
+
     public TextField getTfName() {
         return tfName;
     }
@@ -47,12 +46,13 @@ public class LobbyView extends BorderPane {
         gridSizes = new ComboBox(FXCollections.observableArrayList(3, 4, 5, 6));
         gridSizes.getSelectionModel().select(1);
         lblName = new Label("2048 Game");
+        lbgridSize = new Label("Chose your gridsize: ");
         Tooltip madeBy = new Tooltip("Made by: Adrian Biedny & Szymon Vertenten");
         madeBy.setStyle("-fx-font-size: 20;");
         lblName.setTooltip(madeBy);
         tfName = new TextField();
         tfName.setTooltip(new Tooltip("Playername"));
-        tfName.setPromptText("Playername...");
+        tfName.setPromptText(String.format("%33s","Playername..."));
         bHowTo = new Button("How To Play");
         bHighscores = new Button("Highscores");
         bPlay = new Button("Play");
@@ -68,9 +68,9 @@ public class LobbyView extends BorderPane {
         HBox hboxTitle = new HBox();
         hboxTitle.getChildren().add(lblName);
         HBox hboxName = new HBox();
-        hboxName.getChildren().add(tfName);
-        HBox hboxGridSize = new HBox();
-        hboxName.getChildren().add(gridSizes);
+        hboxName.getChildren().addAll(tfName);
+        HBox hboxGridSize = new HBox(5);
+        hboxGridSize.getChildren().addAll(lbgridSize,gridSizes);
         HBox hboxHowTo = new HBox();
         hboxHowTo.getChildren().add(bHowTo);
         HBox hboxHighscores = new HBox();
@@ -84,6 +84,8 @@ public class LobbyView extends BorderPane {
         hboxTitle.setAlignment(Pos.CENTER);
         hboxHowTo.setAlignment(Pos.CENTER);
         hboxName.setAlignment(Pos.CENTER);
+        hboxGridSize.setAlignment(Pos.CENTER_LEFT);
+
         hboxPlay.setAlignment(Pos.CENTER);
         hboxHighscores.setAlignment(Pos.CENTER);
         super.setTop(hboxTitle);
@@ -101,8 +103,10 @@ public class LobbyView extends BorderPane {
         hboxHighscores.setPadding(new Insets(3));
         bPlay.setMinWidth(175);
         bPlay.setPadding(new Insets(15));
-        tfName.setMinWidth(175);
+        tfName.setMinWidth(200);
+        hboxGridSize.setPadding(new Insets(0,0,0,97.5));
         tfName.setPadding(new Insets(7, 0, 7, 0));
+
 
         //colors
         super.setBackground(new Background(new BackgroundFill(Color.rgb(250, 248, 239), CornerRadii.EMPTY, Insets.EMPTY)));
@@ -114,5 +118,6 @@ public class LobbyView extends BorderPane {
         bPlay.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));
         bHowTo.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));
         bHighscores.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));
+        lbgridSize.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
     }
 }
