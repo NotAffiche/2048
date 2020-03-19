@@ -57,7 +57,7 @@ public class GamePresenter {
     public void addKeyEventHandlers() {
         view.requestFocus();
         view.getScene().setOnKeyPressed(keyEvent -> {
-            if (model.getState().equals(Gamestate.ONGOING)) {
+            if (!model.getState().equals(Gamestate.FINISHED)) {
                 if (keyEvent.getCode().equals(KeyCode.UP)) {
                     if (!model.tryMove(Direction.UP)) {
                         keyEvent.consume();
