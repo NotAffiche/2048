@@ -7,7 +7,7 @@ import java.util.List;
 
 public class FileHelper {
 
-    private final static String path = System.getProperty("user.home") + File.separator + "Documents/BiadVesz";
+    private final static String path = "";
 
     public static boolean dataExists() {
         File highscore = new File(path);
@@ -26,7 +26,7 @@ public class FileHelper {
         }
     }
 
-    public static void saveScore(String playername, int score) {
+    public static void saveScore(String playername, int score, int gridSize) {
         //handle saving scores of players
     }
 }

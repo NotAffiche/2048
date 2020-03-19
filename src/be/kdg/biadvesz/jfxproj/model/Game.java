@@ -22,7 +22,6 @@ public class Game {
 
     //GET & SET
     public int getScore() { return score; }
-    public void setScore(int score) { this.score = score; }
     public int getHighscore() { return this.highscore; }
     public void setHighscore(int highscore) { this.highscore = highscore; }
     public Tile[][] getGrid() { return grid; }
@@ -36,9 +35,9 @@ public class Game {
         this.playername = playername;
         this.gridSize = gridSize;
         this.grid = new Tile[getGridSize()][getGridSize()];
-        hasWon=false;
+        hasWon = false;
+        this.score = 0;
         rndm = new Random();
-        setScore(0);
         startGame();
     }
 
@@ -52,7 +51,7 @@ public class Game {
 
     public void endGame() {
         setState(Gamestate.FINISHED);
-        FileHelper.saveScore(getPlayername(), getScore());
+        FileHelper.saveScore(getPlayername(), this.score, getGridSize());
     }
 
     public void moveTiles(Direction d) {
