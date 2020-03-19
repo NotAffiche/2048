@@ -69,7 +69,7 @@ public class GamePresenter {
                     new FileChooser.ExtensionFilter("All files", "*.*")
             );
             File selectedFile = fileChooser.showSaveDialog(view.getScene().getWindow());
-            if ((selectedFile!=null) && (Files.isWritable(Paths.get(selectedFile.toURI())))) {
+            if ((selectedFile!=null)) {
                 try (Formatter output = new Formatter(selectedFile)){
                     output.format("%s%n", "Weggeschreven data!");
                 } catch (Exception e) {

@@ -51,7 +51,7 @@ public class Game {
 
     public void endGame() {
         setState(Gamestate.FINISHED);
-        FileHelper.saveScore(getPlayername(), this.score, getGridSize());
+        //todo save highscore
     }
 
     public void moveTiles(Direction d) {

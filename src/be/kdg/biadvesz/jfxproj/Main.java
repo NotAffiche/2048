@@ -19,9 +19,6 @@ public class Main extends Application {
         //set app image
         stage.getIcons().add(new Image("/2048_logo.png"));
 
-        //create highscorefile
-        FileHelper.createHighscoreFile();
-
         //create main screen
         LobbyView view = new LobbyView();
         Lobby model = new Lobby();
@@ -34,9 +31,6 @@ public class Main extends Application {
         stage.setResizable(false);
         stage.setWidth(450);
         stage.setHeight(600);
-
-        //temp debug
-        FileHelper.saveScore("NotAffiche", 900, 4);
 
         //display app
         stage.show();
