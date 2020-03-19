@@ -42,6 +42,7 @@ public class GameView extends BorderPane {
 
     //METHODS
     private void initialise() {
+        //INIT
         lblTitle = new Label("2048 Game");
         lblScore = new Label(String.format("Score: \n %4s","0"));
         lblHighscore = new Label(String.format("Highscore: \n %7s","0"));
@@ -56,42 +57,48 @@ public class GameView extends BorderPane {
     private void layoutnodes() {
         super.setPadding(new Insets(12));
         HBox hBoxTop = new HBox();
-
+        //PADDING
         lblScore.setPadding(new Insets(0, 50, 0, 15));
         lblTitle.setPadding(new Insets(0, 20, 0, 0));
-
+        //SET FONT
         lblTitle.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 25));
         lblScore.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 15));
         lblHighscore.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 15));
-
+        //ADD TO HBOX
         hBoxTop.getChildren().addAll(lblTitle, lblScore, lblHighscore);
         hBoxTop.setAlignment(Pos.CENTER);
         super.setTop(hBoxTop);
 
         VBox buttonsVBox = new VBox();
 
-        BorderPane bpButtonSave = new BorderPane();
-        bpButtonSave.setRight(btLeave);
-        bpButtonSave.setLeft(btUndo);
-        btLeave.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 16));
+
+
+        BorderPane bpButtonLeaveUndo = new BorderPane();
+        bpButtonLeaveUndo.setRight(btLoad);
+        bpButtonLeaveUndo.setLeft(btSave);
+
+        btLeave.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 15));
+        btUndo.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 15));
         btLeave.setPadding(new Insets(12, 30, 12, 30));
-        btUndo.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 16));
         btUndo.setPadding(new Insets(12, 30, 12, 30));
 
-        BorderPane bpButtonSave2 = new BorderPane();
-        bpButtonSave2.setRight(btLoad);
-        bpButtonSave2.setLeft(btSave);
-        btLoad.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 16));
-        btLoad.setPadding(new Insets(12, 30, 12, 30));
-        btSave.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 16));
+
+        BorderPane bpButtonSaveLoad = new BorderPane();
+        bpButtonSaveLoad.setRight(btLeave);
+        bpButtonSaveLoad.setLeft(btUndo);
+
+        btLoad.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 15));
+        btSave.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 15));
+        btLoad.setPadding(new Insets(12, 34, 12, 34));
         btSave.setPadding(new Insets(12, 30, 12, 30));
 
-        buttonsVBox.getChildren().addAll(bpButtonSave, bpButtonSave2);
-//        buttonsVBox.getChildren().addAll(bpButtonSave);
+
+        buttonsVBox.setSpacing(5);
+        buttonsVBox.getChildren().addAll(bpButtonSaveLoad, bpButtonLeaveUndo);
         super.setBottom(buttonsVBox);
 
         HBox hboxmidden = new HBox();
-
+        //Making of 2048 GRID
         int gridPaneSize = 350;
 
         GridPane gridPane = new GridPane();
@@ -111,7 +118,7 @@ public class GameView extends BorderPane {
                 gridPane.add(lblTile, row, col);
             }
         }
-
+        //INSERTING GRID INTO hbox
         hboxmidden.setPadding(new Insets(70, 10,10,10));
         hboxmidden.setAlignment(Pos.CENTER);
         hboxmidden.getChildren().addAll(gridPane);

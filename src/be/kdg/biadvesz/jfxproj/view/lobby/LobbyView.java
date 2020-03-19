@@ -64,23 +64,24 @@ public class LobbyView extends BorderPane {
         lblName.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 55));
         lblName.setPadding(new Insets(40,10,10,10));
 
-
+        //Creating hboxes/vbox
         HBox hboxTitle = new HBox();
-        hboxTitle.getChildren().add(lblName);
         HBox hboxName = new HBox();
-        hboxName.getChildren().addAll(tfName);
         HBox hboxGridSize = new HBox(5);
-        hboxGridSize.getChildren().addAll(lbgridSize,gridSizes);
         HBox hboxHowTo = new HBox();
-        hboxHowTo.getChildren().add(bHowTo);
         HBox hboxHighscores = new HBox();
-        hboxHighscores.getChildren().add(bHighscores);
         HBox hboxPlay = new HBox();
-        hboxPlay.getChildren().add(bPlay);
         VBox mainBox = new VBox();
+        //inserting into hbox/vbox
+        hboxTitle.getChildren().add(lblName);
+        hboxName.getChildren().addAll(tfName);
+        hboxGridSize.getChildren().addAll(lbgridSize,gridSizes);
+        hboxHowTo.getChildren().add(bHowTo);
+        hboxHighscores.getChildren().add(bHighscores);
+        hboxPlay.getChildren().add(bPlay);
         mainBox.setPadding(new Insets(10));
 
-        //set all items
+        //set all items, positions
         hboxTitle.setAlignment(Pos.CENTER);
         hboxHowTo.setAlignment(Pos.CENTER);
         hboxName.setAlignment(Pos.CENTER);

@@ -30,7 +30,7 @@ public class Main extends Application {
         //config app size for all screens
         stage.setResizable(false);
         stage.setWidth(450);
-        stage.setHeight(600);
+        stage.setHeight(615);
 
         //display app
         stage.show();
