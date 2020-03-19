@@ -73,6 +73,7 @@ public class GameView extends BorderPane {
 
 
 
+
         BorderPane bpButtonLeaveUndo = new BorderPane();
         bpButtonLeaveUndo.setRight(btLoad);
         bpButtonLeaveUndo.setLeft(btSave);
@@ -90,7 +91,7 @@ public class GameView extends BorderPane {
         btLoad.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 15));
         btSave.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 15));
         btLoad.setPadding(new Insets(12, 34, 12, 34));
-        btSave.setPadding(new Insets(12, 30, 12, 30));
+        btSave.setPadding(new Insets(12, 30, 12, 32));
 
 
         buttonsVBox.setSpacing(5);
@@ -127,5 +128,11 @@ public class GameView extends BorderPane {
 
         //background color
         super.setBackground(new Background(new BackgroundFill(Color.rgb(250, 248, 239), CornerRadii.EMPTY, Insets.EMPTY)));
+
+        //COLORS
+        btUndo.setStyle("-fx-background-color: rgb(250, 211, 102)");
+        btSave.setStyle("-fx-background-color: rgb(250, 211, 102)");
+        btLoad.setStyle("-fx-background-color: rgb(250, 211, 102)");
+        btLeave.setStyle("-fx-background-color: rgb(250, 211, 102)");
     }
 }
