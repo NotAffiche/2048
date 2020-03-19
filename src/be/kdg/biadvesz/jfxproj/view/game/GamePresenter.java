@@ -19,7 +19,16 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.layout.Background;
+import javafx.stage.FileChooser;
 import javafx.util.Duration;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Formatter;
+import java.util.List;
 
 public class GamePresenter {
     //ATTRIB
@@ -52,34 +61,76 @@ public class GamePresenter {
             view.requestFocus();
             updateView();
         });
+        view.getBtSave().setOnAction(actionEvent -> {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Save Data File");
+            fileChooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("Textfiles", "*.txt"),
+                    new FileChooser.ExtensionFilter("All files", "*.*")
+            );
+            File selectedFile = fileChooser.showSaveDialog(view.getScene().getWindow());
+            if ((selectedFile!=null) && (Files.isWritable(Paths.get(selectedFile.toURI())))) {
+                try (Formatter output = new Formatter(selectedFile)){
+                    output.format("%s%n", "Weggeschreven data!");
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+            view.requestFocus();
+        });
+        view.getBtLoad().setOnAction(actionEvent -> {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Load Data File");
+            fileChooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("Textfiles", "*.txt"),
+                    new FileChooser.ExtensionFilter("All files", "*.*")
+            );
+            File selectedFile = fileChooser.showSaveDialog(view.getScene().getWindow());
+            if ((selectedFile!=null) && (Files.isReadable(Paths.get(selectedFile.toURI())))) {
+                try {
+                    List<String> input = Files.readAllLines(Paths.get(selectedFile.toURI()));
+                    for (String line : input) {
+                        System.out.println(line);
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+            view.requestFocus();
+        });
     }
 
     public void addKeyEventHandlers() {
+        //every movement key needs to have its own btUndo disable otherwise it'd get disabled on any key press
         view.requestFocus();
         view.getScene().setOnKeyPressed(keyEvent -> {
+            if (!(keyEvent.getCode().equals(KeyCode.UP) || keyEvent.getCode().equals(KeyCode.LEFT) || keyEvent.getCode().equals(KeyCode.RIGHT) || keyEvent.getCode().equals(KeyCode.DOWN))) keyEvent.consume();
             if (!model.getState().equals(Gamestate.FINISHED)) {
                 if (keyEvent.getCode().equals(KeyCode.UP)) {
                     if (!model.tryMove(Direction.UP)) {
                         keyEvent.consume();
                     }
+                    view.getBtUndo().setDisable(false);
                 } else if (keyEvent.getCode().equals(KeyCode.DOWN)) {
                     if (!model.tryMove(Direction.DOWN)) {
                         keyEvent.consume();
                     }
+                    view.getBtUndo().setDisable(false);
                 } else if (keyEvent.getCode().equals(KeyCode.LEFT)) {
                     if (!model.tryMove(Direction.LEFT)) {
                         keyEvent.consume();
                     }
+                    view.getBtUndo().setDisable(false);
                 } else if (keyEvent.getCode().equals(KeyCode.RIGHT)) {
                     if (!model.tryMove(Direction.RIGHT)) {
                         keyEvent.consume();
                     }
+                    view.getBtUndo().setDisable(false);
                 }
                 //debug
-                else if (keyEvent.getCode().equals(KeyCode.N)) {
-                    model.createTile(2048);
-                }
-                view.getBtUndo().setDisable(false);
+//                else if (keyEvent.getCode().equals(KeyCode.N)) {
+//                    model.createTile(2048);
+//                }
             }
             //try to end game
             model.attemptGameEnd();
@@ -120,22 +171,5 @@ public class GamePresenter {
                     loseGamePresenter.addKeyEventHandlers();
                 }
             }
-            //draw debug roster
-            System.out.println(" ");
-            drawRoster();
         }
-
-    // temp debug roster
-    private void drawRoster() {
-//        for (Tile[] rows : model.getGrid()) {
-//            for (Tile t : rows) {
-//                try {
-//                    System.out.printf("%d ", t.getValue());
-//                } catch (Exception ex) {
-//                    System.out.print("0 ");
-//                }
-//            }
-//            System.out.println(" ");
-//        }
-    }
 }

@@ -18,16 +18,20 @@ public class GameView extends BorderPane {
     private Label lblHighscore;
     private Button btLeave;
     private Button btUndo;
+    private Button btLoad;
+    private Button btSave;
     private int gridSize;
     private Label[][] grid;
 
     //GET
-    public Button getBtLeave() {
+    Button getBtLeave() {
         return btLeave;
     }
-    public Label[][] getGrid() { return grid; }
-    public Label getLblScore() { return lblScore; }
-    public Button getBtUndo() { return btUndo; }
+    Label[][] getGrid() { return grid; }
+    Label getLblScore() { return lblScore; }
+    Button getBtUndo() { return btUndo; }
+    Button getBtLoad() { return btLoad; }
+    Button getBtSave() { return btSave; }
 
     //CTOR
     public GameView(int gridSize) {
@@ -45,6 +49,8 @@ public class GameView extends BorderPane {
         btUndo = new Button("Undo");
         btUndo.setDisable(true);
         grid = new Label[gridSize][gridSize];
+        btLoad = new Button("Load");
+        btSave = new Button("Save");
     }
 
     private void layoutnodes() {
@@ -62,6 +68,8 @@ public class GameView extends BorderPane {
         hBoxTop.setAlignment(Pos.CENTER);
         super.setTop(hBoxTop);
 
+        VBox buttonsVBox = new VBox();
+
         BorderPane bpButtonSave = new BorderPane();
         bpButtonSave.setRight(btLeave);
         bpButtonSave.setLeft(btUndo);
@@ -69,7 +77,18 @@ public class GameView extends BorderPane {
         btLeave.setPadding(new Insets(12, 30, 12, 30));
         btUndo.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 16));
         btUndo.setPadding(new Insets(12, 30, 12, 30));
-        super.setBottom(bpButtonSave);
+
+        BorderPane bpButtonSave2 = new BorderPane();
+        bpButtonSave2.setRight(btLoad);
+        bpButtonSave2.setLeft(btSave);
+        btLoad.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 16));
+        btLoad.setPadding(new Insets(12, 30, 12, 30));
+        btSave.setFont(Font.font("verdana", FontWeight.NORMAL, FontPosture.REGULAR, 16));
+        btSave.setPadding(new Insets(12, 30, 12, 30));
+
+        buttonsVBox.getChildren().addAll(bpButtonSave, bpButtonSave2);
+//        buttonsVBox.getChildren().addAll(bpButtonSave);
+        super.setBottom(buttonsVBox);
 
         HBox hboxmidden = new HBox();
 
