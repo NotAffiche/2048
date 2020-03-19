@@ -3,6 +3,7 @@ package be.kdg.biadvesz.jfxproj.view.game;
 import be.kdg.biadvesz.jfxproj.model.*;
 import be.kdg.biadvesz.jfxproj.model.enums.Direction;
 import be.kdg.biadvesz.jfxproj.model.enums.Gamestate;
+import be.kdg.biadvesz.jfxproj.model.helpers.FileHelper;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyPresenter;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyView;
 import be.kdg.biadvesz.jfxproj.view.losegame.LoseGamePresenter;
@@ -70,11 +71,7 @@ public class GamePresenter {
             );
             File selectedFile = fileChooser.showSaveDialog(view.getScene().getWindow());
             if ((selectedFile!=null)) {
-                try (Formatter output = new Formatter(selectedFile)){
-                    output.format("%s%n", "Weggeschreven data!");
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
+                FileHelper.saveGame(selectedFile, model);
             }
             view.requestFocus();
         });
@@ -87,14 +84,8 @@ public class GamePresenter {
             );
             File selectedFile = fileChooser.showSaveDialog(view.getScene().getWindow());
             if ((selectedFile!=null) && (Files.isReadable(Paths.get(selectedFile.toURI())))) {
-                try {
-                    List<String> input = Files.readAllLines(Paths.get(selectedFile.toURI()));
-                    for (String line : input) {
-                        System.out.println(line);
-                    }
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
+                FileHelper.loadGame(selectedFile, model);
+                updateView();
             }
             view.requestFocus();
         });

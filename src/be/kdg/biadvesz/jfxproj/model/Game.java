@@ -29,6 +29,7 @@ public class Game {
     public String getPlayername() { return this.playername; }
     public Gamestate getState() { return state; }
     public void setState(Gamestate state) { this.state = state; }
+    public boolean hasWon() { return hasWon; }
 
     //CTOR
     public Game(String playername, int gridSize) {
