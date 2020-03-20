@@ -36,9 +36,9 @@ public class HighscoreView extends BorderPane {
     public HighscoreView(List<Score> highscores) {
         initNodes();
         layoutNodes();
-//        for (Score s : highscores) {
-//            tvHighScores.getItems().add(s);
-//        }
+        for (Score s : highscores) {
+            tvHighScores.getItems().add(s);
+        }
     }
 
     private void initNodes() {
@@ -76,10 +76,10 @@ public class HighscoreView extends BorderPane {
         TableColumn highscore = new TableColumn("Score");
         highscore.setCellValueFactory(new PropertyValueFactory<>("score"));
         tvHighScores.setMaxWidth(400);
-        gridSize.setMaxWidth(50);
-        gridSize.setMinWidth(50);
-        playername.setMaxWidth(200);
-        playername.setMinWidth(200);
+        gridSize.setMaxWidth(60);
+        gridSize.setMinWidth(60);
+        playername.setMaxWidth(190);
+        playername.setMinWidth(190);
         highscore.setMaxWidth(150);
         highscore.setMinWidth(150);
 
