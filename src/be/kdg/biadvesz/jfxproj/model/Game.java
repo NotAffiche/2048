@@ -1,12 +1,9 @@
 package be.kdg.biadvesz.jfxproj.model;
 
-import be.kdg.biadvesz.jfxproj.model.enums.Color;
 import be.kdg.biadvesz.jfxproj.model.enums.Direction;
 import be.kdg.biadvesz.jfxproj.model.enums.Gamestate;
 import be.kdg.biadvesz.jfxproj.model.helpers.FileHelper;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class Game {
@@ -54,20 +51,21 @@ public class Game {
     }
 
     //METHODS
-    void startGame() {
+    //starts game
+    private void startGame() {
         setState(Gamestate.ONGOING);
         //init game with 1st&2nd tile
         generateTile();
         generateTile();
     }
-
-    public void endGame() {
+    //ends game
+    private void endGame() {
         setState(Gamestate.FINISHED);
         if (!usedUndo) {
             FileHelper.saveHighscore(getPlayername(), getScore(), getGridSize());
         }
     }
-
+    //move tiles in given direction (first saves old roster for undo functionality)
     public void moveTiles(Direction d) {
         attemptGameEnd();
         for (int row=0;row<grid.length;row++) {
@@ -196,7 +194,7 @@ public class Game {
             generateTile();
         }
     }
-
+    //checks if a specific tile can move in a specific direction
     private boolean canTileMove(Tile t, Direction d) {
         int x;
         int y;
@@ -247,7 +245,7 @@ public class Game {
         }
         return false;
     }
-
+    //checks if the grid is full
     private boolean isGridFull() {
         int count = 0;
         for (Tile[] rows : grid) {
@@ -259,7 +257,7 @@ public class Game {
         }
         return (count == Math.pow(gridSize, 2));
     }
-
+    //generates a random tile
     private void generateTile() {
         int x = rndm.nextInt(gridSize);
         int y = rndm.nextInt(gridSize);
@@ -275,11 +273,11 @@ public class Game {
             grid[x][y] = new Tile(4, x, y);
         }
     }
-
+    //checks if tile exists in given location
     private boolean tileExists(int x, int y) {
         return grid[x][y] != null;
     }
-
+    //attempts the game end
     public void attemptGameEnd() {
         //won game
         if (found2048()&&!hasWon) {
@@ -293,7 +291,7 @@ public class Game {
             endGame();
         }
     }
-
+    //checks if any moves are left in any direction
     private boolean anyMovesLeft() {
         boolean movesLeft = false;
         for (Tile[] rows : grid) {
@@ -305,7 +303,7 @@ public class Game {
         }
         return movesLeft;
     }
-
+    //checks if moves are left in a specific direction
     private boolean anyMovesLeft(Direction d) {
         boolean movesLeft = false;
         for (Tile[] rows : grid) {
@@ -317,7 +315,7 @@ public class Game {
         }
         return movesLeft;
     }
-
+    //checks if 2048 has been found on the board
     public boolean found2048() {
         for (Tile[] row : grid) {
             for (Tile t : row) {
@@ -330,19 +328,7 @@ public class Game {
         }
         return false;
     }
-
-    //debug create tile
-    public void createTile(int value) {
-        int x = rndm.nextInt(gridSize);
-        int y = rndm.nextInt(gridSize);
-
-        while (tileExists(x, y)) {
-            x = rndm.nextInt(gridSize);
-            y = rndm.nextInt(gridSize);
-        }
-        grid[x][y] = new Tile(value, x, y);
-    }
-
+    //tries to move in a direction and also notifies if it is possible to move or not
     public boolean tryMove(Direction d) {
         if (anyMovesLeft(d)) {
             moveTiles(d);
@@ -351,7 +337,7 @@ public class Game {
         attemptGameEnd();
         return anyMovesLeft();
     }
-
+    //goes back 1 move
     public void undo() {
         for (int row=0;row<grid.length;row++) {
             for (int col=0;col<grid[row].length;col++) {

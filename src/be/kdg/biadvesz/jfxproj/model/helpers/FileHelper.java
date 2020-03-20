@@ -8,17 +8,18 @@ import javafx.scene.control.Alert;
 
 import java.io.*;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Formatter;
 import java.util.List;
 
 public class FileHelper {
-
+    //ATTRIB
     private static final String base = System.getProperty("user.home");
 
+    /*
+    * Method used to save current game to a specified file (location determined by FileChooser in GamePresenter)
+    * */
     public static void saveGame(File selectedFile, Game game) {
         try (Formatter output = new Formatter(selectedFile)){
             output.format("%s%n", game.getPlayername());
@@ -42,6 +43,9 @@ public class FileHelper {
         }
     }
 
+    /*
+    * Method used to load into current game from a specified file (location determined by FileChooser in GamePresenter)
+    * */
     public static void loadGame(File selectedFile, Game game) {
         try {
             ArrayList<String> input = (ArrayList)Files.readAllLines(Paths.get(selectedFile.toURI()));
@@ -84,6 +88,9 @@ public class FileHelper {
         }
     }
 
+    /*
+    * Method to save highscores after a game has ended.
+    * */
     public static void saveHighscore(String playername, int score, int gridSize) {
         try {
             File file = new File(base + "/highscores.2048hs");
@@ -111,13 +118,16 @@ public class FileHelper {
         }
     }
 
+    /*
+    * Method to retrieve highscores from highscores file.
+    * */
     public static List<Score> getHighscores() {
         File file = new File(base + "/highscores.2048hs");
         ArrayList<Score> highscores = new ArrayList<>();
         ArrayList<String> highscoresStrs = new ArrayList<>();
         if (file.length()!=0) {
             try {
-                highscores = (ArrayList)Files.readAllLines(Paths.get(file.toURI()));
+                highscoresStrs = (ArrayList)Files.readAllLines(Paths.get(file.toURI()));
                 for (String str : highscoresStrs) {
                     String[] scoreBase = str.split("\\s");
                     Score score = new Score(scoreBase[0], Integer.parseInt(scoreBase[1]), Integer.parseInt(scoreBase[2]));

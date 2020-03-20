@@ -10,12 +10,9 @@ public class Tile extends Label {
     private int positionY;
     private Color color;
 
-
     //GET & SET
     public int getValue() { return this.value; }
-    public int getPositionX() {
-        return this.positionX;
-    }
+    public int getPositionX() { return this.positionX; }
     public void setPositionX(int positionX) {
         this.positionX = positionX;
     }
@@ -54,7 +51,7 @@ public class Tile extends Label {
             setColor(this.getValue());
         }
     }
-
+    //gives color to tile according to tile value
     private void setColorByVal(int val) {
         switch (val) {
             case 2:

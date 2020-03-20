@@ -5,18 +5,13 @@ public class Lobby {
     private String playerName;
 
     //GET & SET
-    public void setPlayerName(String playerName) { this.playerName = playerName; }
     public String getPlayerName() {
         return playerName;
     }
-
+    public void setPlayerName(String playerName) { this.playerName=playerName; }
     //CTOR
-    public Lobby() {
-
-    }
-
-    //METHOD
-    public void startGame(Game game) {
-        game.startGame();
+    public Lobby() {}
+    public Lobby(String playerName) {
+        this.playerName=playerName;
     }
 }

@@ -45,13 +45,11 @@ public class GamePresenter {
     }
 
     //METHODS
+    //adds event listeners
     private void addEventListeners() {
         view.getBtLeave().setOnAction(actionEvent -> {
-            //ends game
-            model.endGame();
             //creates new screen
-            Lobby lModel = new Lobby();
-            lModel.setPlayerName(model.getPlayername());
+            Lobby lModel = new Lobby(model.getPlayername());
             LobbyView lView = new LobbyView();
             LobbyPresenter lp = new LobbyPresenter(lModel, lView);
             view.getScene().setRoot(lView);
@@ -88,12 +86,12 @@ public class GamePresenter {
             view.requestFocus();
         });
     }
-
+    //adds KEY events listeners (to keyboard buttons, has to be called explicitly otherwise the events do not work)
     public void addKeyEventHandlers() {
         //every movement key needs to have its own btUndo disable otherwise it'd get disabled on any key press
         view.requestFocus();
         view.getScene().setOnKeyPressed(keyEvent -> {
-            if (!(keyEvent.getCode().equals(KeyCode.UP) || keyEvent.getCode().equals(KeyCode.LEFT) || keyEvent.getCode().equals(KeyCode.RIGHT) || keyEvent.getCode().equals(KeyCode.DOWN) || keyEvent.getCode().equals(KeyCode.N)))
+            if (!(keyEvent.getCode().equals(KeyCode.UP) || keyEvent.getCode().equals(KeyCode.LEFT) || keyEvent.getCode().equals(KeyCode.RIGHT) || keyEvent.getCode().equals(KeyCode.DOWN)))
                 keyEvent.consume();
             if (!model.getState().equals(Gamestate.FINISHED)) {
                 if (keyEvent.getCode().equals(KeyCode.UP)) {
@@ -117,10 +115,6 @@ public class GamePresenter {
                     }
                     view.getBtUndo().setDisable(false);
                 }
-                //debug
-                else if (keyEvent.getCode().equals(KeyCode.N)) {
-                    model.createTile(2048);
-                }
             }
             //try to end game
             model.attemptGameEnd();
@@ -128,7 +122,7 @@ public class GamePresenter {
             updateView();
         });
     }
-
+    //updates the view
     public void updateView() {
         for (int row = 0; row < model.getGrid().length; row++) {
             for (int col = 0; col < model.getGrid()[row].length; col++) {

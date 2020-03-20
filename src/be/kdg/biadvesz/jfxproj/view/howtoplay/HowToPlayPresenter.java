@@ -24,9 +24,8 @@ public class HowToPlayPresenter {
         view.getbGoBack().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                Lobby lobbyModel = new Lobby();
+                Lobby lobbyModel = new Lobby(model.getPlayerName());
                 LobbyView lobbyView = new LobbyView();
-                lobbyModel.setPlayerName(model.getPlayerName());
                 LobbyPresenter lobbyPresenter = new LobbyPresenter(lobbyModel, lobbyView);
                 view.getScene().setRoot(lobbyView);
             }

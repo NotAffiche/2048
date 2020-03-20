@@ -39,9 +39,8 @@ public class LoseGamePresenter {
         view.getBtExitGame().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                Lobby lobbymodel = new Lobby();
+                Lobby lobbymodel = new Lobby(model.getPlayerName());
                 LobbyView lobbyView = new LobbyView();
-                lobbymodel.setPlayerName(model.getPlayerName());
                 LobbyPresenter lobbyPresenter = new LobbyPresenter(lobbymodel, lobbyView);
                 view.getScene().setRoot(lobbyView);
 
