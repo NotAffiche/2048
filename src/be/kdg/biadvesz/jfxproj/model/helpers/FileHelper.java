@@ -1,7 +1,6 @@
 package be.kdg.biadvesz.jfxproj.model.helpers;
 
 import be.kdg.biadvesz.jfxproj.model.Game;
-import be.kdg.biadvesz.jfxproj.model.Highscore;
 import be.kdg.biadvesz.jfxproj.model.Score;
 import be.kdg.biadvesz.jfxproj.model.Tile;
 import be.kdg.biadvesz.jfxproj.model.enums.Gamestate;
@@ -9,7 +8,6 @@ import be.kdg.biadvesz.jfxproj.model.enums.Gamestate;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.List;
@@ -38,7 +36,7 @@ public class FileHelper {
         }
     }
 
-    public static Game loadGame(File selectedFile, Game game) {
+    public static void loadGame(File selectedFile, Game game) {
         try {
             ArrayList<String> input = (ArrayList)Files.readAllLines(Paths.get(selectedFile.toURI()));
             String playerName = input.get(0);
@@ -68,7 +66,17 @@ public class FileHelper {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return null;
+    }
+
+    public static void saveHighscore(String playername, int score, int gridSize) {
+//        File file = Paths.get("/highscores.2048hs");
+//        try (Formatter output = new Formatter(file)){
+//            output.format("%s%n", playername);
+//            output.format("%s%n", score);
+//            output.format("%s%n", gridSize);
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//        }
     }
 
     public static List<Score> getHighscores() {
