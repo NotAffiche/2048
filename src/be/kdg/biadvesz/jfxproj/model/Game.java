@@ -78,9 +78,7 @@ public class Game {
             for (int col=0;col<grid[row].length;col++) {
                 oldGrid[row][col] = grid[row][col];
             }
-            System.out.println(" ");
         }
-        System.out.println(" ");
         boolean mergedOnceAlready = false;
         switch (d) {
             case UP:
@@ -193,7 +191,6 @@ public class Game {
                 }
                 break;
             default:
-                System.out.println("Invalid input :/");
                 break;
         }
         if (anyMovesLeft()) {
@@ -246,7 +243,6 @@ public class Game {
                 }
                 return false;
             default:
-                System.out.println("Invalid input :/");
                 break;
         }
         return false;

@@ -8,7 +8,6 @@ import be.kdg.biadvesz.jfxproj.view.lobby.LobbyView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-
 public class HighscorePresenter {
     //ATTRIB
     private Highscore model;

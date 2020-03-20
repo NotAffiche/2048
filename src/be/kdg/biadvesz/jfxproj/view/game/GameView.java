@@ -10,7 +10,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 
-
 public class GameView extends BorderPane {
     //ATTRIB
     private Label lblTitle;

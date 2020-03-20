@@ -39,7 +39,6 @@ public class FileHelper {
                 }
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
         }
     }
 
@@ -84,7 +83,6 @@ public class FileHelper {
                 alert.showAndWait();
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
         }
     }
 
