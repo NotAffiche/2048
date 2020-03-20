@@ -10,16 +10,17 @@ import javafx.event.EventHandler;
 
 
 public class HighscorePresenter {
-
+    //ATTRIB
     private Highscore model;
     private HighscoreView view;
-
+    //CTOR
     public HighscorePresenter(Highscore model, HighscoreView view) {
         this.model = model;
         this.view = view;
         addEventHandlers();
     }
-
+    //METHODS
+    //adds event handlers
     private void addEventHandlers() {
         view.getBgoback().setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -32,5 +33,4 @@ public class HighscorePresenter {
             }
         });
     }
-
 }

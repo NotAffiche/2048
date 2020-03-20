@@ -1,7 +1,6 @@
 package be.kdg.biadvesz.jfxproj.view.lobby;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -22,18 +21,17 @@ public class LobbyView extends BorderPane {
     private ComboBox gridSizes;
 
     //GET
-
-    public TextField getTfName() {
+    TextField getTfName() {
         return tfName;
     }
-    public Button getbHowTo() { return bHowTo; }
-    public Button getbHighscores() {
+    Button getbHowTo() { return bHowTo; }
+    Button getbHighscores() {
         return bHighscores;
     }
-    public Button getbPlay() {
+    Button getbPlay() {
         return bPlay;
     }
-    public ComboBox getGridSizes() { return gridSizes; }
+    ComboBox getGridSizes() { return gridSizes; }
 
     //CTOR
     public LobbyView() {

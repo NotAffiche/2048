@@ -13,6 +13,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 
 public class LoseGameView extends BorderPane {
+    //ATTRIB
     private Label lblWon;
     private Label lblText;
     private Button btExitGame;
@@ -20,10 +21,10 @@ public class LoseGameView extends BorderPane {
     private int score;
 
     //GET
-    public Button getBtExitGame() {
+    Button getBtExitGame() {
         return btExitGame;
     }
-    public Button getBtRestart() {
+    Button getBtRestart() {
         return btRestart;
     }
 

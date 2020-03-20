@@ -13,6 +13,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 
 public class WinGameView extends BorderPane {
+    //ATTRIB
     private Label lblWon;
     private Label lblText;
     private Button btContinue;
@@ -20,20 +21,18 @@ public class WinGameView extends BorderPane {
     private Button btRestart;
     private int score;
 
-
     //GET
-    public Button getBtContinue() {
+    Button getBtContinue() {
         return btContinue;
     }
-    public Button getBtExitGame() {
+    Button getBtExitGame() {
         return btExitGame;
     }
-    public Button getBtRestart() {
+    Button getBtRestart() {
         return btRestart;
     }
 
     //CTOR
-
     public WinGameView(int score) {
         this.score = score;
         initNodes();

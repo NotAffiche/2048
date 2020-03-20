@@ -3,7 +3,6 @@ package be.kdg.biadvesz.jfxproj.view.wingame;
 import be.kdg.biadvesz.jfxproj.model.Game;
 import be.kdg.biadvesz.jfxproj.model.Lobby;
 import be.kdg.biadvesz.jfxproj.model.WinGame;
-import be.kdg.biadvesz.jfxproj.model.enums.Direction;
 import be.kdg.biadvesz.jfxproj.model.enums.Gamestate;
 import be.kdg.biadvesz.jfxproj.view.game.GamePresenter;
 import be.kdg.biadvesz.jfxproj.view.game.GameView;
@@ -11,17 +10,16 @@ import be.kdg.biadvesz.jfxproj.view.lobby.LobbyPresenter;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.input.KeyCode;
 
 public class WinGamePresenter {
     //ATTRIB
     private WinGame model;
     private WinGameView view;
-
     private Game oldGameModel;
     private GameView oldGameView;
     private GamePresenter oldGamePresenter;
 
+    //CTOR
     public WinGamePresenter(WinGame model, WinGameView view, Game gameModel, GameView gameView, GamePresenter gamePresenter) {
         this.model = model;
         this.view = view;
@@ -30,7 +28,7 @@ public class WinGamePresenter {
         this.oldGamePresenter = gamePresenter;
         addEventHandlers();
     }
-
+    //METHODS
     private void addEventHandlers() {
         view.getBtContinue().setOnAction(new EventHandler<ActionEvent>() {
             @Override

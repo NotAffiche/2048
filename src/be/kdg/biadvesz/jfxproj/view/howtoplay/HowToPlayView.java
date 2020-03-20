@@ -19,7 +19,7 @@ public class HowToPlayView extends BorderPane {
     private Button bGoBack;
 
     //GET
-    public Button getbGoBack() {
+    Button getbGoBack() {
         return bGoBack;
     }
 
