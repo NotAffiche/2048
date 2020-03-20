@@ -1,7 +1,6 @@
 package be.kdg.biadvesz.jfxproj;
 
 import be.kdg.biadvesz.jfxproj.model.Lobby;
-import be.kdg.biadvesz.jfxproj.model.helpers.FileHelper;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyPresenter;
 import be.kdg.biadvesz.jfxproj.view.lobby.LobbyView;
 import javafx.application.Application;
