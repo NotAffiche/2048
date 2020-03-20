@@ -35,8 +35,6 @@ public class WinGamePresenter {
         view.getBtContinue().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                //TODO
-                // stop displaying wingameview screen after continuing
                 oldGameModel.setState(Gamestate.CONTINUE);
                 view.getScene().setRoot(oldGameView);
                 oldGamePresenter.addKeyEventHandlers();
@@ -45,7 +43,6 @@ public class WinGamePresenter {
         view.getBtExitGame().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                oldGameModel.endGame();
                 Lobby lobbymodel = new Lobby();
                 LobbyView lobbyView = new LobbyView();
                 lobbymodel.setPlayerName(model.getPlayerName());

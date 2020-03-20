@@ -1,16 +1,20 @@
 package be.kdg.biadvesz.jfxproj.view.highscore;
 
+import be.kdg.biadvesz.jfxproj.model.Score;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
+
+import java.util.List;
 
 public class HighscoreView extends BorderPane {
     //ATTRIB
@@ -29,9 +33,12 @@ public class HighscoreView extends BorderPane {
     }
 
     //CONSTRUCTOR
-    public HighscoreView() {
+    public HighscoreView(List<Score> highscores) {
         initNodes();
         layoutNodes();
+//        for (Score s : highscores) {
+//            tvHighScores.getItems().add(s);
+//        }
     }
 
     private void initNodes() {
@@ -62,18 +69,21 @@ public class HighscoreView extends BorderPane {
         //table
         tvHighScores.setEditable(false);
 
-        TableColumn rank = new TableColumn("Rank");
+        TableColumn gridSize = new TableColumn("GridSize");
+        gridSize.setCellValueFactory(new PropertyValueFactory<>("gridSize"));
         TableColumn playername = new TableColumn("Playername");
+        playername.setCellValueFactory(new PropertyValueFactory<>("playername"));
         TableColumn highscore = new TableColumn("Score");
+        highscore.setCellValueFactory(new PropertyValueFactory<>("score"));
         tvHighScores.setMaxWidth(400);
-        rank.setMaxWidth(50);
-        rank.setMinWidth(50);
+        gridSize.setMaxWidth(50);
+        gridSize.setMinWidth(50);
         playername.setMaxWidth(200);
         playername.setMinWidth(200);
         highscore.setMaxWidth(150);
         highscore.setMinWidth(150);
 
-        tvHighScores.getColumns().addAll(rank, playername, highscore);
+        tvHighScores.getColumns().addAll(gridSize, playername, highscore);
 
         //CREATE VBOX
         VBox mainBox = new VBox();

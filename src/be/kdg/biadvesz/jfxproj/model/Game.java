@@ -20,6 +20,7 @@ public class Game {
     private Gamestate state;
     private boolean hasWon;
     private Tile[][] oldGrid;
+    private boolean usedUndo;
 
     //GET & SET
     public int getScore() { return score; }
@@ -36,6 +37,8 @@ public class Game {
     public void setState(Gamestate state) { this.state = state; }
     public boolean hasWon() { return hasWon; }
     public void setHasWon(boolean hasWon) { this.hasWon = hasWon; }
+    public boolean usedUndo() { return usedUndo; }
+    public void setUsedUndo(boolean usedUndo) { this.usedUndo = usedUndo; }
 
     //CTOR
     public Game(String playername, int gridSize) {
@@ -43,6 +46,7 @@ public class Game {
         this.gridSize = gridSize;
         this.grid = new Tile[getGridSize()][getGridSize()];
         hasWon = false;
+        usedUndo = false;
         this.score = 0;
         oldGrid = new Tile[getGridSize()][getGridSize()];
         rndm = new Random();
@@ -59,7 +63,9 @@ public class Game {
 
     public void endGame() {
         setState(Gamestate.FINISHED);
-        //todo save highscore
+        if (!usedUndo) {
+            FileHelper.saveHighscore(getPlayername(), getScore(), getGridSize());
+        }
     }
 
     public void moveTiles(Direction d) {
@@ -279,12 +285,12 @@ public class Game {
         if (found2048()&&!hasWon) {
             setState(Gamestate.FINISHED);
             hasWon=true;
-            System.out.println("game over -> won");
+            endGame();
         }
         //lost game
         if (isGridFull() && !anyMovesLeft()) {
             setState(Gamestate.FINISHED);
-            System.out.println("game over -> lost");
+            endGame();
         }
     }
 
@@ -351,15 +357,12 @@ public class Game {
             for (int col=0;col<grid[row].length;col++) {
                 grid[row][col] = oldGrid[row][col];
             }
-            System.out.println(" ");
         }
-        System.out.println(" ");
         for (int row=0;row<grid.length;row++) {
             for (int col=0;col<grid[row].length;col++) {
                 oldGrid[row][col] = grid[row][col];
             }
-            System.out.println(" ");
         }
-        System.out.println(" ");
+        usedUndo=true;
     }
 }

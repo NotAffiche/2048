@@ -4,6 +4,7 @@ import be.kdg.biadvesz.jfxproj.model.Game;
 import be.kdg.biadvesz.jfxproj.model.Highscore;
 import be.kdg.biadvesz.jfxproj.model.HowToPlay;
 import be.kdg.biadvesz.jfxproj.model.Lobby;
+import be.kdg.biadvesz.jfxproj.model.helpers.FileHelper;
 import be.kdg.biadvesz.jfxproj.view.game.GamePresenter;
 import be.kdg.biadvesz.jfxproj.view.game.GameView;
 import be.kdg.biadvesz.jfxproj.view.highscore.HighscorePresenter;
@@ -61,7 +62,7 @@ public class LobbyPresenter {
         view.getbHighscores().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                HighscoreView highscoreView = new HighscoreView();
+                HighscoreView highscoreView = new HighscoreView(FileHelper.getHighscores());
                 Highscore hsModel = new Highscore(model.getPlayerName());
                 HighscorePresenter highscorePresenter = new HighscorePresenter(hsModel,highscoreView);
                 view.getScene().setRoot(highscoreView);
