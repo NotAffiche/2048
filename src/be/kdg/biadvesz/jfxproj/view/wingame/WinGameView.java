@@ -45,7 +45,7 @@ public class WinGameView extends BorderPane {
         lblWon = new Label("Congratulations!");
         lblText = new Label("Congratulations, you have won 2048!\nFinal score: " + score);
 
-        btContinue = new Button("continue");
+        btContinue = new Button("Continue");
         btExitGame = new Button("Exit");
         btRestart = new Button("Restart");
     }
