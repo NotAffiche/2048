@@ -3,6 +3,7 @@ package be.kdg.biadvesz.jfxproj.model.helpers;
 import be.kdg.biadvesz.jfxproj.model.Game;
 import be.kdg.biadvesz.jfxproj.model.Highscore;
 import be.kdg.biadvesz.jfxproj.model.Score;
+import be.kdg.biadvesz.jfxproj.model.Tile;
 import be.kdg.biadvesz.jfxproj.model.enums.Gamestate;
 
 import java.io.*;
@@ -14,8 +15,6 @@ import java.util.Formatter;
 import java.util.List;
 
 public class FileHelper {
-
-    private final static String highscoresFile = "/highscores.txt";
 
     public static void saveGame(File selectedFile, Game game) {
         try (Formatter output = new Formatter(selectedFile)){
@@ -48,12 +47,24 @@ public class FileHelper {
             int score = Integer.parseInt(input.get(3));
             int highScore = Integer.parseInt(input.get(4));
             int gridSize = Integer.parseInt(input.get(5));
-            System.out.println(playerName);
-            System.out.println(gameState);
-            System.out.println(hasWon);
-            System.out.println(score);
-            System.out.println(highScore);
-            System.out.println(gridSize);
+            String[] grid1dString = input.get(6).split("\\s");
+            Tile[][] grid = new Tile[gridSize][gridSize];
+            int i=0;
+            for (int row=0;row<gridSize;row++) {
+                for (int col=0;col<gridSize;col++) {
+                    if (!grid1dString[i].equals("0")) {
+                        grid[row][col]=new Tile(Integer.parseInt(grid1dString[i]), row, col);
+                    }
+                    i++;
+                }
+            }
+            game.setPlayername(playerName);
+            game.setState(gameState);
+            game.setHasWon(hasWon);
+            game.setScore(score);
+            game.setHighscore(highScore);
+            game.setGridSize(gridSize);
+            game.setGrid(grid);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

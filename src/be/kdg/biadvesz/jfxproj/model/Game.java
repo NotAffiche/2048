@@ -19,6 +19,7 @@ public class Game {
     private String playername;
     private Gamestate state;
     private boolean hasWon;
+    private Tile[][] oldGrid;
 
     //GET & SET
     public int getScore() { return score; }
@@ -26,6 +27,7 @@ public class Game {
     public int getHighscore() { return this.highscore; }
     public void setHighscore(int highscore) { this.highscore = highscore; }
     public Tile[][] getGrid() { return grid; }
+    public void setGrid(Tile[][] grid) { this.grid = grid; }
     public int getGridSize() { return this.gridSize; }
     public void setGridSize(int gridSize) { this.gridSize = gridSize; }
     public String getPlayername() { return this.playername; }
@@ -42,6 +44,7 @@ public class Game {
         this.grid = new Tile[getGridSize()][getGridSize()];
         hasWon = false;
         this.score = 0;
+        oldGrid = new Tile[getGridSize()][getGridSize()];
         rndm = new Random();
         startGame();
     }
@@ -61,6 +64,13 @@ public class Game {
 
     public void moveTiles(Direction d) {
         attemptGameEnd();
+        for (int row=0;row<grid.length;row++) {
+            for (int col=0;col<grid[row].length;col++) {
+                oldGrid[row][col] = grid[row][col];
+            }
+            System.out.println(" ");
+        }
+        System.out.println(" ");
         boolean mergedOnceAlready = false;
         switch (d) {
             case UP:
@@ -254,9 +264,9 @@ public class Game {
         }
         int twoOrFour = rndm.nextInt(100);
         if (twoOrFour <= 90) {
-            grid[x][y] = new Tile(2, x, y, Color.TWO);
+            grid[x][y] = new Tile(2, x, y);
         } else {
-            grid[x][y] = new Tile(4, x, y, Color.FOUR);
+            grid[x][y] = new Tile(4, x, y);
         }
     }
 
@@ -324,7 +334,7 @@ public class Game {
             x = rndm.nextInt(gridSize);
             y = rndm.nextInt(gridSize);
         }
-        grid[x][y] = new Tile(value, x, y, Color.MOST);
+        grid[x][y] = new Tile(value, x, y);
     }
 
     public boolean tryMove(Direction d) {
@@ -337,6 +347,19 @@ public class Game {
     }
 
     public void undo() {
-        //TODO
+        for (int row=0;row<grid.length;row++) {
+            for (int col=0;col<grid[row].length;col++) {
+                grid[row][col] = oldGrid[row][col];
+            }
+            System.out.println(" ");
+        }
+        System.out.println(" ");
+        for (int row=0;row<grid.length;row++) {
+            for (int col=0;col<grid[row].length;col++) {
+                oldGrid[row][col] = grid[row][col];
+            }
+            System.out.println(" ");
+        }
+        System.out.println(" ");
     }
 }

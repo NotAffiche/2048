@@ -66,8 +66,7 @@ public class GamePresenter {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Save Data File");
             fileChooser.getExtensionFilters().addAll(
-                    new FileChooser.ExtensionFilter("Textfiles", "*.txt"),
-                    new FileChooser.ExtensionFilter("All files", "*.*")
+                    new FileChooser.ExtensionFilter("2048 Game files", "*.2048")
             );
             File selectedFile = fileChooser.showSaveDialog(view.getScene().getWindow());
             if ((selectedFile!=null)) {
@@ -79,8 +78,7 @@ public class GamePresenter {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Load Data File");
             fileChooser.getExtensionFilters().addAll(
-                    new FileChooser.ExtensionFilter("Textfiles", "*.txt"),
-                    new FileChooser.ExtensionFilter("All files", "*.*")
+                    new FileChooser.ExtensionFilter("2048 Game files", "*.2048")
             );
             File selectedFile = fileChooser.showSaveDialog(view.getScene().getWindow());
             if ((selectedFile!=null) && (Files.isReadable(Paths.get(selectedFile.toURI())))) {
@@ -95,7 +93,7 @@ public class GamePresenter {
         //every movement key needs to have its own btUndo disable otherwise it'd get disabled on any key press
         view.requestFocus();
         view.getScene().setOnKeyPressed(keyEvent -> {
-            if (!(keyEvent.getCode().equals(KeyCode.UP) || keyEvent.getCode().equals(KeyCode.LEFT) || keyEvent.getCode().equals(KeyCode.RIGHT) || keyEvent.getCode().equals(KeyCode.DOWN))) keyEvent.consume();
+            if (!(keyEvent.getCode().equals(KeyCode.UP) || keyEvent.getCode().equals(KeyCode.LEFT) || keyEvent.getCode().equals(KeyCode.RIGHT) || keyEvent.getCode().equals(KeyCode.DOWN) || keyEvent.getCode().equals(KeyCode.N))) keyEvent.consume();
             if (!model.getState().equals(Gamestate.FINISHED)) {
                 if (keyEvent.getCode().equals(KeyCode.UP)) {
                     if (!model.tryMove(Direction.UP)) {
@@ -119,9 +117,9 @@ public class GamePresenter {
                     view.getBtUndo().setDisable(false);
                 }
                 //debug
-//                else if (keyEvent.getCode().equals(KeyCode.N)) {
-//                    model.createTile(2048);
-//                }
+                else if (keyEvent.getCode().equals(KeyCode.N)) {
+                    model.createTile(2048);
+                }
             }
             //try to end game
             model.attemptGameEnd();
@@ -156,7 +154,12 @@ public class GamePresenter {
                     view.getScene().setRoot(winGameView);
                 } else {//lose
                     LoseGame loseGame = new LoseGame(model.getPlayername());
-                    LoseGameView loseGameView = new LoseGameView(model.getScore(),false);
+                    LoseGameView loseGameView;
+                    if (model.found2048()) {
+                        loseGameView = new LoseGameView(model.getScore(),true);
+                    } else {
+                        loseGameView = new LoseGameView(model.getScore(),false);
+                    }
                     LoseGamePresenter loseGamePresenter = new LoseGamePresenter(loseGame, loseGameView, model, view, this);
                     view.getScene().setRoot(loseGameView);
                     loseGamePresenter.addKeyEventHandlers();

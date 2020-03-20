@@ -34,11 +34,11 @@ public class Tile extends Label {
     public void setColor(int val) { setColorByVal(val); }
 
     //CTOR
-    public Tile(int value, int x, int y, Color color) {
+    public Tile(int value, int x, int y) {
         this.value = value;
         this.positionX = x;
         this.positionY = y;
-        this.color = color;
+        setColor(value);
     }
 
     //OVERRIDE
