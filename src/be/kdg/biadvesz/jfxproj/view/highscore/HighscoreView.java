@@ -1,6 +1,8 @@
 package be.kdg.biadvesz.jfxproj.view.highscore;
 
 import be.kdg.biadvesz.jfxproj.model.Score;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -36,16 +38,14 @@ public class HighscoreView extends BorderPane {
     public HighscoreView(List<Score> highscores) {
         initNodes();
         layoutNodes();
-//        for (Score s : highscores) {
-//            tvHighScores.getItems().add(s);
-//        }
+        System.out.println(highscores);
+        tvHighScores.getItems().add(highscores.get(0));
     }
 
     private void initNodes() {
         lbTitle = new Label("Highscores");
         bgoback = new Button("Back");
         tvHighScores = new TableView();
-
     }
 
     private void layoutNodes() {
@@ -69,12 +69,12 @@ public class HighscoreView extends BorderPane {
         //table
         tvHighScores.setEditable(false);
 
-        TableColumn gridSize = new TableColumn("GridSize");
-        gridSize.setCellValueFactory(new PropertyValueFactory<>("gridSize"));
+        TableColumn gridSize = new TableColumn("Gridsize");
+        gridSize.setCellValueFactory(new PropertyValueFactory<>("getGridSize"));
         TableColumn playername = new TableColumn("Playername");
-        playername.setCellValueFactory(new PropertyValueFactory<>("playername"));
+        playername.setCellValueFactory(new PropertyValueFactory<>("getPlayername"));
         TableColumn highscore = new TableColumn("Score");
-        highscore.setCellValueFactory(new PropertyValueFactory<>("score"));
+        highscore.setCellValueFactory(new PropertyValueFactory<>("getScore"));
         tvHighScores.setMaxWidth(400);
         gridSize.setMaxWidth(50);
         gridSize.setMinWidth(50);

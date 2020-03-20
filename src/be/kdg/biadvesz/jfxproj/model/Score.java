@@ -4,17 +4,26 @@ public class Score {
     //ATTRIB
     private String playername;
     private int score;
-    private int gridSize;
+    private int gridsize;
 
     //GET&SET
     public String getPlayername() { return playername; }
     public int getScore() { return score; }
-    public int getGridSize() { return gridSize; }
+    public int getGridsize() { return gridsize; }
 
     //CTOR
     public Score(String playername, int score, int gridSize) {
         this.playername=playername;
         this.score=score;
-        this.gridSize=gridSize;
+        this.gridsize=gridSize;
+    }
+
+    @Override
+    public String toString() {
+        return "Score{" +
+                "playername='" + playername + '\'' +
+                ", score=" + score +
+                ", gridsize=" + gridsize +
+                '}';
     }
 }
