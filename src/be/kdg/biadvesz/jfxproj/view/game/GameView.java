@@ -29,6 +29,7 @@ public class GameView extends BorderPane {
     }
     Label[][] getGrid() { return grid; }
     Label getLblScore() { return lblScore; }
+    Label getLblHighscore() { return lblHighscore; }
     Button getBtUndo() { return btUndo; }
     Button getBtLoad() { return btLoad; }
     Button getBtSave() { return btSave; }

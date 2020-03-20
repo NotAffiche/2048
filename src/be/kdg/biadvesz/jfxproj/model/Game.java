@@ -4,6 +4,7 @@ import be.kdg.biadvesz.jfxproj.model.enums.Direction;
 import be.kdg.biadvesz.jfxproj.model.enums.Gamestate;
 import be.kdg.biadvesz.jfxproj.model.helpers.FileHelper;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Game {
@@ -48,6 +49,11 @@ public class Game {
         oldGrid = new Tile[getGridSize()][getGridSize()];
         rndm = new Random();
         startGame();
+        ArrayList<Score> highscores = (ArrayList<Score>) FileHelper.getHighscores();
+        highscore=Integer.MIN_VALUE;
+        for (Score s : highscores) {
+            if (s.getScore()>highscore) highscore=s.getScore();
+        }
     }
 
     //METHODS

@@ -141,6 +141,7 @@ public class GamePresenter {
                 }
             }
         }
+        view.getLblHighscore().setText("Highscore:\n " + model.getHighscore());
         view.getLblScore().setText("Score:\n" + model.getScore());
         if (model.getState().equals(Gamestate.FINISHED)) {
             if (model.found2048()) {//win
