@@ -3,6 +3,7 @@ package be.kdg.biadvesz.jfxproj.model.helpers;
 import be.kdg.biadvesz.jfxproj.model.Game;
 import be.kdg.biadvesz.jfxproj.model.Highscore;
 import be.kdg.biadvesz.jfxproj.model.Score;
+import be.kdg.biadvesz.jfxproj.model.enums.Gamestate;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -40,10 +41,19 @@ public class FileHelper {
 
     public static Game loadGame(File selectedFile, Game game) {
         try {
-            List<String> input = Files.readAllLines(Paths.get(selectedFile.toURI()));
-            for (String line : input) {
-                System.out.println(line);
-            }
+            ArrayList<String> input = (ArrayList)Files.readAllLines(Paths.get(selectedFile.toURI()));
+            String playerName = input.get(0);
+            Gamestate gameState = Gamestate.valueOf(input.get(1));
+            boolean hasWon = Boolean.getBoolean(input.get(2));
+            int score = Integer.parseInt(input.get(3));
+            int highScore = Integer.parseInt(input.get(4));
+            int gridSize = Integer.parseInt(input.get(5));
+            System.out.println(playerName);
+            System.out.println(gameState);
+            System.out.println(hasWon);
+            System.out.println(score);
+            System.out.println(highScore);
+            System.out.println(gridSize);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
