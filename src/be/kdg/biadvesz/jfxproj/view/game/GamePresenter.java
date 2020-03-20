@@ -156,7 +156,7 @@ public class GamePresenter {
                     view.getScene().setRoot(winGameView);
                 } else {//lose
                     LoseGame loseGame = new LoseGame(model.getPlayername());
-                    LoseGameView loseGameView = new LoseGameView(model.getScore());
+                    LoseGameView loseGameView = new LoseGameView(model.getScore(),false);
                     LoseGamePresenter loseGamePresenter = new LoseGamePresenter(loseGame, loseGameView, model, view, this);
                     view.getScene().setRoot(loseGameView);
                     loseGamePresenter.addKeyEventHandlers();

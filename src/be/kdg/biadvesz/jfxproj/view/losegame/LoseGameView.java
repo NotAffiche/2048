@@ -28,10 +28,14 @@ public class LoseGameView extends BorderPane {
     }
 
     //CTOR
-    public LoseGameView(int score) {
+    public LoseGameView(int score, boolean hasreached2048) {
+
         this.score = score;
         initNodes();
         layoutNodes();
+        if(hasreached2048){
+            lblText.setText("You lost in overtime\nYou reached 2048.\nFinal score: " + score);
+        }
     }
 
     private void initNodes() {
